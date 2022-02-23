@@ -386,7 +386,7 @@
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation 
+            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation.
                 All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
                     2.0 standard</a>.</p>
 
@@ -529,14 +529,19 @@
                 default. Included in the result are links to the first set of matches, the following set of matches, the
                 previous set of matches and the last set of matches.</p>
 
-            <p>You may overide the number of matches returned, up to fifty, by including <code>_count={number}</code> in
+            <p>You may overide the number of matches returned, up to fifty, by including <code>skip={number} and take={number}</code> in
                 your search. </p>
 
-            <p><code>GET http://payfac.nextech.com/api/Appointment?_count=25</code></p>
+            <p><code>GET http://payfac.nextech.com/api/Appointment?skip=0&take=25</code></p>
+            <ul>
+                <li>
+                   Skip - indicates the number of records to skip in the collection.
+                </li>
+                <li>
+                   Take - The number of records to take from the collection. 
+                </li>
+            </ul>
 
-            <aside class="notice">
-                Search results are limited to 50 matches per page.
-            </aside>
             <h2 id='response-codes'>Response Codes</h2>
             <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
                 request.</p>

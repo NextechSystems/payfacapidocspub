@@ -318,14 +318,39 @@
                 </ul>
             </li>
             <li>
+                <a href="#enumerators" class="toc-h1 toc-link" data-title="Get-Payments">Enumerators</a>
+            </li>
+            <li>
+                <a href="#data-transfer-objects" class="toc-h1 toc-link" data-title="Get-Payments">Data Transfer Objects</a>
+            </li>
+            <li>
+                <a href="#support-methods" class="toc-h1 toc-link" data-title="Get-Payments">Supporting Methods</a>
+            </li>
+            <li>
+                <a href="#get-payment" class="toc-h1 toc-link" data-title="Get-Payments">Get Payments</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#get-payment-2" class="toc-h2 toc-link" data-title="Get-Payments">Get Payments</a>
+                    </li>
+                    <li>
+                        <a href="#get-payment-3" class="toc-h2 toc-link" data-title="Get-Payments">Get Payment By ID</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="#delete-payment" class="toc-h1 toc-link" data-title="Capture-Payment">Delete Payment</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#delete-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Delete Payment By ID</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="#create-payment" class="toc-h1 toc-link" data-title="Create-Payment">Create Payment</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#card-present" class="toc-h2 toc-link" data-title="Create-Payment">Card Present</a>
-                    </li>
-                    <li>
-                        <a href="#card-not-present" class="toc-h2 toc-link" data-title="Create-Payment">Card Not
-                            Present</a>
+                        <a href="#reate-payment-2" class="toc-h2 toc-link" data-title="Create-Payment">Create Payment</a>
                     </li>
                 </ul>
             </li>
@@ -333,29 +358,7 @@
                 <a href="#capture-payment" class="toc-h1 toc-link" data-title="Capture-Payment">Capture Payment</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#capture-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Capture
-                            Payment</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Saving Payments</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#save-as-profile" class="toc-h2 toc-link" data-title="Saving-Payments">Save as
-                            Profile</a>
-                    </li>
-                    <li>
-                        <a href="#get-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Profiles</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#cancel-payment" class="toc-h1 toc-link" data-title="Cancel">Cancel
-                    Payment</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#cancel-payment-2" class="toc-h2 toc-link" data-title="Cancel">Cancel Payment</a>
+                        <a href="#capture-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Capture Payment By ID</a>
                     </li>
                 </ul>
             </li>
@@ -368,32 +371,17 @@
                 </ul>
             </li>
             <li>
-                <a href="#recalling-payments" class="toc-h1 toc-link" data-title="Recalling-Payments">Recalling
-                    Payments</a>
+                <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Payment Profiles</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#get-transaction" class="toc-h2 toc-link" data-title="Recalling-Payments">Get
-                            Transaction</a>
+                        <a href="#get-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Customer ID</a>
                     </li>
                     <li>
-                        <a href="#get-transactions" class="toc-h2 toc-link" data-title="Recalling-Payments">Get
-                            Transactions</a>
+                        <a href="#create-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile</a>
                     </li>
                     <li>
-                        <a href="#searching" class="toc-h2 toc-link" data-title="Recalling-Payments">Searching</a>
-                    </li>
-                    <li>
-                        <a href="#pagination" class="toc-h2 toc-link" data-title="Recalling-Payments">Pagination</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#appointment-type" class="toc-h1 toc-link" data-title="Payment-Statuses">Payment Statuses</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#appointment-2" class="toc-h2 toc-link" data-title="Payment-Statuses">Payment
-                            Statuses</a>
-                    </li>
+                        <a href="#delete-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Delete Payment Profile</a>
+                    </li>  
                 </ul>
             </li>
             <li>
@@ -429,18 +417,6 @@
                 on the STU 3 (3.0.1) version of the <a href="https://www.hl7.org/fhir/index.html">FHIR® standard</a>.
                 All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
                     2.0 standard</a>.</p>
-
-            <!-- <p>Available API functionality:  </p>
-
-<ul>
-<li><a href="#patient-2">Patient demographics</a><br></li>
-<li><a href="#patient-2">Create patient</a><br></li>
-<li><a href="#patient-2">Update patient</a><br></li>
-<li><a href="#payment-reconciliation">Patient payment posting</a></li>
-<li><a href="#appointment">Appointment information</a><br></li>
-<li><a href="#appointment-2">Confirm appointments</a><br></li>
-<li><a href="#document-reference">Attach patient documents</a></li>
-</ul> -->
 
             <p>Before you can start using our APIs, you must go through our registration process. If you&#39;re
                 interested in API access for your practice, please contact us <a
@@ -606,36 +582,6 @@ GET https://api.pm.nextech.com/api/Patient?address-postalcode=33609,33625,33647
 GET https://api.pm.nextech.com/api/Appointment?date=2015-03-04&amp;status=booked
 </pre>
             &nbsp;</p>
-            <!-- <h3 id='modifiers'>Modifiers</h3>
-<p>A modifier defines how a search match should be performed for a field. A modifier must appear after the field name with a preceeding colon followed by the modifier name.</p>
-
-<table><thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exact</td>
-<td>The value must match the data exactly</td>
-</tr>
-<tr>
-<td>contains</td>
-<td>The data must contain the value</td>
-</tr>
-</tbody></table>
-
-<p><strong>Example: Get all patients whose last name is Smith</strong>
-<pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family:exact=Smith
-</pre>
-&nbsp;</p>
-
-<p><strong>Example: Get all patients whose last name contains the text &quot;mit&quot;</strong>
-<pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family:contains=mit
-</pre>
-&nbsp;</p> -->
             <h3 id='operators'>Operators</h3>
             <p>Numeric and date values can be combined with operators to search on ranges of values. The following
                 operators are supported:</p>
@@ -1086,68 +1032,966 @@ GET https://api.pm.nextech.com/api/patient-type/2
             <!-- End formatting outline -->
 
             <!-- Begin Skeleton Setup -->
+            <!-- Enum -->
+            <h1 id="enumerators">Enumerators</h1>
+            
+            <h2 id="payment-status">Payment Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Started</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Authorized</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Captured</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Failed</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Cancelled</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Refunded</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Data Transfer Objects -->
+            <h1 id="data-transfer-objects">Data Transfer Objects</h1>
+            <h2 id="payment-dto">PaymentDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Payment Id</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>PaymentProcessor</td>
+                        <td>Payment Intent Processor</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="payment-full-dto">PaymentFullDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Payment Id</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>MerchantName</td>
+                        <td>Name of the merchant</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>PaymentProcessor</td>
+                        <td>Payment Intent Processor</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CardHolderName</td>
+                        <td>Card Holder's Name</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardLast4</td>
+                        <td>Last 4 digits on the credit card used for the payment.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>AuthorizationCode</td>
+                        <td>Authorization Code for the payment</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardType</td>
+                        <td>Credit Card Type</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardBrand</td>
+                        <td>Credit Card Brand</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>TransactionType</td>
+                        <td>Transaction Type</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>TransactionStatus</td>
+                        <td>Transaction Status</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>TransactionDate</td>
+                        <td>Transaction Date</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#datetime">DateTime?</a></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>Description of the transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="payment-create-dto">PaymentCreateDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amount</td>
+                        <td>Amount to charge</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>Currency</td>
+                        <td>Currency Type</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>MerchantId</td>
+                        <td>Merchant's ID</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CustomerName</td>
+                        <td>Customer's Name</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CustomerPaymentMethodId</td>
+                        <td>Payment Method used for the payment</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="refund-payment-dto">RefundPaymentDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Id</td>
+                        <td>Payment Identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>Amount to be refunded</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="payment-profile-dto">PaymentProfileDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Id</td>
+                        <td>Payment Profile Identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                    </tr>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>Expiry</td>
+                        <td>Expiry</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardType</td>
+                        <td>Credit Card Type</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>CardNumberLast4</td>
+                        <td>Card Number Last 4 digits</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean?</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="create-payment-profile-dto">CreatePaymentProfileDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>ProcessorPaymentMethodId</td>
+                        <td>Id from processor linked to payment method.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean?</a></td>
+                    </tr>
+                </tbody>
+            </table>
             <p>&nbsp;</p>
+
+            <!-- Data Transfer Objects -->
+            <h1 id="support-methods">Supporting Methods</h1>
+            <h3 class="remarks">Overrides & Helper Methods</h3>
+            <ul>
+                <li>
+                    The methods listed in the tables below are override methods and helper 
+                    methods found on each of the data transfer objects
+                </li>
+            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ToString()</td>
+                        <td>Converts the object into a string</td>
+                    </tr>
+                    <tr>
+                        <td>ToJson()</td>
+                        <td>Converts the object into formatted Json</td>
+                    </tr>
+                    <tr>
+                        <td>Equals(object obj)</td>
+                        <td>Accepts type object and compares the object to the transfer object</td>
+                    </tr>
+                    <tr>
+                        <td>Equals(Type obj)</td>
+                        <td>Accepts specific type and compares the typed object to the transfer object</td>
+                    </tr>
+                    <tr>
+                        <td>GetHashCode()</td>
+                        <td>Generates an integer value hash code based on the object.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>&nbsp;</p>
+            <!-- Get Payments -->
+            <h1 id='get-payment'>Get Payments</h1>
+
+            <h2 id='get-payment-2'>Get Payments</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://api.pm.nextech.com/api/pulbic/payments</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>start</td>
+                        <td>The start date filter payment serach</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#dateTime">DateTime?</a></td>
+                    </tr>
+                    <tr>
+                        <td>end</td>
+                        <td>The End date filter for payment serach</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#dateTime">DateTime?</a></td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>The status of the payment</td>
+                        <td><a href="#payment-status">PaymentStatus</a></td>
+                    </tr>
+                    <tr>
+                        <td>skip</td>
+                        <td>The number of records to skip.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>take</td>
+                        <td>The number of records to take</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>sortField</td>
+                        <td>The field to sort by</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>desc</td>
+                        <td>Field to sort by descending or ascending</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-full-dto">List of PaymentFullDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
+            <pre class="center-column">
+GET https://api.pm.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payments Response</h4>
+            <pre class="center-column">
+[ 
+    { 
+        cardHolderName : 'Name 1',
+        authorizationCode : '323',
+        transactionStatus : transactionStatus, 
+        cardType : '3',
+        description : 'description',
+        paymentProcessor : 'prc_j843890',
+        creditCardType : '1',
+        transactionDate : 2000-01-23T04:56:07.000+00:00,
+        merchantName : 'merchantName',
+        transactionType : 'phonepayment',
+        transactionStatusId : 6,
+        authorizedAmount : '132.00',
+        creditCardBrand : 'visa', 
+        id : 1,
+        creditCardLast4 : '1234'
+    }, 
+    { 
+        cardHolderName : 'Name 2',
+        authorizationCode : '8787',
+        transactionStatus : transactionStatus, 
+        cardType : '3',
+        description : 'description',
+        paymentProcessor : 'apfa+943028943',
+        creditCardType : '2',
+        transactionDate : 2000-01-23T04:56:07.000+00:00,
+        merchantName : 'merchantName',
+        transactionType : 'cardpresent',
+        transactionStatusId : 6,
+        authorizedAmount : '324.00',
+        creditCardBrand : 'amex', 
+        id : 2,
+        creditCardLast4 : '4567'
+    } 
+]
+            </pre>
+            <p>&nbsp;</p>
+            <!-- Get Payment By ID-->
+            <h2 id='get-payment-3'>Get Payment By ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://api.pm.nextech.com/api/pulbic/payments/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Identifier for a Payment</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
+            <pre class="center-column">
+GET https://api.pm.nextech.com/api/pulbic/payments/3289
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment By ID Response</h4>
+            <pre class="center-column">
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessor : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 6,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 1,
+    creditCardLast4 : '1234'
+}
+            </pre>
+            <p>&nbsp;</p>
+             <!--Delete Payment-->
+             <h1 id='delete-payment'>Delete Payment</h1>
+
+             <h2 id='delete-payment-2'>Delete Payment By ID</h2>
+             <h4 id="example-get-all-patient-types">Endpoint</h4>
+             <p><code>DELETE https://api.pm.nextech.com/api/pulbic/payments/{id}</code></p>
+             <h4 id="example-get-all-patient-types">Request Parameters</h4>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Description</th>
+                         <th>Type</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>id</td>
+                         <td>Payment Identifier</td>
+                         <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                     </tr>
+                     <tr>
+                         <td>partnerId</td>
+                         <td>Partner identifier</td>
+                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                     </tr>
+                     <tr>
+                         <td>merchantId</td>
+                         <td>Merchant identifier</td>
+                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                     </tr>
+                     <tr>
+                         <td>username</td>
+                         <td>The user who sent the request.</td>
+                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                     </tr>
+                 </tbody>
+             </table>
+             <h4>Response Object</h4>
+             <p><a href="#payment-dto">PaymentDTO</a></p>
+             <h4 id="example-get-all-patient-types">Example: Delete Payment Request</h4>
+             <pre class="center-column">
+ DELETE https://api.pm.nextech.com/api/pulbic/payments/1830
+  -H 'partnerId: af43ba54;'
+  -H 'merchantId: avr3435r;'
+  -H 'username: jane.doe;'
+             </pre>
+             <p>&nbsp;</p>
+             <h4 id="example-get-all-patient-types">Example: Delete Payment Response</h4>
+             <pre class="center-column">
+ {
+     paymentProcessor : 'prac_849378klajk', 
+     id : 1
+ }
+             </pre>
+             <p>&nbsp;</p>
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
-            <h2 id='card-present'>Card Present</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>Nothing that follows after this will be useful other than the skeleton for menu links to work.</p>
-
-            <h2 id='card-not-present'>Card Not Present</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
+            <h2 id='create-payment-2'>Create Payment</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Payment Create Object</td>
+                        <td><a href="#payment-create-dto">PaymentCreateDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
+            <pre class="center-column">
+POST https://api.pm.nextech.com/api/pulbic/payments
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+  
+ {
+    amount: '100.00',
+    currency: 'USD',
+ }
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Response</h4>
+            <pre class="center-column">
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessor : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 6,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 1,
+    creditCardLast4 : '1234'
+},  
+            </pre>
+            <p>&nbsp;</p>
             <!-- Capture Payments -->
             <h1 id='capture-payment'>Capture Payment</h1>
 
-            <h2 id='capture-payment-2'>Capture Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <!-- Saving Payments -->
-            <h1 id='saving-payments'>Saving Payments</h1>
-            
-            <h2 id='save-as-profile'>Save As Profile</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <h2 id='get-profiles'>Get Profiles</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <!-- Cancel Payment -->
-            <h1 id='cancel-payment'>Cancel Payment</h1>
-            
-            <h2 id='cancel-payment-2'>Cancel Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
+            <h2 id='capture-payment-2'>Capture Payment By ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments/capture/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>The Id for the payment intended to be captured.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
+            <pre class="center-column">
+POST https://api.pm.nextech.com/api/pulbic/payments/capture/1032
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Response</h4>
+            <pre class="center-column">
+{
+    paymentProcessor : 'pwt_4892anjvha8', 
+    id : 0
+}
+            </pre>
+            <p>&nbsp;</p>
             <!-- Refund Payment -->
             <h1 id='refund-payment'>Refund Payment</h1>
-            
+
             <h2 id='refund-payment-2'>Refund Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments/refund</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>The refund request's body.</td>
+                        <td><a href="#refund-payment-dto">RefundPaymentDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
+            <pre class="center-column">
+POST https://api.pm.nextech.com/api/pulbic/payments/refund
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
 
-            <!-- Recalling Payments -->
-            <h1 id='recalling-payments'>Recalling Payments</h1>
-            
-            <h2 id='get-transaction'>Get Transaction</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-            
-            <h2 id='get-transactions'>Get Transactions</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+ {
+    id: 3902,
+    amount: '100.00',
+ }
 
-            <!-- Payment Stauses -->
-            <h1 id='payment-statuses'>Payment Statuses</h1>
-            
-            <h2 id='payment-statuses-2'>Payment Statuses</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Refund Payment Response</h4>
+            <pre class="center-column">
+{
+    paymentProcessor : paymentProcessor, 
+    id : 0
+}
+            </pre>
+            <p>&nbsp;</p>
 
+            <!-- Payment Profiles Payments -->
+            <!-- Get Payment Profiles -->
+            <h1 id='saving-payments'>Payment Profiles Payments</h1>
+        
+            <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/{customerId}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>customerId</td>
+                        <td>The customer's ID</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
+            <pre class="center-column">
+GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/1738
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Response</h4>
+            <pre class="center-column">
+[ 
+    {
+        profileName : profileName,
+        isDefault : true,
+        cardNumberLast4 : cardNumberLast4,
+        customerId : customerId,
+        id : 0,
+        expiry : expiry,
+        creditCardType : creditCardType     
+    }, 
+    {
+        profileName : profileName,
+        isDefault : true,
+        cardNumberLast4 : cardNumberLast4,
+        customerId : customerId,
+        id : 0,
+        expiry : expiry,
+        creditCardType : creditCardType
+    }
+]
+            </pre>
+            <p>&nbsp;</p>
+
+            <!-- Create Payment Profile -->
+            <h2 id='create-payment-profiles'>Create Payment Profile</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://api.pm.nextech.com/api/pulbic/paymentProfiles</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Create Payment Profile DTO</td>
+                        <td><a href="#create-payment-profile-dto">CreatePaymentProfileDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
+            <pre class="center-column">
+POST https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
+-H 'partnerId: af43ba54;'
+-H 'merchantId: avr3435r;'
+-H 'username: jane.doe;'
+
+{
+    profileName : 'profileName',
+    isDefault : true, 
+    customerId: 'c842930283acanb',
+    processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : 'cardNumberLast4',
+    customerId : 'customerId,
+    id : 0,
+    expiry : 'expiry,
+    creditCardType : 'creditCardType'    
+}, 
+            </pre>
+            <p>&nbsp;</p>
+
+            <!-- Delete Payment Profile -->
+            <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>DELETE https://api.pm.nextech.com/api/pulbic/paymentProfiles/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>The payment profile ID</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
+            <pre class="center-column">
+DELETE https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : '1234',
+    customerId : 'fadf43234',
+    id : 0,
+    expiry : 'expiry',
+    creditCardType : 'visa'     
+}, 
+            </pre>
+            <p>&nbsp;</p>
+    
             <!-- API Versioning -->
             <h1 id='api-versioning'>API Versioning</h1>
             

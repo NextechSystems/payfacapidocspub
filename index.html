@@ -296,6 +296,10 @@
                             data-title="Getting Started">Authentication</a>
                     </li>
                     <li>
+                        <a href="#pagination" class="toc-h2 toc-link"
+                            data-title="Getting Started">Pagination</a>
+                    </li>
+                    <li>
                         <a href="#response-codes" class="toc-h2 toc-link" data-title="Getting-Started">Response
                             Codes</a>
                     </li>
@@ -372,7 +376,7 @@
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#frequently-asked-questions" class="toc-h2 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
+                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="API-Versioning">Resetting Expired Credentials</a>
                     </li>
                 </ul>
             </li>
@@ -525,23 +529,59 @@
             </table>
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
-            <p>When a search results in multiple matches, the first ten matches ordered by entered date are returned by
-                default. Included in the result are links to the first set of matches, the following set of matches, the
-                previous set of matches and the last set of matches.</p>
-
-            <p>You may overide the number of matches returned, up to fifty, by including <code>skip={number} and take={number}</code> in
-                your search. </p>
-
-            <p><code>GET http://payfac.nextech.com/api/Appointment?skip=0&take=25</code></p>
-            <ul>
-                <li>
-                   Skip - indicates the number of records to skip in the collection.
-                </li>
-                <li>
-                   Take - The number of records to take from the collection. 
-                </li>
-            </ul>
-
+            <p>
+                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List, 
+                we send the pagination to the header using the <code>X-Pagination</code> parameter.
+            </p>
+            <h3>Parameters</h3>
+            <p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Page</td>
+                            <td>Current Page number</td>
+                        </tr>
+                        <tr>
+                            <td>PageSize</td>
+                            <td>Number of records per page</td>
+                        </tr>
+                        <tr>
+                            <td>TotalRecords</td>
+                            <td>Total number of records</td>
+                        </tr>
+                        <tr>
+                            <td>TotalPages</td>
+                            <td>Total number of pages</td>
+                        </tr>
+                        <tr>
+                            <td>PreviousPageLink</td>
+                            <td>Previous page's GET Request Link</td>
+                        </tr>
+                        <tr>
+                            <td>NextPageLink</td>
+                            <td>Next page's GET Request Link</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Example</h3>
+                <pre class="center-column">
+-H X-Pagination: {
+    "Page":1,
+    "PageSize":20,
+    "TotalRecords":1700,
+    "TotalPages":85,
+    "PreviousPageLink":"",
+    "NextPageLink":"www......./api/products/configurations?Filters=productid=318&IncludeApplicationPerformance=true&page=1",
+    "GotoPageLinkTemplate":"www..../api/products/configurations?Filters=productid=318&IncludeApplicationPerformance=true&page=0"
+}
+                 </pre>
+            </p>
             <h2 id='response-codes'>Response Codes</h2>
             <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
                 request.</p>
@@ -1559,6 +1599,8 @@ DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/15
                 <li>Follow the prompts it gives you.</li>
                 <li>Your password is now reset.</li>
             </ol>
+            <p>&nbsp;</p>
+
         </div>
         <div class="dark-box">
         </div>

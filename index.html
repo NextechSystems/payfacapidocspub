@@ -1,11 +1,10 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Nextech Practice+ API Reference</title>
+    <title>Nextech PayFac API Reference</title>
     <link href="images/nextech-favicon.png" rel="icon" type="image/png" />
     <style>
         .highlight table td {
@@ -271,9 +270,7 @@
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <script src="javascripts/all_nosearch.js"></script>
-
 </head>
-
 <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
         <span>
@@ -301,19 +298,6 @@
                     <li>
                         <a href="#response-codes" class="toc-h2 toc-link" data-title="Getting-Started">Response
                             Codes</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#formatting-samples" class="toc-h1 toc-link" data-title="Create-Payment">Formatting Samples</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#formatting-samples-2" class="toc-h2 toc-link" data-title="Create-Payment">Formatting
-                            Samples</a>
-                    </li>
-                    <li>
-                        <a href="#full-endpoint-sample" class="toc-h2 toc-link" data-title="Create-Payment">Full
-                            Endpoint Sample</a>
                     </li>
                 </ul>
             </li>
@@ -385,14 +369,6 @@
                 </ul>
             </li>
             <li>
-                <a href="#patient-recall" class="toc-h1 toc-link" data-title="API-Versioning">API Versioning?</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#appointment-2" class="toc-h2 toc-link" data-title="API-Versioning">API Versioning?</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -402,10 +378,7 @@
             </li>
         </div>
         <ul class="toc-footer">
-            <li><a href='http://hl7.org/fhir/'>FHIR Documentation</a></li>
-            <li><a
-                    href='https://cdn2.hubspot.net/hubfs/306056/Developers%20Portal/Nextech%20API%20Terms%20and%20Conditions%20Agreement%20Document.pdf'>Terms
-                    of Use</a></li>
+            <li><a  href='https://cdn2.hubspot.net/hubfs/306056/Developers%20Portal/Nextech%20API%20Terms%20and%20Conditions%20Agreement%20Document.pdf'>Terms of Use</a></li>
         </ul>
     </div>
     <!-- End of side nav-bar -->
@@ -413,8 +386,7 @@
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Practice+ APIs provide secure access to patient data through a RESTful implementation based
-                on the STU 3 (3.0.1) version of the <a href="https://www.hl7.org/fhir/index.html">FHIR® standard</a>.
+            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation 
                 All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
                     2.0 standard</a>.</p>
 
@@ -424,21 +396,16 @@
                 you&#39;ve been provided with credentials to authenticate, then continue to the <a
                     href="#getting-started">Getting Started</a> section for more information.</p>
             <h1 id='getting-started'>Getting Started</h1>
-            <p>All API requests are performed over HTTPS. Although the <a
-                    href="https://www.hl7.org/fhir/index.html">FHIR® standard</a> supports both JSON and XML, this API
-                currently only supports JSON. Therefore any type explicitly defined in the request&#39;s
-                <code>Accept</code> header will be ignored.
-            </p>
 
-            <p>Before you can access the Nextech Practice+ API you must have the proper credentials to authenticate.
+            <p>Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
                 These credentials will be provided to you by your Nextech representative. </p>
 
             <p><strong>API Limitations</strong><br>
-                - Users of the Nextech API are restricted to a rate limit of 20 requests per second per endpoint<br>
+                - Users of the Nextech Payments API are restricted to a rate limit of 20 requests per second per endpoint<br>
                 - Nextech is not responsible for the development or maintenance of any third-party application</p>
 
             <p><strong>API Endpoint</strong><br>
-                <code>https://api.pm.nextech.com/api</code>
+                <code>https://payfac.nextech.com/api/public</code>
             </p>
 
             <p>The following values are required in the Header for every request...</p>
@@ -458,8 +425,18 @@
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td>nx-practice-id</td>
-                        <td>The unique identifier for a practice</td>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
                         <td>Yes</td>
                     </tr>
                 </tbody>
@@ -486,9 +463,7 @@
                 - If you need to synchronize data, it is best to do so during non-peak business hours. Which vary on a
                 per practice basis. </p>
             <h2 id='authentication'>Authentication</h2>
-            <p>Nextech&#39;s implementation of the FHIR® standard is protected by the <a
-                    href="https://oauth.net/2/">OAuth 2.0 standard</a> for authenticating requests. All API requests are
-                authenticated by passing a Bearer token in the Authorization Header.</p>
+            <p>Requests are authenticated by passing a Bearer token in the Authorization Header.</p>
 
             <p><code>Authorization: Bearer {access_token}</code></p>
             <h3 id='request-access-token'>Request Access Token</h3>
@@ -521,13 +496,11 @@
                     </tr>
                     <tr>
                         <td>resource</td>
-                        <td>The Practice+ Partner Api Identifier</td>
+                        <td>The Nextech Payments Partner Api Identifier</td>
                     </tr>
                 </tbody>
             </table>
-
             <p><strong>Response Parameters</strong></p>
-
             <table>
                 <thead>
                     <tr>
@@ -550,175 +523,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <h2 id='searching'>Searching</h2>
-            <p>Searches may be performed via HTTPS calls to the API where supported. </p>
-
-            <p>A search is executed by performing a <code>GET</code> operation in the RESTful framework<br>
-                <code>GET https://api.pm.nextech.com/api/[type]?[field1][:modifier1]=[value1]&amp;[field2][:modifier2]=[value2]...</code><br>
-                where [type] refers to a resource such as Patient or Appointment followed by one or more query filters
-                and optional modifiers.
-            </p>
-
-            <ul>
-                <li>Matching is always case-insensitive and always ignores whitespace before and after the data.</li>
-                <li>The default search attempts to match with just the start of the data.</li>
-            </ul>
-            <h3 id='multiple-values-on-one-field'>Multiple Values on One Field</h3>
-            <p>To search for a field that meets at least one of several values, each value should be specified and
-                separated by a comma.</p>
-
-            <p><strong>Example: Get patients who live in several nearby cities</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?address-postalcode=33609,33625,33647
-</pre>
-            &nbsp;</p>
-            <h3 id='multiple-fields'>Multiple Fields</h3>
-            <p>To search for multiple fields that all must meet certain criteria, each field should be specified and
-                separated by an ampersand.</p>
-
-            <p><strong>Example: Get booked appointments for one day</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=2015-03-04&amp;status=booked
-</pre>
-            &nbsp;</p>
-            <h3 id='operators'>Operators</h3>
-            <p>Numeric and date values can be combined with operators to search on ranges of values. The following
-                operators are supported:</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Operator</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>gt</td>
-                        <td>Greater Than</td>
-                    </tr>
-                    <tr>
-                        <td>ge</td>
-                        <td>Greater Than or Equal to</td>
-                    </tr>
-                    <tr>
-                        <td>lt</td>
-                        <td>Less Than</td>
-                    </tr>
-                    <tr>
-                        <td>le</td>
-                        <td>Less Than or Equal to</td>
-                    </tr>
-                    <tr>
-                        <td>eq</td>
-                        <td>Equals</td>
-                    </tr>
-                    <tr>
-                        <td>ne</td>
-                        <td>Not Equal to</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Example: Get the patients with chart numbers between and including 100 and 200</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?identifier=ge100&amp;identifier=le200
-</pre>
-            &nbsp;</p>
-
-            <p><strong>Example: Get appointments for the month of March 2017</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=ge2017-03-01&amp;date=lt2017-04-01
-</pre>
-            &nbsp;</p>
-            <h3 id='search-parameter-types'>Search Parameter Types</h3>
-            <h4 id='string'>String</h4>
-            <p>When matching a simple text string with data, the match is always case-insensitive and always ignores
-                whitespace before and after the data. The default search attempts to match just the start of the data,
-                and you may use a modifier to force an exact match or a match where the data contains the string.</p>
-
-            <p><strong>Example: Get all patients whose last name begins with Smith</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family=Smith
-</pre>
-            &nbsp;</p>
-            <h4 id='number'>Number</h4>
-            <p>By default, exact matches are performed in numeric searches. You may use operators to specify a numeric
-                range.</p>
-
-            <p><strong>Example: Get the patient with chart number 3442</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?identifier=3442
-</pre>
-            &nbsp;</p>
-            <h4 id='date'>Date</h4>
-            <p>By default, exact matches are performed in date searches. You may use operators to specify a date range.
-            </p>
-
-            <p><strong>Example: Get appointments for the month of October 2016</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=ge2016-10-01&amp;date=lt2017-11-01
-</pre>
-            &nbsp;</p>
-            <h4 id='human-name'>Human Name</h4>
-            <p>Some resources have abstract fields which contain a first name, last name, prefix and suffix. When
-                searching on names, each of those fields are searched individually. The way those fields are matched are
-                consistent with how String searches work, and modifiers may be used to change how the matching works.
-            </p>
-
-            <p><strong>Example: Get the patients whose first name, last name, prefix or suffix begins with Doe</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?name=doe
-</pre>
-            &nbsp;</p>
-            <h4 id='address'>Address</h4>
-            <p>Some resources have abstract fields which contain an Address 1, Address 2, City, State and Postal Code
-                field. When searching on address, each of these fields are searched individually. The way those fields
-                are matched are consistent with how String searches work, and modifiers may be used to change how the
-                matching works.</p>
-
-            <p><strong>Example: Get the patients whose Address 1, Address 2, City, State or Zip code begins with
-                    1500</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?address=1500
-</pre>
-            &nbsp;</p>
-            <h2 id='writing'>Writing</h2>
-            <p>Data writes may be performed via HTTPS calls to the API where supported. </p>
-
-            <p>A write is executed by performing a <code>PUT</code> or <code>PATCH</code> operation in the RESTful
-                framework
-                <code>(PUT|PATCH) https://api.pm.nextech.com/api/{resource}/{identifier}</code>
-                where <code>{resource}</code> refers to a resource such as Appointment, <code>{identifier}</code> is the
-                unique identifier of the resource and the body of the request describes a resource and which fields to
-                add or change. This example request path and body would confirm an appointment with the ID 3384:
-            </p>
-
-            <p><strong>Example</strong>
-            <pre class="center-column">
-<code>PATCH https://api.pm.nextech.com/api/Appointment/3384</code>
-</pre>
-            <pre class="center-column">
-<code>{
-    &quot;resourceType&quot;: &quot;Appointment&quot;,
-    &quot;status&quot;: &quot;booked&quot;,
-    &quot;participant&quot;: [
-        {
-        &quot;status&quot;: &quot;accepted&quot;
-        }
-    ],
-    &quot;extension&quot;: [
-        {
-            &quot;url&quot;: &quot;modifiedBy&quot;,
-            &quot;valueIdentifier&quot;: {
-                &quot;id&quot;: &quot;modifiedBy&quot;,
-                &quot;value&quot;: &quot;Practice+ Partner&quot;
-            }
-        }
-    ]
-}</code>
-</pre>
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
             <p>When a search results in multiple matches, the first ten matches ordered by entered date are returned by
@@ -728,7 +532,7 @@ GET https://api.pm.nextech.com/api/Patient?address=1500
             <p>You may overide the number of matches returned, up to fifty, by including <code>_count={number}</code> in
                 your search. </p>
 
-            <p><code>GET http://api.pm.nextech.com/api/Appointment?_count=25</code></p>
+            <p><code>GET http://payfac.nextech.com/api/Appointment?_count=25</code></p>
 
             <aside class="notice">
                 Search results are limited to 50 matches per page.
@@ -779,257 +583,6 @@ GET https://api.pm.nextech.com/api/Patient?address=1500
                     </tr>
                 </tbody>
             </table>
-
-            <!-- Begin formatting outline -->
-            <h1 id='formatting-samples'>Formatting Samples (h1 side-menu id anchor) - White background h1 css</h1>
-            <h2 id='formatting-samples-2'>Formatting Samples (h2 side-menu id anchor)</h2>
-            <h3 id='overview'>Overview (h3 heading)</h3>
-            <p>Below you will find formatting examples for use in building this document.</p>
-            <h3 id='table-with-anchors'>Table for field descriptions on models</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>identifier</td>
-                        <td>The unique value assigned to each patient which discerns them from all others. It can be the
-                            patient&#39;s unique identifier or the patient&#39;s Nextech chart number. <br /><br /> As a
-                            convenience for some use cases, the patient&#39;s social security number is also returned in
-                            this field if available.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#Identifier">Identifier</a></td>
-                    </tr>
-                    <tr>
-                        <td>name</td>
-                        <td>Names of the patient, additional information including prefix and nickname</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#HumanName">HumanName</a></td>
-                    </tr>
-                    <tr>
-                        <td>birthDate</td>
-                        <td>The date of birth of the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#date">date</a></td>
-                    </tr>
-                    <tr>
-                        <td>address</td>
-                        <td>Addresses associated with the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#Address">Address</a></td>
-                    </tr>
-                    <tr>
-                        <td>communication</td>
-                        <td>A list of Languages which may be used to communicate with the patient about his or her
-                            health</td>
-                        <td><a href="https://www.hl7.org/fhir/backboneelement.html">BackboneElement</a></td>
-                    </tr>
-                    <tr>
-                        <td>maritalStatus</td>
-                        <td>The marital status of the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#CodeableConcept">Codeable Concept</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 id='example'>Example DTO/Model Breakdown - Scrolling is built into CSS</h3>
-            <pre class="center-column">
-{
-    "resourceType": "Patient",
-    "id": "386244db-5f44-4d36-864c-1334e7bc5cf5",
-    "meta": {
-        "lastUpdated": "2020-03-25T13:24:40.277+00:00"
-    },
-    "extension": [
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-status",
-            "valueString": "Active"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/referral-source",
-            "valueReference": {
-                "reference": "referral-source/3",
-                "display": "Referring Provider"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-note",
-            "valueString": "This is a patient note"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-location",
-            "valueReference": {
-                "reference": "location/5",
-                "display": "South Tampa Office"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-employment-status",
-            "valueString": "full time"
-        },
-        {
-            "url": "http://hl7.org/fhir/v3/Ethnicity",
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/v3/Ethnicity",
-                        "code": "NH"
-                    }
-                ],
-                "text": "Not Hispanic or Latino"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/referring-physician",
-            "extension": [
-                {
-                    "url": "http://hl7.org/fhir/StructureDefinition/HumanName",
-                    "valueHumanName": {
-                        "use": "official",
-                        "text": "Iola Frye OD",
-                        "family": "Frye",
-                        "given": [
-                            "Iola"
-                        ],
-                        "suffix": [
-                            "OD"
-                        ]
-                    }
-                }
-            ],
-            "valueReference": {
-                "reference": "referring-physician/518",
-                "display": "Iola Frye OD"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/primary-care-physician",
-            "valueReference": {
-                "reference": "primary-care-physician/324",
-                "display": "Justin Frederick MD"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patients-referred",
-            "valueDecimal": 0
-        },
-        {
-            "url": "http://hl7.org/fhir/v3/Race",
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/v3/Race",
-                        "code": "2106-3"
-                    }
-                ],
-                "text": "White"
-            }
-        }
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/hipaa-consent-signature-on-file",
-            "valueBoolean": true
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/hipaa-consent-signature-date",
-            "valueDate": "2020-04-02"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/financial-policy-reviewed",
-            "valueBoolean": true
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/financial-policy-reviewed-date",
-            "valueDate": "2020-04-02"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/self-pay",
-            "valueBoolean": true
-        }        
-    ]
-}
-</pre>
-            <p>&nbsp;</p>
-            <h3 id='code-block'>Text display as a code block for endpoint display.</h3>
-            <p><code>GET /patient-type?{parameters}</code></p>
-            <p>&nbsp;</p>
-            <p>The header row below look like it's css tied to the H2 tag, so sections will be separated.</p>
-
-            <p>&nbsp;</p>
-            <h2 id='full-endpoint-sample'>Full Endpoint Sample</h2>
-            <p>Below you will find a sample of a full endpoint display. This would be a great area to add information
-                pertinant to what the endpoint is, how it will be used, etc. Lorem Ipsum blah blah blah.</p>
-            <h4 id='http-request'>HTTP Request</h4>
-            <p><code>GET /patient-type?{parameters}</code></p>
-            <h4 id='parameters'>Parameters</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Located in</th>
-                        <th>Description</th>
-                        <th>Required</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>identifier</td>
-                        <td>query</td>
-                        <td>The unique identifier for a single patient type</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>name</td>
-                        <td>query</td>
-                        <td>The name of the patient type</td>
-                        <td>N</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h4 id='example-get-all-patient-types'>Example: Get all patient types</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type
-</pre>
-
-            <p>&nbsp;</p>
-            <h4 id='example-get-all-types-whose-name-contains-39-cosmetic-39'>Example: Get all types whose name contains
-                &#39;Medi&#39;</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type?name=Medi
-</pre>
-
-            <p>&nbsp;</p>
-            <h4 id='example-get-a-specific-patient-type-based-on-identifier'>Example: Get a specific patient type based
-                on identifier</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type/2
-</pre>
-            <h4 id='response'>Response</h4>
-            <pre class="center-column">
-{
-    "resourceType": "patient-type",
-    "id": "2",
-    "extension": [
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-type#name",
-            "valueString": "Medicare"
-        }
-    ]
-}
-</pre>
-
-            <p>&nbsp;</p>
-            <h3 id="remarks">Remarks</h3>
-            <ul>
-                <li>'Remarks' can be added at the end of each endpoint to address FAQ type issues and mention anything
-                    that wasn't covered above.
-                </li>
-                <li>This endpoint is to be used during the act of scheduling an appointment.</li>
-                <li>This call is used to find available appointment times for one patient appointment, based on the
-                    desired appointment type and provider.</li>
-                <li>This endpoint should not be used to generically find all open times on the schedule for display
-                    purposes, or data syncing.</li>
-            </ul>
-
-            <!-- End formatting outline -->
 
             <!-- Begin Skeleton Setup -->
             <!-- Enum -->
@@ -1085,12 +638,12 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>id</td>
                         <td>Payment Id</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>PaymentProcessor</td>
                         <td>Payment Intent Processor</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1108,62 +661,62 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>id</td>
                         <td>Payment Id</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>MerchantName</td>
                         <td>Name of the merchant</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>PaymentProcessor</td>
                         <td>Payment Intent Processor</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CardHolderName</td>
                         <td>Card Holder's Name</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardLast4</td>
                         <td>Last 4 digits on the credit card used for the payment.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>AuthorizationCode</td>
                         <td>Authorization Code for the payment</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>                    
                     </tr>
                     <tr>
                         <td>CreditCardType</td>
                         <td>Credit Card Type</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>                    
                     </tr>
                     <tr>
                         <td>CreditCardBrand</td>
                         <td>Credit Card Brand</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>TransactionType</td>
                         <td>Transaction Type</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>TransactionStatus</td>
                         <td>Transaction Status</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>TransactionDate</td>
                         <td>Transaction Date</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#datetime">DateTime?</a></td>
+                        <td>DateTime?</td>
                     </tr>
                     <tr>
                         <td>Description</td>
                         <td>Description of the transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1181,32 +734,32 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>Amount</td>
                         <td>Amount to charge</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>Currency</td>
                         <td>Currency Type</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>MerchantId</td>
                         <td>Merchant's ID</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>CustomerId</td>
                         <td>Customer's Id</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CustomerName</td>
                         <td>Customer's Name</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CustomerPaymentMethodId</td>
                         <td>Payment Method used for the payment</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                        <td>Integer?</td>
                     </tr>
                 </tbody>
             </table>
@@ -1224,12 +777,12 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>Id</td>
                         <td>Payment Identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                        <td>Integer?</td>
                     </tr>
                     <tr>
                         <td>Amount</td>
                         <td>Amount to be refunded</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1247,37 +800,37 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>Id</td>
                         <td>Payment Profile Identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                        <td>Integer?</td>
                     </tr>
                     <tr>
                         <td>CustomerId</td>
                         <td>Customer's Id</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>ProfileName</td>
                         <td>Name for payment profile</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>Expiry</td>
                         <td>Expiry</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardType</td>
                         <td>Credit Card Type</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CardNumberLast4</td>
                         <td>Card Number Last 4 digits</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>IsDefault</td>
                         <td>Is default payment profile for customer</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean?</a></td>
+                        <td>Boolean?</td>
                     </tr>
                 </tbody>
             </table>
@@ -1295,22 +848,22 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>CustomerId</td>
                         <td>Customer's Id</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>ProfileName</td>
                         <td>Name for payment profile</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>ProcessorPaymentMethodId</td>
                         <td>Id from processor linked to payment method.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>IsDefault</td>
                         <td>Is default payment profile for customer</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean?</a></td>
+                        <td>Boolean?</td>
                     </tr>
                 </tbody>
             </table>
@@ -1362,7 +915,7 @@ GET https://api.pm.nextech.com/api/patient-type/2
 
             <h2 id='get-payment-2'>Get Payments</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://api.pm.nextech.com/api/pulbic/payments</code></p>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1376,12 +929,12 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>start</td>
                         <td>The start date filter payment serach</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#dateTime">DateTime?</a></td>
+                        <td>DateTime?</td>
                     </tr>
                     <tr>
                         <td>end</td>
                         <td>The End date filter for payment serach</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#dateTime">DateTime?</a></td>
+                        <td>DateTime?</td>
                     </tr>
                     <tr>
                         <td>status</td>
@@ -1391,37 +944,37 @@ GET https://api.pm.nextech.com/api/patient-type/2
                     <tr>
                         <td>skip</td>
                         <td>The number of records to skip.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>take</td>
                         <td>The number of records to take</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>sortField</td>
                         <td>The field to sort by</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>desc</td>
                         <td>Field to sort by descending or ascending</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#boolean">Boolean</a></td>
+                        <td>Boolean</td>
                     </tr>
                     <tr>
                         <td>partnerId</td>
                         <td>Partner identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>Merchant identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1429,7 +982,7 @@ GET https://api.pm.nextech.com/api/patient-type/2
             <p><a href="#payment-full-dto">List of PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
             <pre class="center-column">
-GET https://api.pm.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
+GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1478,7 +1031,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
             <!-- Get Payment By ID-->
             <h2 id='get-payment-3'>Get Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://api.pm.nextech.com/api/pulbic/payments/{id}</code></p>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1492,22 +1045,22 @@ GET https://api.pm.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
                     <tr>
                         <td>id</td>
                         <td>Identifier for a Payment</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                        <td>Integer?</td>
                     </tr>
                     <tr>
                         <td>partnerId</td>
                         <td>Partner identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>Merchant identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1515,7 +1068,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
             <pre class="center-column">
-GET https://api.pm.nextech.com/api/pulbic/payments/3289
+GET https://payfac.nextech.com/api/pulbic/payments/3289
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1547,7 +1100,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
 
              <h2 id='delete-payment-2'>Delete Payment By ID</h2>
              <h4 id="example-get-all-patient-types">Endpoint</h4>
-             <p><code>DELETE https://api.pm.nextech.com/api/pulbic/payments/{id}</code></p>
+             <p><code>DELETE https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
              <h4 id="example-get-all-patient-types">Request Parameters</h4>
              <table>
                  <thead>
@@ -1561,22 +1114,22 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
                      <tr>
                          <td>id</td>
                          <td>Payment Identifier</td>
-                         <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                         <td>Integer</td>
                      </tr>
                      <tr>
                          <td>partnerId</td>
                          <td>Partner identifier</td>
-                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                         <td>String</td>
                      </tr>
                      <tr>
                          <td>merchantId</td>
                          <td>Merchant identifier</td>
-                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                         <td>String</td>
                      </tr>
                      <tr>
                          <td>username</td>
                          <td>The user who sent the request.</td>
-                         <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                         <td>String</td>
                      </tr>
                  </tbody>
              </table>
@@ -1584,7 +1137,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
              <p><a href="#payment-dto">PaymentDTO</a></p>
              <h4 id="example-get-all-patient-types">Example: Delete Payment Request</h4>
              <pre class="center-column">
- DELETE https://api.pm.nextech.com/api/pulbic/payments/1830
+ DELETE https://payfac.nextech.com/api/pulbic/payments/1830
   -H 'partnerId: af43ba54;'
   -H 'merchantId: avr3435r;'
   -H 'username: jane.doe;'
@@ -1603,7 +1156,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
 
             <h2 id='create-payment-2'>Create Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments</code></p>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1622,17 +1175,17 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
                     <tr>
                         <td>partnerId</td>
                         <td>Partner identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>Merchant identifier</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1640,7 +1193,7 @@ GET https://api.pm.nextech.com/api/pulbic/payments/3289
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
             <pre class="center-column">
-POST https://api.pm.nextech.com/api/pulbic/payments
+POST https://payfac.nextech.com/api/pulbic/payments
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1677,7 +1230,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments
 
             <h2 id='capture-payment-2'>Capture Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments/capture/{id}</code></p>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/capture/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1691,22 +1244,22 @@ POST https://api.pm.nextech.com/api/pulbic/payments
                     <tr>
                         <td>id</td>
                         <td>The Id for the payment intended to be captured.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer</a></td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
                         <td>partnerId</td>
                         <td>Unique identifier for partners</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the capture request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1714,7 +1267,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
             <pre class="center-column">
-POST https://api.pm.nextech.com/api/pulbic/payments/capture/1032
+POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1733,7 +1286,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments/capture/1032
 
             <h2 id='refund-payment-2'>Refund Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://api.pm.nextech.com/api/pulbic/payments/refund</code></p>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/refund</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1752,17 +1305,17 @@ POST https://api.pm.nextech.com/api/pulbic/payments/capture/1032
                     <tr>
                         <td>partnerId</td>
                         <td>Unique identifier for partners</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
-                    </tr>
+                        <td>String</td>
+                    <tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the capture request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>>
                     </tr>
                 </tbody>
             </table>
@@ -1770,7 +1323,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments/capture/1032
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
             <pre class="center-column">
-POST https://api.pm.nextech.com/api/pulbic/payments/refund
+POST https://payfac.nextech.com/api/pulbic/payments/refund
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1797,7 +1350,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments/refund
         
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/{customerId}</code></p>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/paymentProfiles/{customerId}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1811,22 +1364,22 @@ POST https://api.pm.nextech.com/api/pulbic/payments/refund
                     <tr>
                         <td>customerId</td>
                         <td>The customer's ID</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>partnerId</td>
                         <td>Unique identifier for partners</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the capture request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1834,7 +1387,7 @@ POST https://api.pm.nextech.com/api/pulbic/payments/refund
             <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
             <pre class="center-column">
-GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/1738
+GET https://payfac.nextech.com/api/pulbic/paymentProfiles/1738
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1868,7 +1421,7 @@ GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/1738
             <!-- Create Payment Profile -->
             <h2 id='create-payment-profiles'>Create Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://api.pm.nextech.com/api/pulbic/paymentProfiles</code></p>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/paymentProfiles</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1887,17 +1440,17 @@ GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/1738
                     <tr>
                         <td>partnerId</td>
                         <td>Unique identifier for partners</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the capture request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1905,7 +1458,7 @@ GET https://api.pm.nextech.com/api/pulbic/paymentProfiles/1738
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
             <pre class="center-column">
-POST https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
+POST https://payfac.nextech.com/api/pulbic/paymentProfiles/15
 -H 'partnerId: af43ba54;'
 -H 'merchantId: avr3435r;'
 -H 'username: jane.doe;'
@@ -1935,7 +1488,7 @@ POST https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
             <!-- Delete Payment Profile -->
             <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>DELETE https://api.pm.nextech.com/api/pulbic/paymentProfiles/{id}</code></p>
+            <p><code>DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1949,22 +1502,22 @@ POST https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
                     <tr>
                         <td>id</td>
                         <td>The payment profile ID</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#integer">Integer?</a></td>
+                        <td>Integer?</td>
                     </tr>
                     <tr>
                         <td>partnerId</td>
                         <td>Unique identifier for partners</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>merchantId</td>
                         <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>username</td>
                         <td>The user who sent the capture request.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#string">String</a></td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
@@ -1972,7 +1525,7 @@ POST https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
             <pre class="center-column">
-DELETE https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
+DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/15
  -H 'partnerId: af43ba54;'
  -H 'merchantId: avr3435r;'
  -H 'username: jane.doe;'
@@ -1991,48 +1544,20 @@ DELETE https://api.pm.nextech.com/api/pulbic/paymentProfiles/15
 }, 
             </pre>
             <p>&nbsp;</p>
-    
-            <!-- API Versioning -->
-            <h1 id='api-versioning'>API Versioning</h1>
-            
-            <h2 id='api-versioning-2'>API Versioning</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-
 
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>
             <p>If your credentials expire you will have to reset them by:</p>
-
             <ol>
                 <li>Going to Azure Active Directory by <a href="http://portal.azure.com/">clicking here</a>.</li>
                 <li>Enter your expired credentials.</li>
                 <li>Follow the prompts it gives you.</li>
                 <li>Your password is now reset.</li>
             </ol>
-            <h3 id='missing-practitioners'>Missing Practitioners</h3>
-            <p>If the practitioners endpoint is not showing all of the expected practitioners check this before opening
-                a support case.</p>
-
-            <ol>
-                <li>Inside the Nextech application go to the Contacts module, select the provider that is not showing
-                    up.</li>
-                <li>Confirm that the practitioner is not marked Inactive on the checkbox on the right hand side.</li>
-                <li>Find the &quot;Linked User&quot; section and confirm that it is mapped to a unique account that is
-                    just for that practitioner.</li>
-            </ol>
-
-            <p>Practitoners need their own user account to work with the practitoners endpoint.
-                Additional documentation can be provided on request.</p>
-
         </div>
         <div class="dark-box">
         </div>
     </div>
 </body>
-
 <script src="javascripts/payfac.js"></script>
-
-
 </html>

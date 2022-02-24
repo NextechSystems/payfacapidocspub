@@ -1,11 +1,10 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Nextech Practice+ API Reference</title>
+    <title>Nextech Payments API Reference</title>
     <link href="images/nextech-favicon.png" rel="icon" type="image/png" />
     <style>
         .highlight table td {
@@ -271,9 +270,7 @@
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <script src="javascripts/all_nosearch.js"></script>
-
 </head>
-
 <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
         <span>
@@ -299,21 +296,41 @@
                             data-title="Getting Started">Authentication</a>
                     </li>
                     <li>
+                        <a href="#pagination" class="toc-h2 toc-link"
+                            data-title="Getting Started">Pagination</a>
+                    </li>
+                    <li>
                         <a href="#response-codes" class="toc-h2 toc-link" data-title="Getting-Started">Response
                             Codes</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#formatting-samples" class="toc-h1 toc-link" data-title="Create-Payment">Formatting Samples</a>
+                <a href="#enumerators" class="toc-h1 toc-link" data-title="Get-Payments">Enumerators</a>
+            </li>
+            <li>
+                <a href="#data-transfer-objects" class="toc-h1 toc-link" data-title="Get-Payments">Data Transfer Objects</a>
+            </li>
+            <li>
+                <a href="#support-methods" class="toc-h1 toc-link" data-title="Get-Payments">Supporting Methods</a>
+            </li>
+            <li>
+                <a href="#get-payment" class="toc-h1 toc-link" data-title="Get-Payments">Get Payments</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#formatting-samples-2" class="toc-h2 toc-link" data-title="Create-Payment">Formatting
-                            Samples</a>
+                        <a href="#get-payment-2" class="toc-h2 toc-link" data-title="Get-Payments">Get Payments</a>
                     </li>
                     <li>
-                        <a href="#full-endpoint-sample" class="toc-h2 toc-link" data-title="Create-Payment">Full
-                            Endpoint Sample</a>
+                        <a href="#get-payment-3" class="toc-h2 toc-link" data-title="Get-Payments">Get Payment By ID</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="#delete-payment" class="toc-h1 toc-link" data-title="Capture-Payment">Delete Payment</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#delete-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Delete Payment By ID</a>
                     </li>
                 </ul>
             </li>
@@ -321,11 +338,7 @@
                 <a href="#create-payment" class="toc-h1 toc-link" data-title="Create-Payment">Create Payment</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#card-present" class="toc-h2 toc-link" data-title="Create-Payment">Card Present</a>
-                    </li>
-                    <li>
-                        <a href="#card-not-present" class="toc-h2 toc-link" data-title="Create-Payment">Card Not
-                            Present</a>
+                        <a href="#reate-payment-2" class="toc-h2 toc-link" data-title="Create-Payment">Create Payment</a>
                     </li>
                 </ul>
             </li>
@@ -333,29 +346,7 @@
                 <a href="#capture-payment" class="toc-h1 toc-link" data-title="Capture-Payment">Capture Payment</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#capture-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Capture
-                            Payment</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Saving Payments</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#save-as-profile" class="toc-h2 toc-link" data-title="Saving-Payments">Save as
-                            Profile</a>
-                    </li>
-                    <li>
-                        <a href="#get-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Profiles</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#cancel-payment" class="toc-h1 toc-link" data-title="Cancel">Cancel
-                    Payment</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#cancel-payment-2" class="toc-h2 toc-link" data-title="Cancel">Cancel Payment</a>
+                        <a href="#capture-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Capture Payment By ID</a>
                     </li>
                 </ul>
             </li>
@@ -368,79 +359,40 @@
                 </ul>
             </li>
             <li>
-                <a href="#recalling-payments" class="toc-h1 toc-link" data-title="Recalling-Payments">Recalling
-                    Payments</a>
+                <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Payment Profiles</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#get-transaction" class="toc-h2 toc-link" data-title="Recalling-Payments">Get
-                            Transaction</a>
+                        <a href="#get-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Customer ID</a>
                     </li>
                     <li>
-                        <a href="#get-transactions" class="toc-h2 toc-link" data-title="Recalling-Payments">Get
-                            Transactions</a>
+                        <a href="#create-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile</a>
                     </li>
                     <li>
-                        <a href="#searching" class="toc-h2 toc-link" data-title="Recalling-Payments">Searching</a>
-                    </li>
-                    <li>
-                        <a href="#pagination" class="toc-h2 toc-link" data-title="Recalling-Payments">Pagination</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#appointment-type" class="toc-h1 toc-link" data-title="Payment-Statuses">Payment Statuses</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#appointment-2" class="toc-h2 toc-link" data-title="Payment-Statuses">Payment
-                            Statuses</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#patient-recall" class="toc-h1 toc-link" data-title="API-Versioning">API Versioning?</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#appointment-2" class="toc-h2 toc-link" data-title="API-Versioning">API Versioning?</a>
-                    </li>
+                        <a href="#delete-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Delete Payment Profile</a>
+                    </li>  
                 </ul>
             </li>
             <li>
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#frequently-asked-questions" class="toc-h2 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
+                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="API-Versioning">Resetting Expired Credentials</a>
                     </li>
                 </ul>
             </li>
         </div>
         <ul class="toc-footer">
-            <li><a href='http://hl7.org/fhir/'>FHIR Documentation</a></li>
-            <li><a
-                    href='https://cdn2.hubspot.net/hubfs/306056/Developers%20Portal/Nextech%20API%20Terms%20and%20Conditions%20Agreement%20Document.pdf'>Terms
-                    of Use</a></li>
+            <li><a  href='https://cdn2.hubspot.net/hubfs/306056/Developers%20Portal/Nextech%20API%20Terms%20and%20Conditions%20Agreement%20Document.pdf'>Terms of Use</a></li>
         </ul>
     </div>
-    <!-- End of side nav-bar -->
+    <!-- End of side nav-bar --> 
     <div class="page-wrapper">
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Practice+ APIs provide secure access to patient data through a RESTful implementation based
-                on the STU 3 (3.0.1) version of the <a href="https://www.hl7.org/fhir/index.html">FHIR® standard</a>.
+            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation.
                 All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
                     2.0 standard</a>.</p>
-
-            <!-- <p>Available API functionality:  </p>
-
-<ul>
-<li><a href="#patient-2">Patient demographics</a><br></li>
-<li><a href="#patient-2">Create patient</a><br></li>
-<li><a href="#patient-2">Update patient</a><br></li>
-<li><a href="#payment-reconciliation">Patient payment posting</a></li>
-<li><a href="#appointment">Appointment information</a><br></li>
-<li><a href="#appointment-2">Confirm appointments</a><br></li>
-<li><a href="#document-reference">Attach patient documents</a></li>
-</ul> -->
 
             <p>Before you can start using our APIs, you must go through our registration process. If you&#39;re
                 interested in API access for your practice, please contact us <a
@@ -448,21 +400,16 @@
                 you&#39;ve been provided with credentials to authenticate, then continue to the <a
                     href="#getting-started">Getting Started</a> section for more information.</p>
             <h1 id='getting-started'>Getting Started</h1>
-            <p>All API requests are performed over HTTPS. Although the <a
-                    href="https://www.hl7.org/fhir/index.html">FHIR® standard</a> supports both JSON and XML, this API
-                currently only supports JSON. Therefore any type explicitly defined in the request&#39;s
-                <code>Accept</code> header will be ignored.
-            </p>
 
-            <p>Before you can access the Nextech Practice+ API you must have the proper credentials to authenticate.
+            <p>Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
                 These credentials will be provided to you by your Nextech representative. </p>
 
             <p><strong>API Limitations</strong><br>
-                - Users of the Nextech API are restricted to a rate limit of 20 requests per second per endpoint<br>
+                - Users of the Nextech Payments API are restricted to a rate limit of 20 requests per second per endpoint<br>
                 - Nextech is not responsible for the development or maintenance of any third-party application</p>
 
             <p><strong>API Endpoint</strong><br>
-                <code>https://api.pm.nextech.com/api</code>
+                <code>https://payfac.nextech.com/api/public</code>
             </p>
 
             <p>The following values are required in the Header for every request...</p>
@@ -482,8 +429,18 @@
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td>nx-practice-id</td>
-                        <td>The unique identifier for a practice</td>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
                         <td>Yes</td>
                     </tr>
                 </tbody>
@@ -510,9 +467,7 @@
                 - If you need to synchronize data, it is best to do so during non-peak business hours. Which vary on a
                 per practice basis. </p>
             <h2 id='authentication'>Authentication</h2>
-            <p>Nextech&#39;s implementation of the FHIR® standard is protected by the <a
-                    href="https://oauth.net/2/">OAuth 2.0 standard</a> for authenticating requests. All API requests are
-                authenticated by passing a Bearer token in the Authorization Header.</p>
+            <p>Requests are authenticated by passing a Bearer token in the Authorization Header.</p>
 
             <p><code>Authorization: Bearer {access_token}</code></p>
             <h3 id='request-access-token'>Request Access Token</h3>
@@ -545,13 +500,11 @@
                     </tr>
                     <tr>
                         <td>resource</td>
-                        <td>The Practice+ Partner Api Identifier</td>
+                        <td>The Nextech Payments Partner Api Identifier</td>
                     </tr>
                 </tbody>
             </table>
-
             <p><strong>Response Parameters</strong></p>
-
             <table>
                 <thead>
                     <tr>
@@ -574,219 +527,61 @@
                     </tr>
                 </tbody>
             </table>
-
-            <h2 id='searching'>Searching</h2>
-            <p>Searches may be performed via HTTPS calls to the API where supported. </p>
-
-            <p>A search is executed by performing a <code>GET</code> operation in the RESTful framework<br>
-                <code>GET https://api.pm.nextech.com/api/[type]?[field1][:modifier1]=[value1]&amp;[field2][:modifier2]=[value2]...</code><br>
-                where [type] refers to a resource such as Patient or Appointment followed by one or more query filters
-                and optional modifiers.
-            </p>
-
-            <ul>
-                <li>Matching is always case-insensitive and always ignores whitespace before and after the data.</li>
-                <li>The default search attempts to match with just the start of the data.</li>
-            </ul>
-            <h3 id='multiple-values-on-one-field'>Multiple Values on One Field</h3>
-            <p>To search for a field that meets at least one of several values, each value should be specified and
-                separated by a comma.</p>
-
-            <p><strong>Example: Get patients who live in several nearby cities</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?address-postalcode=33609,33625,33647
-</pre>
-            &nbsp;</p>
-            <h3 id='multiple-fields'>Multiple Fields</h3>
-            <p>To search for multiple fields that all must meet certain criteria, each field should be specified and
-                separated by an ampersand.</p>
-
-            <p><strong>Example: Get booked appointments for one day</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=2015-03-04&amp;status=booked
-</pre>
-            &nbsp;</p>
-            <!-- <h3 id='modifiers'>Modifiers</h3>
-<p>A modifier defines how a search match should be performed for a field. A modifier must appear after the field name with a preceeding colon followed by the modifier name.</p>
-
-<table><thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exact</td>
-<td>The value must match the data exactly</td>
-</tr>
-<tr>
-<td>contains</td>
-<td>The data must contain the value</td>
-</tr>
-</tbody></table>
-
-<p><strong>Example: Get all patients whose last name is Smith</strong>
-<pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family:exact=Smith
-</pre>
-&nbsp;</p>
-
-<p><strong>Example: Get all patients whose last name contains the text &quot;mit&quot;</strong>
-<pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family:contains=mit
-</pre>
-&nbsp;</p> -->
-            <h3 id='operators'>Operators</h3>
-            <p>Numeric and date values can be combined with operators to search on ranges of values. The following
-                operators are supported:</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Operator</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>gt</td>
-                        <td>Greater Than</td>
-                    </tr>
-                    <tr>
-                        <td>ge</td>
-                        <td>Greater Than or Equal to</td>
-                    </tr>
-                    <tr>
-                        <td>lt</td>
-                        <td>Less Than</td>
-                    </tr>
-                    <tr>
-                        <td>le</td>
-                        <td>Less Than or Equal to</td>
-                    </tr>
-                    <tr>
-                        <td>eq</td>
-                        <td>Equals</td>
-                    </tr>
-                    <tr>
-                        <td>ne</td>
-                        <td>Not Equal to</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Example: Get the patients with chart numbers between and including 100 and 200</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?identifier=ge100&amp;identifier=le200
-</pre>
-            &nbsp;</p>
-
-            <p><strong>Example: Get appointments for the month of March 2017</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=ge2017-03-01&amp;date=lt2017-04-01
-</pre>
-            &nbsp;</p>
-            <h3 id='search-parameter-types'>Search Parameter Types</h3>
-            <h4 id='string'>String</h4>
-            <p>When matching a simple text string with data, the match is always case-insensitive and always ignores
-                whitespace before and after the data. The default search attempts to match just the start of the data,
-                and you may use a modifier to force an exact match or a match where the data contains the string.</p>
-
-            <p><strong>Example: Get all patients whose last name begins with Smith</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?family=Smith
-</pre>
-            &nbsp;</p>
-            <h4 id='number'>Number</h4>
-            <p>By default, exact matches are performed in numeric searches. You may use operators to specify a numeric
-                range.</p>
-
-            <p><strong>Example: Get the patient with chart number 3442</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?identifier=3442
-</pre>
-            &nbsp;</p>
-            <h4 id='date'>Date</h4>
-            <p>By default, exact matches are performed in date searches. You may use operators to specify a date range.
-            </p>
-
-            <p><strong>Example: Get appointments for the month of October 2016</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Appointment?date=ge2016-10-01&amp;date=lt2017-11-01
-</pre>
-            &nbsp;</p>
-            <h4 id='human-name'>Human Name</h4>
-            <p>Some resources have abstract fields which contain a first name, last name, prefix and suffix. When
-                searching on names, each of those fields are searched individually. The way those fields are matched are
-                consistent with how String searches work, and modifiers may be used to change how the matching works.
-            </p>
-
-            <p><strong>Example: Get the patients whose first name, last name, prefix or suffix begins with Doe</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?name=doe
-</pre>
-            &nbsp;</p>
-            <h4 id='address'>Address</h4>
-            <p>Some resources have abstract fields which contain an Address 1, Address 2, City, State and Postal Code
-                field. When searching on address, each of these fields are searched individually. The way those fields
-                are matched are consistent with how String searches work, and modifiers may be used to change how the
-                matching works.</p>
-
-            <p><strong>Example: Get the patients whose Address 1, Address 2, City, State or Zip code begins with
-                    1500</strong>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/Patient?address=1500
-</pre>
-            &nbsp;</p>
-            <h2 id='writing'>Writing</h2>
-            <p>Data writes may be performed via HTTPS calls to the API where supported. </p>
-
-            <p>A write is executed by performing a <code>PUT</code> or <code>PATCH</code> operation in the RESTful
-                framework
-                <code>(PUT|PATCH) https://api.pm.nextech.com/api/{resource}/{identifier}</code>
-                where <code>{resource}</code> refers to a resource such as Appointment, <code>{identifier}</code> is the
-                unique identifier of the resource and the body of the request describes a resource and which fields to
-                add or change. This example request path and body would confirm an appointment with the ID 3384:
-            </p>
-
-            <p><strong>Example</strong>
-            <pre class="center-column">
-<code>PATCH https://api.pm.nextech.com/api/Appointment/3384</code>
-</pre>
-            <pre class="center-column">
-<code>{
-    &quot;resourceType&quot;: &quot;Appointment&quot;,
-    &quot;status&quot;: &quot;booked&quot;,
-    &quot;participant&quot;: [
-        {
-        &quot;status&quot;: &quot;accepted&quot;
-        }
-    ],
-    &quot;extension&quot;: [
-        {
-            &quot;url&quot;: &quot;modifiedBy&quot;,
-            &quot;valueIdentifier&quot;: {
-                &quot;id&quot;: &quot;modifiedBy&quot;,
-                &quot;value&quot;: &quot;Practice+ Partner&quot;
-            }
-        }
-    ]
-}</code>
-</pre>
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
-            <p>When a search results in multiple matches, the first ten matches ordered by entered date are returned by
-                default. Included in the result are links to the first set of matches, the following set of matches, the
-                previous set of matches and the last set of matches.</p>
-
-            <p>You may overide the number of matches returned, up to fifty, by including <code>_count={number}</code> in
-                your search. </p>
-
-            <p><code>GET http://api.pm.nextech.com/api/Appointment?_count=25</code></p>
-
-            <aside class="notice">
-                Search results are limited to 50 matches per page.
-            </aside>
+            <p>
+                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List, 
+                we send the pagination to the header using the <code>X-Pagination</code> parameter.
+            </p>
+            <h3>Parameters</h3>
+            <p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Page</td>
+                            <td>Current Page number</td>
+                        </tr>
+                        <tr>
+                            <td>PageSize</td>
+                            <td>Number of records per page</td>
+                        </tr>
+                        <tr>
+                            <td>TotalRecords</td>
+                            <td>Total number of records</td>
+                        </tr>
+                        <tr>
+                            <td>TotalPages</td>
+                            <td>Total number of pages</td>
+                        </tr>
+                        <tr>
+                            <td>PreviousPageLink</td>
+                            <td>Previous page's GET Request Link</td>
+                        </tr>
+                        <tr>
+                            <td>NextPageLink</td>
+                            <td>Next page's GET Request Link</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Example</h3>
+                <pre class="center-column">
+-H X-Pagination: {
+    "Page":1,
+    "PageSize":20,
+    "TotalRecords":1700,
+    "TotalPages":85,
+    "PreviousPageLink":"",
+    "NextPageLink":"www......./api/products/configurations?Filters=productid=318&IncludeApplicationPerformance=true&page=1",
+    "GotoPageLinkTemplate":"www..../api/products/configurations?Filters=productid=318&IncludeApplicationPerformance=true&page=0"
+}
+                 </pre>
+            </p>
             <h2 id='response-codes'>Response Codes</h2>
             <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
                 request.</p>
@@ -834,12 +629,48 @@ GET https://api.pm.nextech.com/api/Patient?address=1500
                 </tbody>
             </table>
 
-            <!-- Begin formatting outline -->
-            <h1 id='formatting-samples'>Formatting Samples (h1 side-menu id anchor) - White background h1 css</h1>
-            <h2 id='formatting-samples-2'>Formatting Samples (h2 side-menu id anchor)</h2>
-            <h3 id='overview'>Overview (h3 heading)</h3>
-            <p>Below you will find formatting examples for use in building this document.</p>
-            <h3 id='table-with-anchors'>Table for field descriptions on models</h3>
+            <!-- Begin Skeleton Setup -->
+            <!-- Enum -->
+            <h1 id="enumerators">Enumerators</h1>
+            
+            <h2 id="payment-status">Payment Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Started</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Authorized</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Captured</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Failed</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Cancelled</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Refunded</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Data Transfer Objects -->
+            <h1 id="data-transfer-objects">Data Transfer Objects</h1>
+            <h2 id="payment-dto">PaymentDto</h2>
             <table>
                 <thead>
                     <tr>
@@ -850,345 +681,930 @@ GET https://api.pm.nextech.com/api/Patient?address=1500
                 </thead>
                 <tbody>
                     <tr>
-                        <td>identifier</td>
-                        <td>The unique value assigned to each patient which discerns them from all others. It can be the
-                            patient&#39;s unique identifier or the patient&#39;s Nextech chart number. <br /><br /> As a
-                            convenience for some use cases, the patient&#39;s social security number is also returned in
-                            this field if available.</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#Identifier">Identifier</a></td>
+                        <td>id</td>
+                        <td>Payment Id</td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
-                        <td>name</td>
-                        <td>Names of the patient, additional information including prefix and nickname</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#HumanName">HumanName</a></td>
-                    </tr>
-                    <tr>
-                        <td>birthDate</td>
-                        <td>The date of birth of the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#date">date</a></td>
-                    </tr>
-                    <tr>
-                        <td>address</td>
-                        <td>Addresses associated with the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#Address">Address</a></td>
-                    </tr>
-                    <tr>
-                        <td>communication</td>
-                        <td>A list of Languages which may be used to communicate with the patient about his or her
-                            health</td>
-                        <td><a href="https://www.hl7.org/fhir/backboneelement.html">BackboneElement</a></td>
-                    </tr>
-                    <tr>
-                        <td>maritalStatus</td>
-                        <td>The marital status of the patient</td>
-                        <td><a href="https://www.hl7.org/fhir/datatypes.html#CodeableConcept">Codeable Concept</a></td>
+                        <td>PaymentProcessor</td>
+                        <td>Payment Intent Processor</td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
-            <h3 id='example'>Example DTO/Model Breakdown - Scrolling is built into CSS</h3>
-            <pre class="center-column">
-{
-    "resourceType": "Patient",
-    "id": "386244db-5f44-4d36-864c-1334e7bc5cf5",
-    "meta": {
-        "lastUpdated": "2020-03-25T13:24:40.277+00:00"
-    },
-    "extension": [
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-status",
-            "valueString": "Active"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/referral-source",
-            "valueReference": {
-                "reference": "referral-source/3",
-                "display": "Referring Provider"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-note",
-            "valueString": "This is a patient note"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-location",
-            "valueReference": {
-                "reference": "location/5",
-                "display": "South Tampa Office"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-employment-status",
-            "valueString": "full time"
-        },
-        {
-            "url": "http://hl7.org/fhir/v3/Ethnicity",
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/v3/Ethnicity",
-                        "code": "NH"
-                    }
-                ],
-                "text": "Not Hispanic or Latino"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/referring-physician",
-            "extension": [
-                {
-                    "url": "http://hl7.org/fhir/StructureDefinition/HumanName",
-                    "valueHumanName": {
-                        "use": "official",
-                        "text": "Iola Frye OD",
-                        "family": "Frye",
-                        "given": [
-                            "Iola"
-                        ],
-                        "suffix": [
-                            "OD"
-                        ]
-                    }
-                }
-            ],
-            "valueReference": {
-                "reference": "referring-physician/518",
-                "display": "Iola Frye OD"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/primary-care-physician",
-            "valueReference": {
-                "reference": "primary-care-physician/324",
-                "display": "Justin Frederick MD"
-            }
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patients-referred",
-            "valueDecimal": 0
-        },
-        {
-            "url": "http://hl7.org/fhir/v3/Race",
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://hl7.org/fhir/v3/Race",
-                        "code": "2106-3"
-                    }
-                ],
-                "text": "White"
-            }
-        }
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/hipaa-consent-signature-on-file",
-            "valueBoolean": true
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/hipaa-consent-signature-date",
-            "valueDate": "2020-04-02"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/financial-policy-reviewed",
-            "valueBoolean": true
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/financial-policy-reviewed-date",
-            "valueDate": "2020-04-02"
-        },
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/self-pay",
-            "valueBoolean": true
-        }        
-    ]
-}
-</pre>
-            <p>&nbsp;</p>
-            <h3 id='code-block'>Text display as a code block for endpoint display.</h3>
-            <p><code>GET /patient-type?{parameters}</code></p>
-            <p>&nbsp;</p>
-            <p>The header row below look like it's css tied to the H2 tag, so sections will be separated.</p>
 
-            <p>&nbsp;</p>
-            <h2 id='full-endpoint-sample'>Full Endpoint Sample</h2>
-            <p>Below you will find a sample of a full endpoint display. This would be a great area to add information
-                pertinant to what the endpoint is, how it will be used, etc. Lorem Ipsum blah blah blah.</p>
-            <h4 id='http-request'>HTTP Request</h4>
-            <p><code>GET /patient-type?{parameters}</code></p>
-            <h4 id='parameters'>Parameters</h4>
+            <h2 id="payment-full-dto">PaymentFullDto</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Located in</th>
                         <th>Description</th>
-                        <th>Required</th>
+                        <th>Type</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>identifier</td>
-                        <td>query</td>
-                        <td>The unique identifier for a single patient type</td>
-                        <td>N</td>
+                        <td>id</td>
+                        <td>Payment Id</td>
+                        <td>Integer</td>
                     </tr>
                     <tr>
-                        <td>name</td>
-                        <td>query</td>
-                        <td>The name of the patient type</td>
-                        <td>N</td>
+                        <td>MerchantName</td>
+                        <td>Name of the merchant</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>PaymentProcessor</td>
+                        <td>Payment Intent Processor</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CardHolderName</td>
+                        <td>Card Holder's Name</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardLast4</td>
+                        <td>Last 4 digits on the credit card used for the payment.</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>AuthorizationCode</td>
+                        <td>Authorization Code for the payment</td>
+                        <td>String</td>                    
+                    </tr>
+                    <tr>
+                        <td>CreditCardType</td>
+                        <td>Credit Card Type</td>
+                        <td>String</td>                    
+                    </tr>
+                    <tr>
+                        <td>CreditCardBrand</td>
+                        <td>Credit Card Brand</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>TransactionType</td>
+                        <td>Transaction Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>TransactionStatus</td>
+                        <td>Transaction Status</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>TransactionDate</td>
+                        <td>Transaction Date</td>
+                        <td>DateTime?</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>Description of the transaction</td>
+                        <td>String</td>
                     </tr>
                 </tbody>
             </table>
-            <h4 id='example-get-all-patient-types'>Example: Get all patient types</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type
-</pre>
 
-            <p>&nbsp;</p>
-            <h4 id='example-get-all-types-whose-name-contains-39-cosmetic-39'>Example: Get all types whose name contains
-                &#39;Medi&#39;</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type?name=Medi
-</pre>
+            <h2 id="payment-create-dto">PaymentCreateDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amount</td>
+                        <td>Amount to charge</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>Currency</td>
+                        <td>Currency Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>MerchantId</td>
+                        <td>Merchant's ID</td>
+                        <td>Integer</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerName</td>
+                        <td>Customer's Name</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerPaymentMethodId</td>
+                        <td>Payment Method used for the payment</td>
+                        <td>Integer?</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <p>&nbsp;</p>
-            <h4 id='example-get-a-specific-patient-type-based-on-identifier'>Example: Get a specific patient type based
-                on identifier</h4>
-            <pre class="center-column">
-GET https://api.pm.nextech.com/api/patient-type/2
-</pre>
-            <h4 id='response'>Response</h4>
-            <pre class="center-column">
-{
-    "resourceType": "patient-type",
-    "id": "2",
-    "extension": [
-        {
-            "url": "https://api.pm.nextech.com/api/structuredefinition/patient-type#name",
-            "valueString": "Medicare"
-        }
-    ]
-}
-</pre>
+            <h2 id="refund-payment-dto">RefundPaymentDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Id</td>
+                        <td>Payment Identifier</td>
+                        <td>Integer?</td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>Amount to be refunded</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <h2 id="payment-profile-dto">PaymentProfileDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Id</td>
+                        <td>Payment Profile Identifier</td>
+                        <td>Integer?</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>Expiry</td>
+                        <td>Expiry</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CreditCardType</td>
+                        <td>Credit Card Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>CardNumberLast4</td>
+                        <td>Card Number Last 4 digits</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td>Boolean?</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="create-payment-profile-dto">CreatePaymentProfileDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CustomerId</td>
+                        <td>Customer's Id</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProcessorPaymentMethodId</td>
+                        <td>Id from processor linked to payment method.</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td>Boolean?</td>
+                    </tr>
+                </tbody>
+            </table>
             <p>&nbsp;</p>
-            <h3 id="remarks">Remarks</h3>
+
+            <!-- Data Transfer Objects -->
+            <h1 id="support-methods">Supporting Methods</h1>
+            <h3 class="remarks">Overrides & Helper Methods</h3>
             <ul>
-                <li>'Remarks' can be added at the end of each endpoint to address FAQ type issues and mention anything
-                    that wasn't covered above.
+                <li>
+                    The methods listed in the tables below are override methods and helper 
+                    methods found on each of the data transfer objects
                 </li>
-                <li>This endpoint is to be used during the act of scheduling an appointment.</li>
-                <li>This call is used to find available appointment times for one patient appointment, based on the
-                    desired appointment type and provider.</li>
-                <li>This endpoint should not be used to generically find all open times on the schedule for display
-                    purposes, or data syncing.</li>
             </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ToString()</td>
+                        <td>Converts the object into a string</td>
+                    </tr>
+                    <tr>
+                        <td>ToJson()</td>
+                        <td>Converts the object into formatted Json</td>
+                    </tr>
+                    <tr>
+                        <td>Equals(object obj)</td>
+                        <td>Accepts type object and compares the object to the transfer object</td>
+                    </tr>
+                    <tr>
+                        <td>Equals(Type obj)</td>
+                        <td>Accepts specific type and compares the typed object to the transfer object</td>
+                    </tr>
+                    <tr>
+                        <td>GetHashCode()</td>
+                        <td>Generates an integer value hash code based on the object.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <!-- End formatting outline -->
-
-            <!-- Begin Skeleton Setup -->
             <p>&nbsp;</p>
+            <!-- Get Payments -->
+            <h1 id='get-payment'>Get Payments</h1>
+
+            <h2 id='get-payment-2'>Get Payments</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/payments</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>start</td>
+                        <td>The start date filter payment serach</td>
+                        <td>DateTime?</td>
+                    </tr>
+                    <tr>
+                        <td>end</td>
+                        <td>The End date filter for payment serach</td>
+                        <td>DateTime?</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>The status of the payment</td>
+                        <td><a href="#payment-status">PaymentStatus</a></td>
+                    </tr>
+                    <tr>
+                        <td>skip</td>
+                        <td>The number of records to skip.</td>
+                        <td>Integer</td>
+                    </tr>
+                    <tr>
+                        <td>take</td>
+                        <td>The number of records to take</td>
+                        <td>Integer</td>
+                    </tr>
+                    <tr>
+                        <td>sortField</td>
+                        <td>The field to sort by</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>desc</td>
+                        <td>Field to sort by descending or ascending</td>
+                        <td>Boolean</td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-full-dto">List of PaymentFullDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
+            <pre class="center-column">
+GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payments Response</h4>
+            <pre class="center-column">
+[ 
+    { 
+        cardHolderName : 'Name 1',
+        authorizationCode : '323',
+        transactionStatus : transactionStatus, 
+        cardType : '3',
+        description : 'description',
+        paymentProcessor : 'prc_j843890',
+        creditCardType : '1',
+        transactionDate : 2000-01-23T04:56:07.000+00:00,
+        merchantName : 'merchantName',
+        transactionType : 'phonepayment',
+        transactionStatusId : 6,
+        authorizedAmount : '132.00',
+        creditCardBrand : 'visa', 
+        id : 1,
+        creditCardLast4 : '1234'
+    }, 
+    { 
+        cardHolderName : 'Name 2',
+        authorizationCode : '8787',
+        transactionStatus : transactionStatus, 
+        cardType : '3',
+        description : 'description',
+        paymentProcessor : 'apfa+943028943',
+        creditCardType : '2',
+        transactionDate : 2000-01-23T04:56:07.000+00:00,
+        merchantName : 'merchantName',
+        transactionType : 'cardpresent',
+        transactionStatusId : 6,
+        authorizedAmount : '324.00',
+        creditCardBrand : 'amex', 
+        id : 2,
+        creditCardLast4 : '4567'
+    } 
+]
+            </pre>
+            <p>&nbsp;</p>
+            <!-- Get Payment By ID-->
+            <h2 id='get-payment-3'>Get Payment By ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Identifier for a Payment</td>
+                        <td>Integer?</td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
+            <pre class="center-column">
+GET https://payfac.nextech.com/api/pulbic/payments/3289
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment By ID Response</h4>
+            <pre class="center-column">
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessor : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 6,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 1,
+    creditCardLast4 : '1234'
+}
+            </pre>
+            <p>&nbsp;</p>
+             <!--Delete Payment-->
+             <h1 id='delete-payment'>Delete Payment</h1>
+
+             <h2 id='delete-payment-2'>Delete Payment By ID</h2>
+             <h4 id="example-get-all-patient-types">Endpoint</h4>
+             <p><code>DELETE https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
+             <h4 id="example-get-all-patient-types">Request Parameters</h4>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Description</th>
+                         <th>Type</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>id</td>
+                         <td>Payment Identifier</td>
+                         <td>Integer</td>
+                     </tr>
+                     <tr>
+                         <td>partnerId</td>
+                         <td>Partner identifier</td>
+                         <td>String</td>
+                     </tr>
+                     <tr>
+                         <td>merchantId</td>
+                         <td>Merchant identifier</td>
+                         <td>String</td>
+                     </tr>
+                     <tr>
+                         <td>username</td>
+                         <td>The user who sent the request.</td>
+                         <td>String</td>
+                     </tr>
+                 </tbody>
+             </table>
+             <h4>Response Object</h4>
+             <p><a href="#payment-dto">PaymentDTO</a></p>
+             <h4 id="example-get-all-patient-types">Example: Delete Payment Request</h4>
+             <pre class="center-column">
+ DELETE https://payfac.nextech.com/api/pulbic/payments/1830
+  -H 'partnerId: af43ba54;'
+  -H 'merchantId: avr3435r;'
+  -H 'username: jane.doe;'
+             </pre>
+             <p>&nbsp;</p>
+             <h4 id="example-get-all-patient-types">Example: Delete Payment Response</h4>
+             <pre class="center-column">
+ {
+     paymentProcessor : 'prac_849378klajk', 
+     id : 1
+ }
+             </pre>
+             <p>&nbsp;</p>
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
-            <h2 id='card-present'>Card Present</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>Nothing that follows after this will be useful other than the skeleton for menu links to work.</p>
-
-            <h2 id='card-not-present'>Card Not Present</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
+            <h2 id='create-payment-2'>Create Payment</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Payment Create Object</td>
+                        <td><a href="#payment-create-dto">PaymentCreateDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Partner identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>Merchant identifier</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
+            <pre class="center-column">
+POST https://payfac.nextech.com/api/pulbic/payments
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+  
+ {
+    amount: '100.00',
+    currency: 'USD',
+ }
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Response</h4>
+            <pre class="center-column">
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessor : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 6,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 1,
+    creditCardLast4 : '1234'
+},  
+            </pre>
+            <p>&nbsp;</p>
             <!-- Capture Payments -->
             <h1 id='capture-payment'>Capture Payment</h1>
 
-            <h2 id='capture-payment-2'>Capture Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <!-- Saving Payments -->
-            <h1 id='saving-payments'>Saving Payments</h1>
-            
-            <h2 id='save-as-profile'>Save As Profile</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <h2 id='get-profiles'>Get Profiles</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
-            <!-- Cancel Payment -->
-            <h1 id='cancel-payment'>Cancel Payment</h1>
-            
-            <h2 id='cancel-payment-2'>Cancel Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-
+            <h2 id='capture-payment-2'>Capture Payment By ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/capture/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>The Id for the payment intended to be captured.</td>
+                        <td>Integer</td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
+            <pre class="center-column">
+POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Response</h4>
+            <pre class="center-column">
+{
+    paymentProcessor : 'pwt_4892anjvha8', 
+    id : 0
+}
+            </pre>
+            <p>&nbsp;</p>
             <!-- Refund Payment -->
             <h1 id='refund-payment'>Refund Payment</h1>
-            
+
             <h2 id='refund-payment-2'>Refund Payment</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/refund</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>The refund request's body.</td>
+                        <td><a href="#refund-payment-dto">RefundPaymentDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td>String</td>
+                    <tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td>String</td>>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
+            <pre class="center-column">
+POST https://payfac.nextech.com/api/pulbic/payments/refund
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
 
-            <!-- Recalling Payments -->
-            <h1 id='recalling-payments'>Recalling Payments</h1>
-            
-            <h2 id='get-transaction'>Get Transaction</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
-            
-            <h2 id='get-transactions'>Get Transactions</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+ {
+    id: 3902,
+    amount: '100.00',
+ }
 
-            <!-- Payment Stauses -->
-            <h1 id='payment-statuses'>Payment Statuses</h1>
-            
-            <h2 id='payment-statuses-2'>Payment Statuses</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Refund Payment Response</h4>
+            <pre class="center-column">
+{
+    paymentProcessor : paymentProcessor, 
+    id : 0
+}
+            </pre>
+            <p>&nbsp;</p>
 
-            <!-- API Versioning -->
-            <h1 id='api-versioning'>API Versioning</h1>
-            
-            <h2 id='api-versioning-2'>API Versioning</h2>
-            <h3 id='overview'>Overview</h3>
-            <p>This is just here to hold space.</p>
+            <!-- Payment Profiles Payments -->
+            <!-- Get Payment Profiles -->
+            <h1 id='saving-payments'>Payment Profiles Payments</h1>
+        
+            <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>GET https://payfac.nextech.com/api/pulbic/paymentProfiles/{customerId}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>customerId</td>
+                        <td>The customer's ID</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
+            <pre class="center-column">
+GET https://payfac.nextech.com/api/pulbic/paymentProfiles/1738
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Response</h4>
+            <pre class="center-column">
+[ 
+    {
+        profileName : profileName,
+        isDefault : true,
+        cardNumberLast4 : cardNumberLast4,
+        customerId : customerId,
+        id : 0,
+        expiry : expiry,
+        creditCardType : creditCardType     
+    }, 
+    {
+        profileName : profileName,
+        isDefault : true,
+        cardNumberLast4 : cardNumberLast4,
+        customerId : customerId,
+        id : 0,
+        expiry : expiry,
+        creditCardType : creditCardType
+    }
+]
+            </pre>
+            <p>&nbsp;</p>
 
+            <!-- Create Payment Profile -->
+            <h2 id='create-payment-profiles'>Create Payment Profile</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.nextech.com/api/pulbic/paymentProfiles</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Create Payment Profile DTO</td>
+                        <td><a href="#create-payment-profile-dto">CreatePaymentProfileDto</a></td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
+            <pre class="center-column">
+POST https://payfac.nextech.com/api/pulbic/paymentProfiles/15
+-H 'partnerId: af43ba54;'
+-H 'merchantId: avr3435r;'
+-H 'username: jane.doe;'
 
+{
+    profileName : 'profileName',
+    isDefault : true, 
+    customerId: 'c842930283acanb',
+    processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : 'cardNumberLast4',
+    customerId : 'customerId,
+    id : 0,
+    expiry : 'expiry,
+    creditCardType : 'creditCardType'    
+}, 
+            </pre>
+            <p>&nbsp;</p>
+
+            <!-- Delete Payment Profile -->
+            <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/{id}</code></p>
+            <h4 id="example-get-all-patient-types">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>The payment profile ID</td>
+                        <td>Integer?</td>
+                    </tr>
+                    <tr>
+                        <td>partnerId</td>
+                        <td>Unique identifier for partners</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>merchantId</td>
+                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>The user who sent the capture request.</td>
+                        <td>String</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
+            <pre class="center-column">
+DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/15
+ -H 'partnerId: af43ba54;'
+ -H 'merchantId: avr3435r;'
+ -H 'username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : '1234',
+    customerId : 'fadf43234',
+    id : 0,
+    expiry : 'expiry',
+    creditCardType : 'visa'     
+}, 
+            </pre>
+            <p>&nbsp;</p>
 
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>
             <p>If your credentials expire you will have to reset them by:</p>
-
             <ol>
                 <li>Going to Azure Active Directory by <a href="http://portal.azure.com/">clicking here</a>.</li>
                 <li>Enter your expired credentials.</li>
                 <li>Follow the prompts it gives you.</li>
                 <li>Your password is now reset.</li>
             </ol>
-            <h3 id='missing-practitioners'>Missing Practitioners</h3>
-            <p>If the practitioners endpoint is not showing all of the expected practitioners check this before opening
-                a support case.</p>
-
-            <ol>
-                <li>Inside the Nextech application go to the Contacts module, select the provider that is not showing
-                    up.</li>
-                <li>Confirm that the practitioner is not marked Inactive on the checkbox on the right hand side.</li>
-                <li>Find the &quot;Linked User&quot; section and confirm that it is mapped to a unique account that is
-                    just for that practitioner.</li>
-            </ol>
-
-            <p>Practitoners need their own user account to work with the practitoners endpoint.
-                Additional documentation can be provided on request.</p>
+            <p>&nbsp;</p>
 
         </div>
         <div class="dark-box">
         </div>
     </div>
 </body>
-
 <script src="javascripts/payfac.js"></script>
-
-
 </html>

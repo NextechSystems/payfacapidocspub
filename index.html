@@ -686,8 +686,8 @@
                         <td>Integer</td>
                     </tr>
                     <tr>
-                        <td>PaymentProcessor</td>
-                        <td>Payment Intent Processor</td>
+                        <td>PaymentProcessorSecret</td>
+                        <td>Payment Processor Secret</td>
                         <td>String</td>
                     </tr>
                 </tbody>
@@ -714,8 +714,8 @@
                         <td>String</td>
                     </tr>
                     <tr>
-                        <td>PaymentProcessor</td>
-                        <td>Payment Intent Processor</td>
+                        <td>PaymentProcessorSecret</td>
+                        <td>Payment Processor Secret</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -1042,7 +1042,7 @@ GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
         transactionStatus : transactionStatus, 
         cardType : '3',
         description : 'description',
-        paymentProcessor : 'prc_j843890',
+        paymentProcessorSecret : 'prc_j843890',
         creditCardType : '1',
         transactionDate : 2000-01-23T04:56:07.000+00:00,
         merchantName : 'merchantName',
@@ -1059,7 +1059,7 @@ GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
         transactionStatus : transactionStatus, 
         cardType : '3',
         description : 'description',
-        paymentProcessor : 'apfa+943028943',
+        paymentProcessorSecret : 'apfa+943028943',
         creditCardType : '2',
         transactionDate : 2000-01-23T04:56:07.000+00:00,
         merchantName : 'merchantName',
@@ -1127,7 +1127,7 @@ GET https://payfac.nextech.com/api/pulbic/payments/3289
     transactionStatus : transactionStatus, 
     cardType : '3',
     description : 'description',
-    paymentProcessor : 'prc_j843890',
+    paymentProcessorSecret : 'prc_j843890',
     creditCardType : '1',
     transactionDate : 2000-01-23T04:56:07.000+00:00,
     merchantName : 'merchantName',
@@ -1191,7 +1191,7 @@ GET https://payfac.nextech.com/api/pulbic/payments/3289
              <h4 id="example-get-all-patient-types">Example: Delete Payment Response</h4>
              <pre class="center-column">
  {
-     paymentProcessor : 'prac_849378klajk', 
+     paymentProcessorSecret : 'prac_849378klajk', 
      id : 1
  }
              </pre>
@@ -1257,7 +1257,7 @@ POST https://payfac.nextech.com/api/pulbic/payments
     transactionStatus : transactionStatus, 
     cardType : '3',
     description : 'description',
-    paymentProcessor : 'prc_j843890',
+    paymentProcessorSecret : 'prc_j843890',
     creditCardType : '1',
     transactionDate : 2000-01-23T04:56:07.000+00:00,
     merchantName : 'merchantName',
@@ -1321,7 +1321,7 @@ POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Response</h4>
             <pre class="center-column">
 {
-    paymentProcessor : 'pwt_4892anjvha8', 
+    paymentProcessorSecret : 'pwt_4892anjvha8', 
     id : 0
 }
             </pre>
@@ -1383,7 +1383,7 @@ POST https://payfac.nextech.com/api/pulbic/payments/refund
             <h4 id="example-get-all-patient-types">Example: Refund Payment Response</h4>
             <pre class="center-column">
 {
-    paymentProcessor : paymentProcessor, 
+    paymentProcessorSecret : paymentProcessorSecret, 
     id : 0
 }
             </pre>

@@ -325,20 +325,19 @@
                     </li>
                 </ul>
             </li>
-            
-            <li>
-                <a href="#delete-payment" class="toc-h1 toc-link" data-title="Capture-Payment">Delete Payment</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#delete-payment-2" class="toc-h2 toc-link" data-title="Capture-Payment">Delete Payment By ID</a>
-                    </li>
-                </ul>
-            </li>
             <li>
                 <a href="#create-payment" class="toc-h1 toc-link" data-title="Create-Payment">Create Payment</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#reate-payment-2" class="toc-h2 toc-link" data-title="Create-Payment">Create Payment</a>
+                        <a href="#create-payment-2" class="toc-h2 toc-link" data-title="Create-Payment">Create Payment</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#cancel-payment" class="toc-h1 toc-link" data-title="Cancel-Payment">Cancel Payment</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#cancel-payment-2" class="toc-h2 toc-link" data-title="Cancel-Payment">Cancel Payment</a>
                     </li>
                 </ul>
             </li>
@@ -429,17 +428,17 @@
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td>partnerId</td>
+                        <td>partner-id</td>
                         <td>Partner identifier</td>
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td>merchantId</td>
+                        <td>merchant-id</td>
                         <td>Merchant identifier</td>
                         <td>Yes</td>
                     </tr>
                     <tr>
-                        <td>username</td>
+                        <td>nx-username</td>
                         <td>The user who sent the request</td>
                         <td>Yes</td>
                     </tr>
@@ -773,6 +772,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Type</th>
+                        <th>Required?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -780,31 +780,31 @@
                         <td>Amount</td>
                         <td>Amount to charge</td>
                         <td>String</td>
+                        <td>Yes</td>
                     </tr>
                     <tr>
                         <td>Currency</td>
-                        <td>Currency Type</td>
+                        <td>Currency Type = "usd"</td>
                         <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>MerchantId</td>
-                        <td>Merchant's ID</td>
-                        <td>Integer</td>
+                        <td>Yes</td>
                     </tr>
                     <tr>
                         <td>CustomerId</td>
                         <td>Customer's Id</td>
                         <td>String</td>
+                        <td>No</td>
                     </tr>
                     <tr>
                         <td>CustomerName</td>
                         <td>Customer's Name</td>
                         <td>String</td>
+                        <td>No</td>
                     </tr>
                     <tr>
                         <td>CustomerPaymentMethodId</td>
                         <td>Payment Method used for the payment</td>
                         <td>Integer?</td>
+                        <td>No</td>
                     </tr>
                 </tbody>
             </table>
@@ -960,7 +960,7 @@
 
             <h2 id='get-payment-2'>Get Payments</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/pulbic/payments</code></p>
+            <p><code>GET https://payfac.nextech.com/api/public/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1006,31 +1006,16 @@
                         <td>Field to sort by descending or ascending</td>
                         <td>Boolean</td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Partner identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>Merchant identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the request</td>
-                        <td>String</td>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
             <p><a href="#payment-full-dto">List of PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+GET https://payfac.nextech.com/api/public/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payments Response</h4>
@@ -1076,7 +1061,7 @@ GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
             <!-- Get Payment By ID-->
             <h2 id='get-payment-3'>Get Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
+            <p><code>GET https://payfac.nextech.com/api/public/payments/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1090,22 +1075,7 @@ GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
                     <tr>
                         <td>id</td>
                         <td>Identifier for a Payment</td>
-                        <td>Integer?</td>
-                    </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Partner identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>Merchant identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the request</td>
-                        <td>String</td>
+                        <td>Guid</td>
                     </tr>
                 </tbody>
             </table>
@@ -1113,10 +1083,10 @@ GET https://payfac.nextech.com/api/pulbic/payments?start=01/02/2020&end=02/02/20
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/pulbic/payments/3289
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+GET https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Response</h4>
@@ -1135,73 +1105,18 @@ GET https://payfac.nextech.com/api/pulbic/payments/3289
     transactionStatusId : 6,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 1,
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
     creditCardLast4 : '1234'
 }
             </pre>
             <p>&nbsp;</p>
-             <!--Delete Payment-->
-             <h1 id='delete-payment'>Delete Payment</h1>
-
-             <h2 id='delete-payment-2'>Delete Payment By ID</h2>
-             <h4 id="example-get-all-patient-types">Endpoint</h4>
-             <p><code>DELETE https://payfac.nextech.com/api/pulbic/payments/{id}</code></p>
-             <h4 id="example-get-all-patient-types">Request Parameters</h4>
-             <table>
-                 <thead>
-                     <tr>
-                         <th>Name</th>
-                         <th>Description</th>
-                         <th>Type</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <tr>
-                         <td>id</td>
-                         <td>Payment Identifier</td>
-                         <td>Integer</td>
-                     </tr>
-                     <tr>
-                         <td>partnerId</td>
-                         <td>Partner identifier</td>
-                         <td>String</td>
-                     </tr>
-                     <tr>
-                         <td>merchantId</td>
-                         <td>Merchant identifier</td>
-                         <td>String</td>
-                     </tr>
-                     <tr>
-                         <td>username</td>
-                         <td>The user who sent the request</td>
-                         <td>String</td>
-                     </tr>
-                 </tbody>
-             </table>
-             <h4>Response Object</h4>
-             <p><a href="#payment-dto">PaymentDTO</a></p>
-             <h4 id="example-get-all-patient-types">Example: Delete Payment Request</h4>
-             <pre class="center-column">
- DELETE https://payfac.nextech.com/api/pulbic/payments/1830
-  -H 'partnerId: af43ba54;'
-  -H 'merchantId: avr3435r;'
-  -H 'username: jane.doe;'
-             </pre>
-             <p>&nbsp;</p>
-             <h4 id="example-get-all-patient-types">Example: Delete Payment Response</h4>
-             <pre class="center-column">
- {
-     paymentProcessorSecret : 'prac_849378klajk', 
-     id : 1
- }
-             </pre>
-             <p>&nbsp;</p>
+             
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
             <h2 id='create-payment-2'>Create Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/pulbic/payments</code></p>
+            <p><code>POST https://payfac.nextech.com/api/public/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1217,31 +1132,16 @@ GET https://payfac.nextech.com/api/pulbic/payments/3289
                         <td>Payment Create Object</td>
                         <td><a href="#payment-create-dto">PaymentCreateDto</a></td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Partner identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>Merchant identifier</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the request</td>
-                        <td>String</td>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/pulbic/payments
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+POST https://payfac.nextech.com/api/public/payments
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
   
  {
     amount: '100.00',
@@ -1265,7 +1165,61 @@ POST https://payfac.nextech.com/api/pulbic/payments
     transactionStatusId : 6,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 1,
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
+    creditCardLast4 : '1234'
+},  
+            </pre>
+            <p>&nbsp;</p>
+            <!-- Cancel Payment -->
+            <h1 id='cancel-payment'>Cancel Payment</h1>
+
+            <h2 id='cancel-payment-2'>Cancel Payment</h2>
+            <h4 id="example-cancel-payment-endpoint">Endpoint</h4>
+            <p><code>DELETE https://payfac.nextech.com/api/public/payments/{id}</code></p>
+            <h4 id="example-cancel-payment-endpoint-2">Request Parameters</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>The Id for the payment intended to be canceled</td>
+                        <td>Guid</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
+            <h4 id="example-get-all-patient-types">Example: Cancel Payment</h4>
+            <pre class="center-column">
+POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Cancel Payment Response</h4>
+            <pre class="center-column">
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessorSecret : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 5,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
     creditCardLast4 : '1234'
 },  
             </pre>
@@ -1275,7 +1229,7 @@ POST https://payfac.nextech.com/api/pulbic/payments
 
             <h2 id='capture-payment-2'>Capture Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/capture/{id}</code></p>
+            <p><code>POST https://payfac.nextech.com/api/public/payments/capture/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1289,41 +1243,39 @@ POST https://payfac.nextech.com/api/pulbic/payments
                     <tr>
                         <td>id</td>
                         <td>The Id for the payment intended to be captured</td>
-                        <td>Integer</td>
-                    </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Unique identifier for partners</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the capture request</td>
-                        <td>String</td>
+                        <td>Guid</td>
                     </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
-            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Response</h4>
             <pre class="center-column">
-{
-    paymentProcessorSecret : 'pwt_4892anjvha8', 
-    id : 0
-}
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessorSecret : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 3,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
+    creditCardLast4 : '1234'
+},  
             </pre>
             <p>&nbsp;</p>
             <!-- Refund Payment -->
@@ -1331,7 +1283,7 @@ POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
 
             <h2 id='refund-payment-2'>Refund Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/pulbic/payments/refund</code></p>
+            <p><code>POST https://payfac.nextech.com/api/public/payments/refund</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1347,34 +1299,19 @@ POST https://payfac.nextech.com/api/pulbic/payments/capture/1032
                         <td>The refund request's body</td>
                         <td><a href="#refund-payment-dto">RefundPaymentDto</a></td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Unique identifier for partners</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td>String</td>
-                    <tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the capture request</td>
-                        <td>String</td>>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
-            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/pulbic/payments/refund
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+POST https://payfac.nextech.com/api/public/payments/refund
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
 
  {
-    id: 3902,
+    id: 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
     amount: '100.00',
  }
 
@@ -1382,10 +1319,23 @@ POST https://payfac.nextech.com/api/pulbic/payments/refund
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Refund Payment Response</h4>
             <pre class="center-column">
-{
-    paymentProcessorSecret : paymentProcessorSecret, 
-    id : 0
-}
+{ 
+    cardHolderName : 'Name 1',
+    authorizationCode : '323',
+    transactionStatus : transactionStatus, 
+    cardType : '3',
+    description : 'description',
+    paymentProcessorSecret : 'prc_j843890',
+    creditCardType : '1',
+    transactionDate : 2000-01-23T04:56:07.000+00:00,
+    merchantName : 'merchantName',
+    transactionType : 'phonepayment',
+    transactionStatusId : 6,
+    authorizedAmount : '132.00',
+    creditCardBrand : 'visa', 
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
+    creditCardLast4 : '1234'
+},  
             </pre>
             <p>&nbsp;</p>
 
@@ -1395,7 +1345,7 @@ POST https://payfac.nextech.com/api/pulbic/payments/refund
         
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/pulbic/paymentProfiles/{customerId}</code></p>
+            <p><code>GET https://payfac.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1411,31 +1361,16 @@ POST https://payfac.nextech.com/api/pulbic/payments/refund
                         <td>The customer's ID</td>
                         <td>String</td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Unique identifier for partners</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the capture request</td>
-                        <td>String</td>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
             <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/pulbic/paymentProfiles/1738
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+GET https://payfac.nextech.com/api/public/paymentProfiles/1738
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Response</h4>
@@ -1466,7 +1401,7 @@ GET https://payfac.nextech.com/api/pulbic/paymentProfiles/1738
             <!-- Create Payment Profile -->
             <h2 id='create-payment-profiles'>Create Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/pulbic/paymentProfiles</code></p>
+            <p><code>POST https://payfac.nextech.com/api/public/paymentProfiles</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1482,31 +1417,16 @@ GET https://payfac.nextech.com/api/pulbic/paymentProfiles/1738
                         <td>Create Payment Profile DTO</td>
                         <td><a href="#create-payment-profile-dto">CreatePaymentProfileDto</a></td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Unique identifier for partners</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the capture request</td>
-                        <td>String</td>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/pulbic/paymentProfiles/15
--H 'partnerId: af43ba54;'
--H 'merchantId: avr3435r;'
--H 'username: jane.doe;'
+POST https://payfac.nextech.com/api/public/paymentProfiles/15
+-H 'partner-id: af43ba54;'
+-H 'merchant-id: avr3435r;'
+-H 'nx-username: jane.doe;'
 
 {
     profileName : 'profileName',
@@ -1533,7 +1453,7 @@ POST https://payfac.nextech.com/api/pulbic/paymentProfiles/15
             <!-- Delete Payment Profile -->
             <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/{id}</code></p>
+            <p><code>DELETE https://payfac.nextech.com/api/public/paymentProfiles/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1549,31 +1469,16 @@ POST https://payfac.nextech.com/api/pulbic/paymentProfiles/15
                         <td>The payment profile ID</td>
                         <td>Integer?</td>
                     </tr>
-                    <tr>
-                        <td>partnerId</td>
-                        <td>Unique identifier for partners</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>merchantId</td>
-                        <td>The id for the merchant who will receive the funds from the captured transaction</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>username</td>
-                        <td>The user who sent the capture request</td>
-                        <td>String</td>
-                    </tr>
                 </tbody>
             </table>
             <h4>Response Object</h4>
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
             <pre class="center-column">
-DELETE https://payfac.nextech.com/api/pulbic/paymentProfiles/15
- -H 'partnerId: af43ba54;'
- -H 'merchantId: avr3435r;'
- -H 'username: jane.doe;'
+DELETE https://payfac.nextech.com/api/public/paymentProfiles/15
+ -H 'partner-id: af43ba54;'
+ -H 'merchant-id: avr3435r;'
+ -H 'nx-username: jane.doe;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Response</h4>

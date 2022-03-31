@@ -1105,7 +1105,7 @@ GET https://payfac.nextech.com/api/public/payments/3289
     transactionStatusId : 6,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 1,
+    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
     creditCardLast4 : '1234'
 }
             </pre>
@@ -1194,7 +1194,7 @@ POST https://payfac.nextech.com/api/public/payments
                 </tbody>
             </table>
             <h4>Response Object</h4>
-            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Cancel Payment</h4>
             <pre class="center-column">
 POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
@@ -1248,7 +1248,7 @@ POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004B
                 </tbody>
             </table>
             <h4>Response Object</h4>
-            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
             <pre class="center-column">
 POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-AA52-004BC25DC7A7
@@ -1302,7 +1302,7 @@ POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-A
                 </tbody>
             </table>
             <h4>Response Object</h4>
-            <p><a href="#payment-dto">PaymentDTO</a></p>
+            <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
             <pre class="center-column">
 POST https://payfac.nextech.com/api/public/payments/refund

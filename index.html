@@ -408,7 +408,7 @@
                 - Nextech is not responsible for the development or maintenance of any third-party application</p>
 
             <p><strong>API Endpoint</strong><br>
-                <code>https://payfac.nextech.com/api/public</code>
+                <code>https://payfac.api.nextech.com/api/public</code>
             </p>
 
             <p>The following values are required in the Header for every request...</p>
@@ -960,7 +960,7 @@
 
             <h2 id='get-payment-2'>Get Payments</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/public/payments</code></p>
+            <p><code>GET https://payfac.api.nextech.com/api/public/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1012,7 +1012,7 @@
             <p><a href="#payment-full-dto">List of PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/public/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
+GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1061,7 +1061,7 @@ GET https://payfac.nextech.com/api/public/payments?start=01/02/2020&end=02/02/20
             <!-- Get Payment By ID-->
             <h2 id='get-payment-3'>Get Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/public/payments/{id}</code></p>
+            <p><code>GET https://payfac.api.nextech.com/api/public/payments/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1083,7 +1083,7 @@ GET https://payfac.nextech.com/api/public/payments?start=01/02/2020&end=02/02/20
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1116,7 +1116,7 @@ GET https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC
 
             <h2 id='create-payment-2'>Create Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/public/payments</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/payments</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1138,7 +1138,7 @@ GET https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/public/payments
+POST https://payfac.api.nextech.com/api/public/payments
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1175,7 +1175,7 @@ POST https://payfac.nextech.com/api/public/payments
 
             <h2 id='cancel-payment-2'>Cancel Payment</h2>
             <h4 id="example-cancel-payment-endpoint">Endpoint</h4>
-            <p><code>DELETE https://payfac.nextech.com/api/public/payments/{id}</code></p>
+            <p><code>DELETE https://payfac.api.nextech.com/api/public/payments/{id}</code></p>
             <h4 id="example-cancel-payment-endpoint-2">Request Parameters</h4>
             <table>
                 <thead>
@@ -1197,7 +1197,7 @@ POST https://payfac.nextech.com/api/public/payments
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Cancel Payment</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1229,7 +1229,7 @@ POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004B
 
             <h2 id='capture-payment-2'>Capture Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/public/payments/capture/{id}</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/payments/capture/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1251,7 +1251,7 @@ POST https://payfac.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004B
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-AA52-004BC25DC7A7
+POST https://payfac.api.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-AA52-004BC25DC7A7
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1283,7 +1283,7 @@ POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-A
 
             <h2 id='refund-payment-2'>Refund Payment</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/public/payments/refund</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/payments/refund</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1305,13 +1305,13 @@ POST https://payfac.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-A
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/public/payments/refund
+POST https://payfac.api.nextech.com/api/public/payments/refund
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
 
  {
-    id: 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
+    id: '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
     amount: '100.00',
  }
 
@@ -1345,7 +1345,7 @@ POST https://payfac.nextech.com/api/public/payments/refund
         
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>GET https://payfac.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
+            <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1367,7 +1367,7 @@ POST https://payfac.nextech.com/api/public/payments/refund
             <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
             <pre class="center-column">
-GET https://payfac.nextech.com/api/public/paymentProfiles/1738
+GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1377,22 +1377,22 @@ GET https://payfac.nextech.com/api/public/paymentProfiles/1738
             <pre class="center-column">
 [ 
     {
-        profileName : profileName,
+        profileName : 'profileName',
         isDefault : true,
-        cardNumberLast4 : cardNumberLast4,
-        customerId : customerId,
-        id : 0,
-        expiry : expiry,
-        creditCardType : creditCardType     
+        cardNumberLast4 : 'cardNumberLast4',
+        customerId : '1738',
+        id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+        expiry : 'expiry',
+        creditCardType : 'creditCardTyp'e'     
     }, 
     {
-        profileName : profileName,
+        profileName : 'profileName',
         isDefault : true,
-        cardNumberLast4 : cardNumberLast4,
-        customerId : customerId,
-        id : 0,
-        expiry : expiry,
-        creditCardType : creditCardType
+        cardNumberLast4 : 'cardNumberLast4',
+        customerId : '1738',
+        id : '97DD69AA-C036-4D13-AA52-004BC25DC123',
+        expiry : 'expiry',
+        creditCardType : 'creditCardTyp'e'
     }
 ]
             </pre>
@@ -1401,7 +1401,7 @@ GET https://payfac.nextech.com/api/public/paymentProfiles/1738
             <!-- Create Payment Profile -->
             <h2 id='create-payment-profiles'>Create Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.nextech.com/api/public/paymentProfiles</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/paymentProfiles</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1423,7 +1423,7 @@ GET https://payfac.nextech.com/api/public/paymentProfiles/1738
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
             <pre class="center-column">
-POST https://payfac.nextech.com/api/public/paymentProfiles/15
+POST https://payfac.api.nextech.com/api/public/paymentProfiles
 -H 'partner-id: af43ba54;'
 -H 'merchant-id: avr3435r;'
 -H 'nx-username: jane.doe;'
@@ -1442,9 +1442,9 @@ POST https://payfac.nextech.com/api/public/paymentProfiles/15
     profileName : 'profileName',
     isDefault : true,
     cardNumberLast4 : 'cardNumberLast4',
-    customerId : 'customerId,
-    id : 0,
-    expiry : 'expiry,
+    customerId : '15',
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    expiry : 'expiry',
     creditCardType : 'creditCardType'    
 }, 
             </pre>
@@ -1453,7 +1453,7 @@ POST https://payfac.nextech.com/api/public/paymentProfiles/15
             <!-- Delete Payment Profile -->
             <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>DELETE https://payfac.nextech.com/api/public/paymentProfiles/{id}</code></p>
+            <p><code>DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>
@@ -1467,7 +1467,7 @@ POST https://payfac.nextech.com/api/public/paymentProfiles/15
                     <tr>
                         <td>id</td>
                         <td>The payment profile ID</td>
-                        <td>Integer?</td>
+                        <td>Guid</td>
                     </tr>
                 </tbody>
             </table>
@@ -1475,7 +1475,7 @@ POST https://payfac.nextech.com/api/public/paymentProfiles/15
             <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
             <pre class="center-column">
-DELETE https://payfac.nextech.com/api/public/paymentProfiles/15
+DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4D13-AA52-004BC25DC7A7
  -H 'partner-id: af43ba54;'
  -H 'merchant-id: avr3435r;'
  -H 'nx-username: jane.doe;'
@@ -1488,7 +1488,7 @@ DELETE https://payfac.nextech.com/api/public/paymentProfiles/15
     isDefault : true,
     cardNumberLast4 : '1234',
     customerId : 'fadf43234',
-    id : 0,
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
     expiry : 'expiry',
     creditCardType : 'visa'     
 }, 

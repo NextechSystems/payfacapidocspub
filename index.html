@@ -806,6 +806,121 @@
                         <td>Integer?</td>
                         <td>No</td>
                     </tr>
+                    <tr>
+                        <td>CustomerFirstName</td>
+                        <td>Customer's First Name</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerMiddleName</td>
+                        <td>Customer's Middle Name</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerLastName</td>
+                        <td>Customer's Last Name</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerEmail</td>
+                        <td>Customer's Email</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerHomeNumber</td>
+                        <td>Customer's Phone Number</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerWorkNumber</td>
+                        <td>Customer's Work Number</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerMobileNumber</td>
+                        <td>Customer's Mobile Number</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerAddress1</td>
+                        <td>Customer's Address</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerAddress2</td>
+                        <td>Customer's Address 2</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerCity</td>
+                        <td>Customer's City</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerState</td>
+                        <td>Customer's State</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerCountry</td>
+                        <td>Customer's Country</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerZip</td>
+                        <td>Customer's Zip Code</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerSSN</td>
+                        <td>Customer's Gender (M”, “F”. only saved valid values. if not valid, don’t save)</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerMaritalStatus</td>
+                        <td>Customer's Marital Status (“married”, “single”. only saved valid values. if not valid, don’t save)</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CustomerNotes</td>
+                        <td>Customer's Notes</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>OrderId</td>
+                        <td>The Order Id from partner</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>PrePayment</td>
+                        <td>Is PrePayment (True or False Values only saved)</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>Customer's Description</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -1146,6 +1261,12 @@ POST https://payfac.api.nextech.com/api/public/payments
  {
     amount: '100.00',
     currency: 'USD',
+    customerFirstName: 'John',
+    customerLastName: 'Smith',
+    customerEmail: 'j.smith@nextech.com',
+    customerMobileNumber: '555-555-5555',
+    customerDOB: '11/30/1979',
+    prePayment: false,
  }
             </pre>
             <p>&nbsp;</p>

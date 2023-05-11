@@ -730,12 +730,12 @@
                     <tr>
                         <td>AuthorizationCode</td>
                         <td>Authorization Code for the payment</td>
-                        <td>String</td>                    
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardType</td>
                         <td>Credit Card Type</td>
-                        <td>String</td>                    
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardBrand</td>
@@ -760,6 +760,16 @@
                     <tr>
                         <td>Description</td>
                         <td>Description of the transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileCreate</td>
+                        <td>Value to determine if payment profile was created</td>
+                        <td>Bool</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileError</td>
+                        <td>Error message if payment profile failed to create</td>
                         <td>String</td>
                     </tr>
                 </tbody>
@@ -1350,7 +1360,7 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
 
             <h2 id='capture-payment-2'>Capture Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.api.nextech.com/api/public/payments/capture/{id}</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/payments/capture/{id}?SavePaymentMethod=true</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>

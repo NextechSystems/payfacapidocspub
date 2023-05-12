@@ -885,15 +885,21 @@
                         <td>No</td>
                     </tr>
                     <tr>
+                        <td>CustomerGender</td>
+                        <td>Customer's Gender ("1 = Male”, “2 = Female”. only saved valid values. if not valid, don’t save)</td>
+                        <td>Marital Status Enum</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
                         <td>CustomerSSN</td>
-                        <td>Customer's Gender (M”, “F”. only saved valid values. if not valid, don’t save)</td>
+                        <td>Customer's SSN</td>
                         <td>String</td>
                         <td>No</td>
                     </tr>
                     <tr>
                         <td>CustomerMaritalStatus</td>
-                        <td>Customer's Marital Status (“married”, “single”. only saved valid values. if not valid, don’t save)</td>
-                        <td>String</td>
+                        <td>Customer's Marital Status (“1 = married”, “2 = single”. only saved valid values. if not valid, don’t save)</td>
+                        <td>Gender Enum</td>
                         <td>No</td>
                     </tr>
                     <tr>
@@ -1265,8 +1271,22 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerLastName: 'Smith',
     customerEmail: 'j.smith@nextech.com',
     customerMobileNumber: '555-555-5555',
+    customerHomeNumber: '555-555-5555',
+    customerWorkNumber: '555-555-5555',
+    customerAddress1: 'ABC',
+    customerAddress2: '123 St',
+    customerCity: 'Tampa',
+    customerState: 'FL',
+    customerCountry: 'US',
+    customerZip: '12345',
+    customerSSN: '1234',
+    customerGender: 1,
+    customerMartialStatus: 1,
+    customerNote: 'Test',
     customerDOB: '11/30/1979',
     prePayment: false,
+    orderId: 12,
+    description: 'Test Description'
  }
             </pre>
             <p>&nbsp;</p>

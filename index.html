@@ -942,7 +942,12 @@
                         <td>String</td>
                         <td>No</td>
                     </tr>
-
+                    <tr>
+                        <td>SavePaymentMethod</td>
+                        <td>Flag to save payment method as a profile</td>
+                        <td>Boolean</td>
+                        <td>No</td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -1302,7 +1307,8 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerDOB: '11/30/1979',
     prePayment: false,
     orderId: 12,
-    description: 'Test Description'
+    description: 'Test Description',
+    savePaymentMethod: true
  }
             </pre>
             <p>&nbsp;</p>
@@ -1386,7 +1392,7 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
 
             <h2 id='capture-payment-2'>Capture Payment By ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
-            <p><code>POST https://payfac.api.nextech.com/api/public/payments/capture/{id}?SavePaymentMethod=true</code></p>
+            <p><code>POST https://payfac.api.nextech.com/api/public/payments/capture/{id}</code></p>
             <h4 id="example-get-all-patient-types">Request Parameters</h4>
             <table>
                 <thead>

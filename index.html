@@ -730,12 +730,12 @@
                     <tr>
                         <td>AuthorizationCode</td>
                         <td>Authorization Code for the payment</td>
-                        <td>String</td>                    
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardType</td>
                         <td>Credit Card Type</td>
-                        <td>String</td>                    
+                        <td>String</td>
                     </tr>
                     <tr>
                         <td>CreditCardBrand</td>
@@ -760,6 +760,16 @@
                     <tr>
                         <td>Description</td>
                         <td>Description of the transaction</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileCreated</td>
+                        <td>Value to determine if payment profile was created</td>
+                        <td>Bool</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileError</td>
+                        <td>Error message if payment profile failed to create</td>
                         <td>String</td>
                     </tr>
                 </tbody>
@@ -804,6 +814,12 @@
                         <td>CustomerPaymentMethodId</td>
                         <td>Payment Method used for the payment</td>
                         <td>Integer?</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>CreateProfile</td>
+                        <td>Indicator for Creating Profile</td>
+                        <td>Boolean</td>
                         <td>No</td>
                     </tr>
                     <tr>
@@ -932,7 +948,6 @@
                         <td>String</td>
                         <td>No</td>
                     </tr>
-
                 </tbody>
             </table>
 
@@ -1276,6 +1291,7 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerFirstName: 'John',
     customerLastName: 'Smith',
     customerEmail: 'j.smith@nextech.com',
+    createProfile: 'false',
     customerMobilePhone: '555-555-5555',
     customerHomePhone: '555-555-5555',
     customerWorkPhone: '555-555-5555',
@@ -1292,7 +1308,7 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerDOB: '11/30/1979',
     prePayment: false,
     orderId: 12,
-    description: 'Test Description'
+    description: 'Test Description',
  }
             </pre>
             <p>&nbsp;</p>

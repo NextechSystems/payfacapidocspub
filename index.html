@@ -372,6 +372,14 @@
                 </ul>
             </li>
             <li>
+                 <a href="#webhooks" class="toc-h1 toc-link" data-title="Saving-Payments">Webhooks</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#webhook-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -389,25 +397,34 @@
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation.
-                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
-                    2.0 standard</a>.</p>
+            <p>
+                The Nextech Payments APIs provide secure access to data through a RESTful implementation.
+                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">
+                    OAuth
+                    2.0 standard
+                </a>.
+            </p>
 
-            <p>Before you can start using our APIs, you must go through our registration process. If you&#39;re
-                interested in API access for your practice, please contact us <a
-                    href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
-                you&#39;ve been provided with credentials to authenticate, then continue to the <a
-                    href="#getting-started">Getting Started</a> section for more information.</p>
+            <p>
+                Before you can start using our APIs, you must go through our registration process. If you&#39;re
+                interested in API access for your practice, please contact us <a href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
+                you&#39;ve been provided with credentials to authenticate, then continue to the <a href="#getting-started">Getting Started</a> section for more information.
+            </p>
             <h1 id='getting-started'>Getting Started</h1>
 
-            <p>Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
-                These credentials will be provided to you by your Nextech representative. </p>
+            <p>
+                Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
+                These credentials will be provided to you by your Nextech representative.
+            </p>
 
-            <p><strong>API Limitations</strong><br>
+            <p>
+                <strong>API Limitations</strong><br>
                 - Users of the Nextech Payments API are restricted to a rate limit of 20 requests per second per endpoint<br>
-                - Nextech is not responsible for the development or maintenance of any third-party application</p>
+                - Nextech is not responsible for the development or maintenance of any third-party application
+            </p>
 
-            <p><strong>API Endpoint</strong><br>
+            <p>
+                <strong>API Endpoint</strong><br>
                 <code>https://payfac.api.nextech.com/api/public</code>
             </p>
 
@@ -445,18 +462,25 @@
                 </tbody>
             </table>
             <h2 id='rate-limiting'>Rate Limiting</h2>
-            <p>Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
+            <p>
+                Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
                 requests per second per endpoint. When a user exceeds the rate limit for a given API endpoint, the API
                 will reject the request and return a HTTP 429 “Too Many Requests” response code. The API rate limit is
-                subjet to change.</p>
+                subjet to change.
+            </p>
 
             <p><strong>Handling 429 response codes</strong></p>
 
-            <p>If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
-                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">Exponential
-                    backoff</a>.</p>
+            <p>
+                If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
+                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">
+                    Exponential
+                    backoff
+                </a>.
+            </p>
 
-            <p><strong>Best practices to avoid Rate Limiting</strong><br>
+            <p>
+                <strong>Best practices to avoid Rate Limiting</strong><br>
                 - The API is intended for on-demand requests for user interaction in real-time, try to avoid
                 synchronizing data.<br>
                 - Requests should be staggered as much as possible to avoid bursts of high traffic volume.<br>
@@ -464,16 +488,20 @@
                 sets.<br>
                 - Query with _lastUpdated search parameters to avoid re-querying unmodified data.<br>
                 - If you need to synchronize data, it is best to do so during non-peak business hours. Which vary on a
-                per practice basis. </p>
+                per practice basis.
+            </p>
             <h2 id='authentication'>Authentication</h2>
             <p>Requests are authenticated by passing a Bearer token in the Authorization Header.</p>
 
             <p><code>Authorization: Bearer {access_token}</code></p>
             <h3 id='request-access-token'>Request Access Token</h3>
-            <p>Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
-                default) but should be kept confidential in transit and in storage.</p>
+            <p>
+                Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
+                default) but should be kept confidential in transit and in storage.
+            </p>
 
-            <p><strong>HTTP Request</strong><br>
+            <p>
+                <strong>HTTP Request</strong><br>
                 <code>POST https://login.microsoftonline.com/nextech-api.com/oauth2/token</code>
             </p>
 
@@ -529,7 +557,7 @@
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
             <p>
-                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List, 
+                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List,
                 we send the pagination to the header using the <code>X-Pagination</code> parameter.
             </p>
             <h3>Parameters</h3>
@@ -582,8 +610,10 @@
                  </pre>
             </p>
             <h2 id='response-codes'>Response Codes</h2>
-            <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
-                request.</p>
+            <p>
+                The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
+                request.
+            </p>
 
             <table>
                 <thead>
@@ -631,7 +661,7 @@
             <!-- Begin Skeleton Setup -->
             <!-- Enum -->
             <h1 id="enumerators">Enumerators</h1>
-            
+
             <h2 id="payment-status">Payment Status</h2>
             <table>
                 <thead>
@@ -1054,6 +1084,39 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2 id="key-vault-response">KeyVaultResponse</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>N</td>
+                        <td>RSA - Modulus</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>RSA - Exponent</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>Algorithm</td>
+                        <td>Key Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>KeySize</td>
+                        <td>Key Size of the webkey</td>
+                        <td>Int</td>
+                    </tr>
+                </tbody>
+            </table>
             <p>&nbsp;</p>
 
             <!-- Data Transfer Objects -->
@@ -1061,7 +1124,7 @@
             <h3 class="remarks">Overrides & Helper Methods</h3>
             <ul>
                 <li>
-                    The methods listed in the tables below are override methods and helper 
+                    The methods listed in the tables below are override methods and helper
                     methods found on each of the data transfer objects
                 </li>
             </ul>
@@ -1252,7 +1315,7 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
 }
             </pre>
             <p>&nbsp;</p>
-             
+
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
@@ -1505,7 +1568,7 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <!-- Payment Profiles Payments -->
             <!-- Get Payment Profiles -->
             <h1 id='saving-payments'>Payment Profiles Payments</h1>
-        
+
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
@@ -1658,6 +1721,34 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             </pre>
             <p>&nbsp;</p>
 
+            <!-- Webhooks -->
+            <h1 id='webhooks'>Webhooks</h1>
+            <h2 id="webhook-authentication">Authentication Signature &amp; Verification</h2>
+<pre class="center-column">POST https://{partnerUrl}/{Webhook}/
+  -H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha' (Provided by Nextech)
+</pre>
+
+            <h2 id="get-public-key">Get Public Key</h2>
+            <h4 id="get-public-key-endpoint">Endpoint</h4>
+            <p>
+                <code>
+                    GET http://localhost:57782/api/public/Access/WebhookVerification
+                </code>
+            </p>
+            <h4 id="example-get-all-patient-types">Response</h4>
+            <p id="get-public-key-response">
+                <a href="key-vault-response">KeyVaultResponse</a>
+            </p>
+
+            <h3>Verify Data</h3>
+            <p>
+                Compare the signature hash value to the provided data hash value.
+              
+                <a href="https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=net-7.0">
+                    Click the link to learn more.
+                </a> 
+            </p>
+            <!-- FAQs -->
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>
             <p>If your credentials expire you will have to reset them by:</p>

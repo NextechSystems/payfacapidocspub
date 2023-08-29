@@ -753,6 +753,16 @@
                         <td>String</td>
                     </tr>
                     <tr>
+                        <td>TransactionType</td>
+                        <td>Transaction Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>TransactionStatus</td>
+                        <td>Transaction Status</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
                         <td>TransactionDate</td>
                         <td>Transaction Date</td>
                         <td>DateTime?</td>
@@ -1194,7 +1204,9 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
         authorizedAmount : '132.00',
         creditCardBrand : 'visa', 
         id : 1,
-        creditCardLast4 : '1234'
+        creditCardLast4 : '1234',
+        transactionType : 'Online Payment,
+        transactionStatus: 'Captured'
     }, 
     { 
         cardHolderName : 'Name 2',
@@ -1205,7 +1217,9 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
         authorizedAmount : '324.00',
         creditCardBrand : 'amex', 
         id : 2,
-        creditCardLast4 : '4567'
+        creditCardLast4 : '4567',
+        transactionType : 'Online Payment,
+        transactionStatus: 'Captured'
     } 
 ]
             </pre>
@@ -1253,7 +1267,9 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
     id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 }
             </pre>
             <p>&nbsp;</p>
@@ -1370,7 +1386,9 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
     id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1418,7 +1436,9 @@ POST https://payfac.api.nextech.com/api/public/payments/capture/4e033888-c904-45
     "authorizedAmount": "33",
     "creditCardBrand": "Visa",
     "transactionDate": "2023-08-28T20:04:06.6764983",
-    "description": null
+    "description": null,
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1472,7 +1492,9 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
     id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1521,7 +1543,7 @@ GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
         customerId : '1738',
         id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
         expiry : 'expiry',
-        creditCardType : 'creditCardTyp'e'     
+        creditCardType : 'creditCardType'     
     }, 
     {
         profileName : 'profileName',
@@ -1530,7 +1552,7 @@ GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
         customerId : '1738',
         id : '97DD69AA-C036-4D13-AA52-004BC25DC123',
         expiry : 'expiry',
-        creditCardType : 'creditCardTyp'e'
+        creditCardType : 'creditCardType'
     }
 ]
             </pre>

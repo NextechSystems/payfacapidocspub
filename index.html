@@ -409,25 +409,34 @@
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation.
-                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
-                    2.0 standard</a>.</p>
+            <p>
+                The Nextech Payments APIs provide secure access to data through a RESTful implementation.
+                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">
+                    OAuth
+                    2.0 standard
+                </a>.
+            </p>
 
-            <p>Before you can start using our APIs, you must go through our registration process. If you&#39;re
-                interested in API access for your practice, please contact us <a
-                    href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
-                you&#39;ve been provided with credentials to authenticate, then continue to the <a
-                    href="#getting-started">Getting Started</a> section for more information.</p>
+            <p>
+                Before you can start using our APIs, you must go through our registration process. If you&#39;re
+                interested in API access for your practice, please contact us <a href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
+                you&#39;ve been provided with credentials to authenticate, then continue to the <a href="#getting-started">Getting Started</a> section for more information.
+            </p>
             <h1 id='getting-started'>Getting Started</h1>
 
-            <p>Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
-                These credentials will be provided to you by your Nextech representative. </p>
+            <p>
+                Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
+                These credentials will be provided to you by your Nextech representative.
+            </p>
 
-            <p><strong>API Limitations</strong><br>
+            <p>
+                <strong>API Limitations</strong><br>
                 - Users of the Nextech Payments API are restricted to a rate limit of 20 requests per second per endpoint<br>
-                - Nextech is not responsible for the development or maintenance of any third-party application</p>
+                - Nextech is not responsible for the development or maintenance of any third-party application
+            </p>
 
-            <p><strong>API Endpoint</strong><br>
+            <p>
+                <strong>API Endpoint</strong><br>
                 <code>https://payfac.api.nextech.com/api/public</code>
             </p>
 
@@ -465,18 +474,25 @@
                 </tbody>
             </table>
             <h2 id='rate-limiting'>Rate Limiting</h2>
-            <p>Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
+            <p>
+                Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
                 requests per second per endpoint. When a user exceeds the rate limit for a given API endpoint, the API
                 will reject the request and return a HTTP 429 “Too Many Requests” response code. The API rate limit is
-                subjet to change.</p>
+                subjet to change.
+            </p>
 
             <p><strong>Handling 429 response codes</strong></p>
 
-            <p>If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
-                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">Exponential
-                    backoff</a>.</p>
+            <p>
+                If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
+                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">
+                    Exponential
+                    backoff
+                </a>.
+            </p>
 
-            <p><strong>Best practices to avoid Rate Limiting</strong><br>
+            <p>
+                <strong>Best practices to avoid Rate Limiting</strong><br>
                 - The API is intended for on-demand requests for user interaction in real-time, try to avoid
                 synchronizing data.<br>
                 - Requests should be staggered as much as possible to avoid bursts of high traffic volume.<br>
@@ -484,16 +500,20 @@
                 sets.<br>
                 - Query with _lastUpdated search parameters to avoid re-querying unmodified data.<br>
                 - If you need to synchronize data, it is best to do so during non-peak business hours. Which vary on a
-                per practice basis. </p>
+                per practice basis.
+            </p>
             <h2 id='authentication'>Authentication</h2>
             <p>Requests are authenticated by passing a Bearer token in the Authorization Header.</p>
 
             <p><code>Authorization: Bearer {access_token}</code></p>
             <h3 id='request-access-token'>Request Access Token</h3>
-            <p>Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
-                default) but should be kept confidential in transit and in storage.</p>
+            <p>
+                Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
+                default) but should be kept confidential in transit and in storage.
+            </p>
 
-            <p><strong>HTTP Request</strong><br>
+            <p>
+                <strong>HTTP Request</strong><br>
                 <code>POST https://login.microsoftonline.com/nextech-api.com/oauth2/token</code>
             </p>
 
@@ -549,7 +569,7 @@
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
             <p>
-                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List, 
+                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List,
                 we send the pagination to the header using the <code>X-Pagination</code> parameter.
             </p>
             <h3>Parameters</h3>
@@ -602,8 +622,10 @@
                  </pre>
             </p>
             <h2 id='response-codes'>Response Codes</h2>
-            <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
-                request.</p>
+            <p>
+                The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
+                request.
+            </p>
 
             <table>
                 <thead>
@@ -651,7 +673,7 @@
             <!-- Begin Skeleton Setup -->
             <!-- Enum -->
             <h1 id="enumerators">Enumerators</h1>
-            
+
             <h2 id="payment-status">Payment Status</h2>
             <table>
                 <thead>
@@ -1093,7 +1115,7 @@
             <h3 class="remarks">Overrides & Helper Methods</h3>
             <ul>
                 <li>
-                    The methods listed in the tables below are override methods and helper 
+                    The methods listed in the tables below are override methods and helper
                     methods found on each of the data transfer objects
                 </li>
             </ul>
@@ -1273,7 +1295,7 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
 }
             </pre>
             <p>&nbsp;</p>
-             
+
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
@@ -1502,7 +1524,7 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <!-- Payment Profiles Payments -->
             <!-- Get Payment Profiles -->
             <h1 id='saving-payments'>Payment Profiles Payments</h1>
-        
+
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
@@ -1658,32 +1680,32 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             <!-- Webhooks -->
             <h1 id='webhooks'>Webhook Events</h1>
             <p>Webhook events are JSON objects that are POSTed to a predefined URL when an event happens in the merchant's practice management application.</p>
-            
+
             <p>When you receive a webhook event, use the following to authenticate the request.</p>
             <ol>
                 <li>Obtain the public key.</li>
                 <li>Compare the signature hash value to the provided data hash value. (need more details) </li>
             </ol>
-            
-            
-            
-                        <h2 id="get-public-key">Get Public Key</h2>
-                        <h4 id="get-public-key-endpoint">Endpoint</h4>
-                        <p>
-                            <code>
-                                GET http://payfac.api.nextech.com/api/public/Access/WebhookVerification
-                            </code>
-                        </p>
-                        <h4 id="example-get-all-patient-types">Response</h4>
-                        <p id="get-public-key-response">
-                            <a href="#key-vault-response">KeyVaultResponse</a>
-                        </p>
-            <p>need example</p>
-              
 
-                        <h2 id="webhook-authentication">Sample Webhook</h2>
-                        <h4>Request from Nextech</h4>
-                        <pre class="center-column">POST [Endpont From Partner]
+
+
+            <h2 id="get-public-key">Get Public Key</h2>
+            <h4 id="get-public-key-endpoint">Endpoint</h4>
+            <p>
+                <code>
+                    GET http://payfac.api.nextech.com/api/public/Access/WebhookVerification
+                </code>
+            </p>
+            <h4 id="example-get-all-patient-types">Response</h4>
+            <p id="get-public-key-response">
+                <a href="#key-vault-response">KeyVaultResponse</a>
+            </p>
+            <p>need example</p>
+
+
+            <h2 id="webhook-authentication">Sample Webhook</h2>
+            <h4>Request from Nextech</h4>
+            <pre class="center-column">POST [Endpont From Partner]
 -H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
 {
     "Id": 36,
@@ -1696,34 +1718,87 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
         "OriginalTransactionId": "1151d71a-721a-4e86-8a29-678126569cfa"
     }
 }
-                        </pre>
-                        <h4>Example Authentication in C#</h4>
-                        <pre class="center-column">
-    var signatureValue = context.HttpContext.Request.Headers.ContainsKey("webhook-signature") ? context.HttpContext.Request.Headers["webhook-signature"][0] : null;
+    </pre>
+            <h4>Example Authentication in C#</h4>
+            <p>
+                <a href="https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples">RSA Verification</a><br />
+                <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8">
+                    .Net verification library
+                </a>
+            </p>
+            <br/>
+            <pre class="center-column">
+        private readonly string mediaType = "application/json";
+        private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
+        var signatureValue = context.HttpContext.Request.Headers.ContainsKey("webhook-signature") ? context.HttpContext.Request.Headers["webhook-signature"][0] : null;
 
-    byte[] signatureBytes = Convert.FromBase64String(signatureValue);
-    
+    if (string.IsNullOrWhiteSpace(signatureValue))
+    {
+        context.Result = new UnauthorizedResult();
+        return;
+    }
+
+    byte[] signatureBytes; 
+    try
+    {
+        // webhook signature is returned as a base64 encoded string.
+        // For this example we will need to convert it to a byte array.
+        signatureBytes = Convert.FromBase64String(signatureValue);
+
+    }
+    catch
+    {
+        context.Result = new UnauthorizedResult();
+        return;
+    }
+
     context.HttpContext.Request.EnableBuffering();
-    
+
+    //Get the body of the incoming request.
     var jsonString = new System.IO.StreamReader(context.HttpContext.Request.Body).ReadToEnd();
-    
-    var modulus = Convert.FromBase64String("oSavKivsDmHseYWFu8zH8d0hlVxQKlxMuF2EN2nKws080Tsvft412Ub0rA0GZdjZjaJ/5JhFpAPQTjsMSwhzA8FIDqCRas3FZjpidp3UympWYgwHDkUX01Gdi0gRRFEZcN75Ax33kKqmAwrtG7L5ThOh1ZFGIr4JCLt61ygwWf9aFy/kuDLxVIzRrRnyKW3Uq7yXDdBf205WQkK+qiJ1tkLhl615+VR5lCVf71O7Cp0E0R3XLjNsLxgdX8xrAvVmyD7ZQ37Sq+5UGeAiQrVr2XWl/WXq04C+5AyRiW00oPYOXdaKB+odkeRHHBlqggDmDCmwjb534eNyM1cO1CPHeQ==");
-    
-    var exponent= Convert.FromBase64String("AQAB");
-    
-    var rsa = new RSACryptoServiceProvider(2048);
+
+
+    // Request to get the public key from the key vault.
+    // This call should be cached as the key will not change.
+
+    var request = new HttpRequestMessage(HttpMethod.Get, url);
+    HttpClient client = new HttpClient();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+    client.BaseAddress = new Uri(url);
+    var response = client.Send(request);
+
+    // Convert content to KeyVaultResponse object.
+    var keyvaultResponse = JsonConvert.DeserializeObject<KeyVaultResponse>(new System.IO.StreamReader(response.Content.ReadAsStream()).ReadToEnd());
+
+    // Convert the modulus and exponent to byte arrays.
+    var modulus = Convert.FromBase64String(keyvaultResponse.N);
+
+    // Convert the exponent to a byte array.
+    var exponent= Convert.FromBase64String(keyvaultResponse.E);
+
+    var rsa = new RSACryptoServiceProvider(keyvaultResponse.KeySize);
     rsa.ImportParameters(new RSAParameters
     {
         Exponent = exponent,
         Modulus = modulus,
     });
-    
+
+    // Convert the payload to a byte array.
     var payload = Encoding.UTF8.GetBytes(jsonString);
-    
-    var result = rsa.VerifyData(payload, CryptoConfig.MapNameToOID("SHA256"), signatureBytes);
 
-                        </pre>
+    // Verify the digital signature of the payload.
+    // For more information on how to verify a digital signature see
+    // https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples
+    // C# Example: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8
+              
+    var result = rsa.VerifyData(payload, CryptoConfig.MapNameToOID(keyvaultResponse.Algorithm), signatureBytes);
 
+    if (!result)
+    {
+        context.Result = new UnauthorizedResult();
+    }
+    context.HttpContext.Request.Body.Position = 0;
+    </pre>
             <h2 id='webhooks-refund'>Refund</h2>
             <h4 id="example-get-all-patient-types">Event Object</h4>
             <pre class="center-column">

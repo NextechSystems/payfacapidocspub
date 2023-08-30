@@ -1679,58 +1679,53 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <!-- Webhooks -->
             <h1 id='webhooks'>Webhook Events</h1>
-            <p>Webhook events are JSON objects that are POSTed to a predefined URL when an event happens in the merchant's practice management application.</p>
+            <p>You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example, 
+                when you create a payment using this API, if that payment is refunded through another system, a webhook can be sent to a URL that you specify
+                when that refund happens. </p>
+            <p>Webhook events are JSON objects that are sent using a POST method.</p>
+            <h2 id="webhooks-authentication">Authentication</h2>
+            <p>When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header 
+                parameter "webhook-signature". Below are example steps to take to verify the request.
 
-            <p>When you receive a webhook event, use the following to authenticate the request.</p>
+            </p>
             <ol>
-                <li>Obtain the public key.</li>
-                <li>Compare the signature hash value to the provided data hash value. (need more details) </li>
+                <li>Get the <code>webhook-signature</code> value from the header of the incoming request. It is a base64 encoded string.</li>
+                <li>Get our public key by calling the <code>/api/public/Access/WebhookVerification</code> endpoint described below. You should cache this value locally.</li>
+                <li>Use the security key to verify the signature.</li>
             </ol>
+            <p>You can <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">learn more about RSA here</a>.</p>
+            <p>Here is a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8" target="_blank">C# RSA sign/verify example</a>.</p>
 
 
-
-            <h2 id="get-public-key">Get Public Key</h2>
-            <h4 id="get-public-key-endpoint">Endpoint</h4>
+            <h4 id="get-public-key-endpoint">Get Public Key Endpoint</h4>
             <p>
                 <code>
                     GET http://payfac.api.nextech.com/api/public/Access/WebhookVerification
                 </code>
             </p>
-            <h4 id="example-get-all-patient-types">Response</h4>
+            <h4>Response</h4>
             <p id="get-public-key-response">
                 <a href="#key-vault-response">KeyVaultResponse</a>
             </p>
-            <p>need example</p>
 
-
-            <h2 id="webhook-authentication">Sample Webhook</h2>
-            <h4>Request from Nextech</h4>
-            <pre class="center-column">POST [Endpont From Partner]
--H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
-{
-    "Id": 36,
-    "MerchantId": "NXSV4BTWU13DV9FM",
-    "Created": "2023-08-25T21:28:06.5232727Z",
-    "Type": "transaction.refund",
-    "Data": {
-        "Amount_Refunded": 300,
-        "Id": "a8bfb223-845b-4def-8903-362b122a60d8",
-        "OriginalTransactionId": "1151d71a-721a-4e86-8a29-678126569cfa"
-    }
-}
-    </pre>
-            <h4>Example Authentication in C#</h4>
-            <p>
-                <a href="https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples">RSA Verification</a><br />
-                <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8">
-                    .Net verification library
-                </a>
-            </p>
-            <br/>
+            <h4>Example Response</h4>
             <pre class="center-column">
-        private readonly string mediaType = "application/json";
-        private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
-        var signatureValue = context.HttpContext.Request.Headers.ContainsKey("webhook-signature") ? context.HttpContext.Request.Headers["webhook-signature"][0] : null;
+{
+    "N": "RS256",
+    "E": "AQAB",
+    "Algorithm": "RS256"
+    "KeySize": "oSavKivsDmHseYWFu8zH............1ygwWf9aFy/kuDLxVIzRrRnyKW3U"
+}
+            </pre>
+
+            <p>&nbsp;</p>
+            <h4>Example Authentication in C#</h4>
+            
+            
+            <pre class="center-column">
+    private readonly string mediaType = "application/json";
+    private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
+    var signatureValue = context.HttpContext.Request.Headers.ContainsKey("webhook-signature") ? context.HttpContext.Request.Headers["webhook-signature"][0] : null;
 
     if (string.IsNullOrWhiteSpace(signatureValue))
     {
@@ -1799,7 +1794,23 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
     }
     context.HttpContext.Request.Body.Position = 0;
     </pre>
-            <h2 id='webhooks-refund'>Refund</h2>
+    <p>&nbsp;</p>
+        <h4>Example Webhook Request from Nextech</h4>
+            <pre class="center-column">POST [Endpont From Partner]
+-H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
+{
+    "Id": 36,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-25T21:28:06.5232727Z",
+    "Type": "transaction.refund",
+    "Data": {
+        "Amount_Refunded": 300,
+        "Id": "a8bfb223-845b-4def-8903-362b122a60d8",
+        "OriginalTransactionId": "1151d71a-721a-4e86-8a29-678126569cfa"
+    }
+}
+    </pre>
+            <h2 id='webhooks-refund'>Refund Webhook</h2>
             <h4 id="example-get-all-patient-types">Event Object</h4>
             <pre class="center-column">
 {
@@ -1815,7 +1826,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 }
             </pre>
             <p>&nbsp;</p>
-            <h2 id='webhooks-chargebacks-withdrawn'>Chargeback Funds Withdrawn</h2>
+            <h2 id='webhooks-chargebacks-withdrawn'>Chargeback Funds Withdrawn Webhook</h2>
             <h4 id="example-get-all-patient-types">Event Object</h4>
             <pre class="center-column">
 {
@@ -1831,7 +1842,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 }
             </pre>
             <p>&nbsp;</p>
-            <h2 id='webhooks-chargebacks-reinstatement'>Chargeback Funds Reinstated</h2>
+            <h2 id='webhooks-chargebacks-reinstatement'>Chargeback Funds Reinstated Webhook</h2>
             <h4 id="example-get-all-patient-types">Event Object</h4>
             <pre class="center-column">
 {
@@ -1847,7 +1858,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 }
             </pre>
             <p>&nbsp;</p>
-            <h2 id='webhooks-failed-refund'>Failed Refund</h2>
+            <h2 id='webhooks-failed-refund'>Failed Refund Webhook</h2>
             <h4 id="example-get-all-patient-types">Event Object</h4>
             <pre class="center-column">
 {

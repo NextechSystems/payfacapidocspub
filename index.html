@@ -392,6 +392,9 @@
                 </ul>
             </li>
             <li>
+                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Webhooks">Stripe Elements</a>
+            </li>
+            <li>
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -1786,7 +1789,10 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
     // https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples
     // C# Example: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8
               
-    var result = rsa.VerifyData(payload, CryptoConfig.MapNameToOID(keyvaultResponse.Algorithm), signatureBytes);
+    // VerifyData requires parameter that identifies the HASH algorithm to use in the verification process
+    // with RSA. We are using RS256 (RSA with SHA256), so we are specifying the HASH algorithm to use as SHA256.
+    var algorithm = "SHA256";
+    var result = rsa.VerifyData(payload, CryptoConfig.MapNameToOID(algorithm), signatureBytes);
 
     if (!result)
     {
@@ -1876,9 +1882,16 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             </pre>
             <p>&nbsp;</p>
 
-
-
-
+            <h1 id='stripe-elements'>Stripe Elements</h1>
+            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this api. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
+                The following is a list of the highlights to use: </p>
+                <ol>
+                    <li>Reference Stripe.js in your code.</li>
+                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
+                    <li>Use the <code>stripe.confirmPayment</code> which attaches a payment method to the Stripe payment intent.</li>
+                    <li>Capture the payment using the Capture api endpoint.</li>
+                </ol>
+            <p>&nbsp;</p>
 
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>

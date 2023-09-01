@@ -392,7 +392,12 @@
                 </ul>
             </li>
             <li>
-                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Webhooks">Stripe Elements</a>
+                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Stripe Elements">Stripe Elements</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#how-to-set-it-up" class="toc-h2 toc-link" data-title="Stripe Elements">How to setup</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
@@ -1883,12 +1888,13 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             <p>&nbsp;</p>
 
             <h1 id='stripe-elements'>Stripe Elements</h1>
+            <h3 id='how-to-set-it-up'>How to set it up</h3>
             <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this api. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
                 The following is a list of the highlights to use: </p>
                 <ol>
                     <li>Reference Stripe.js in your code.</li>
                     <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
-                    <li>Use the <code>stripe.confirmPayment</code> which attaches a payment method to the Stripe payment intent.</li>
+                    <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
                     <li>Capture the payment using the Capture api endpoint.</li>
                 </ol>
             <p>&nbsp;</p>

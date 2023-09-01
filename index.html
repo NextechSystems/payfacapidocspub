@@ -547,7 +547,7 @@
                     </tr>
                     <tr>
                         <td>resource</td>
-                        <td>The Nextech Payments Partner Api Identifier</td>
+                        <td>The Nextech Payments Partner API Identifier</td>
                     </tr>
                 </tbody>
             </table>
@@ -730,7 +730,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>Payment Id</td>
                         <td>Integer</td>
                     </tr>
@@ -742,7 +742,7 @@
                 </tbody>
             </table>
 
-            <h2 id="payment-full-dto">PaymentFullDto</h2>
+            <h2 Id="payment-full-dto">PaymentFullDto</h2>
             <table>
                 <thead>
                     <tr>
@@ -1269,7 +1269,7 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>Identifier for a Payment</td>
                         <td>Guid</td>
                     </tr>
@@ -1389,7 +1389,7 @@ POST https://payfac.api.nextech.com/api/public/payments
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The Id for the payment intended to be canceled</td>
                         <td>Guid</td>
                     </tr>
@@ -1439,7 +1439,7 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The Id for the payment intended to be captured</td>
                         <td>Guid</td>
                     </tr>
@@ -1655,7 +1655,7 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The payment profile ID</td>
                         <td>Guid</td>
                     </tr>
@@ -1722,7 +1722,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
     "N": "oSavKivsDmHseYWFu8zH............1ygwWf9aFy/kuDLxVIzRrRnyKW3U",
     "E": "AQAB",
     "Algorithm": "RS256"
-    "KeySize": "2048"
+    "KeySize": 2048
 }
             </pre>
 
@@ -1889,13 +1889,13 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <h1 id='stripe-elements'>Stripe Elements</h1>
             <h3 id='how-to-set-it-up'>How to set it up</h3>
-            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this api. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
+            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
                 The following is a list of the highlights to use: </p>
                 <ol>
                     <li>Reference Stripe.js in your code.</li>
                     <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
                     <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
-                    <li>Capture the payment using the Capture api endpoint.</li>
+                    <li>Capture the payment using the Capture API endpoint.</li>
                 </ol>
             <p>&nbsp;</p>
 

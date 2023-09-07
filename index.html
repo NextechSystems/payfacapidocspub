@@ -372,10 +372,39 @@
                 </ul>
             </li>
             <li>
-                <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
+                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Stripe Elements">Stripe Elements</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="API-Versioning">Resetting Expired Credentials</a>
+                        <a href="#how-to-set-it-up" class="toc-h2 toc-link" data-title="How to setup">How to setup</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#webhooks-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                    </li>
+                    <li>
+                        <a href="#webhooks-refund" class="toc-h2 toc-link" data-title="Webhooks">Refunds</a>
+                    </li>
+                    <li>
+                        <a href="#webhooks-chargebacks-withdrawn" class="toc-h2 toc-link" data-title="Webhooks">Chargebacks Funds Withdrawn</a>
+                    </li>
+                    <li>
+                        <a href="#webhooks-chargebacks-reinstatement" class="toc-h2 toc-link" data-title="Webhooks">Chargebacks Funds Reinstated</a>
+                    </li>
+                    <li>
+                        <a href="#webhooks-failed-refund" class="toc-h2 toc-link" data-title="Webhooks">Failed Refund</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="FAQ">Frequently Asked Questions</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="FAQ">Resetting Expired Credentials</a>
                     </li>
                 </ul>
             </li>
@@ -389,25 +418,34 @@
         <div class="dark-box"></div>
         <div class="content">
             <h1 id='introduction'>Introduction</h1>
-            <p>The Nextech Payments APIs provide secure access to data through a RESTful implementation.
-                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">OAuth
-                    2.0 standard</a>.</p>
+            <p>
+                The Nextech Payments APIs provide secure access to data through a RESTful implementation.
+                All API requests are performed over HTTPS and are protected by the <a href="https://oauth.net/2/">
+                    OAuth
+                    2.0 standard
+                </a>.
+            </p>
 
-            <p>Before you can start using our APIs, you must go through our registration process. If you&#39;re
-                interested in API access for your practice, please contact us <a
-                    href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
-                you&#39;ve been provided with credentials to authenticate, then continue to the <a
-                    href="#getting-started">Getting Started</a> section for more information.</p>
+            <p>
+                Before you can start using our APIs, you must go through our registration process. If you&#39;re
+                interested in API access for your practice, please contact us <a href="http://landing.nextech.com/developers-portal-registration-form">here</a>. Otherwise, if
+                you&#39;ve been provided with credentials to authenticate, then continue to the <a href="#getting-started">Getting Started</a> section for more information.
+            </p>
             <h1 id='getting-started'>Getting Started</h1>
 
-            <p>Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
-                These credentials will be provided to you by your Nextech representative. </p>
+            <p>
+                Before you can access the Nextech Payments API you must have the proper credentials to authenticate.
+                These credentials will be provided to you by your Nextech representative.
+            </p>
 
-            <p><strong>API Limitations</strong><br>
+            <p>
+                <strong>API Limitations</strong><br>
                 - Users of the Nextech Payments API are restricted to a rate limit of 20 requests per second per endpoint<br>
-                - Nextech is not responsible for the development or maintenance of any third-party application</p>
+                - Nextech is not responsible for the development or maintenance of any third-party application
+            </p>
 
-            <p><strong>API Endpoint</strong><br>
+            <p>
+                <strong>API Endpoint</strong><br>
                 <code>https://payfac.api.nextech.com/api/public</code>
             </p>
 
@@ -445,18 +483,25 @@
                 </tbody>
             </table>
             <h2 id='rate-limiting'>Rate Limiting</h2>
-            <p>Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
+            <p>
+                Rate limiting of the API is primarily on a per-user, per-endpoint basis. The default rate limit of 20
                 requests per second per endpoint. When a user exceeds the rate limit for a given API endpoint, the API
                 will reject the request and return a HTTP 429 “Too Many Requests” response code. The API rate limit is
-                subjet to change.</p>
+                subjet to change.
+            </p>
 
             <p><strong>Handling 429 response codes</strong></p>
 
-            <p>If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
-                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">Exponential
-                    backoff</a>.</p>
+            <p>
+                If your API user exceeds the rate limit, you will receive a HTTP 429 response code. We advise to design
+                to handle these requests with <a href="https://en.wikipedia.org/wiki/Exponential_backoff">
+                    Exponential
+                    backoff
+                </a>.
+            </p>
 
-            <p><strong>Best practices to avoid Rate Limiting</strong><br>
+            <p>
+                <strong>Best practices to avoid Rate Limiting</strong><br>
                 - The API is intended for on-demand requests for user interaction in real-time, try to avoid
                 synchronizing data.<br>
                 - Requests should be staggered as much as possible to avoid bursts of high traffic volume.<br>
@@ -464,16 +509,20 @@
                 sets.<br>
                 - Query with _lastUpdated search parameters to avoid re-querying unmodified data.<br>
                 - If you need to synchronize data, it is best to do so during non-peak business hours. Which vary on a
-                per practice basis. </p>
+                per practice basis.
+            </p>
             <h2 id='authentication'>Authentication</h2>
             <p>Requests are authenticated by passing a Bearer token in the Authorization Header.</p>
 
             <p><code>Authorization: Bearer {access_token}</code></p>
             <h3 id='request-access-token'>Request Access Token</h3>
-            <p>Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
-                default) but should be kept confidential in transit and in storage.</p>
+            <p>
+                Access tokens are used to make API requests on behalf of a user. These tokens are short-lived (1 hour by
+                default) but should be kept confidential in transit and in storage.
+            </p>
 
-            <p><strong>HTTP Request</strong><br>
+            <p>
+                <strong>HTTP Request</strong><br>
                 <code>POST https://login.microsoftonline.com/nextech-api.com/oauth2/token</code>
             </p>
 
@@ -499,7 +548,7 @@
                     </tr>
                     <tr>
                         <td>resource</td>
-                        <td>The Nextech Payments Partner Api Identifier</td>
+                        <td>The Nextech Payments Partner API Identifier</td>
                     </tr>
                 </tbody>
             </table>
@@ -529,7 +578,7 @@
             &nbsp;</p>
             <h2 id='pagination'>Pagination</h2>
             <p>
-                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List, 
+                Following the recommendations for implementing a Restful API with a maturity level 3 (or at least 2) for GET List,
                 we send the pagination to the header using the <code>X-Pagination</code> parameter.
             </p>
             <h3>Parameters</h3>
@@ -582,8 +631,10 @@
                  </pre>
             </p>
             <h2 id='response-codes'>Response Codes</h2>
-            <p>The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
-                request.</p>
+            <p>
+                The Nextech Select APIs use the standard HTTP response codes to indicate success or failure of an API
+                request.
+            </p>
 
             <table>
                 <thead>
@@ -631,7 +682,7 @@
             <!-- Begin Skeleton Setup -->
             <!-- Enum -->
             <h1 id="enumerators">Enumerators</h1>
-            
+
             <h2 id="payment-status">Payment Status</h2>
             <table>
                 <thead>
@@ -680,7 +731,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>Payment Id</td>
                         <td>Integer</td>
                     </tr>
@@ -692,7 +743,7 @@
                 </tbody>
             </table>
 
-            <h2 id="payment-full-dto">PaymentFullDto</h2>
+            <h2 Id="payment-full-dto">PaymentFullDto</h2>
             <table>
                 <thead>
                     <tr>
@@ -703,18 +754,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>Payment Id</td>
                         <td>Integer</td>
                     </tr>
                     <tr>
                         <td>MerchantName</td>
                         <td>Name of the merchant</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>PaymentProcessorSecret</td>
-                        <td>Payment Processor Secret</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -730,11 +776,6 @@
                     <tr>
                         <td>AuthorizationCode</td>
                         <td>Authorization Code for the payment</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>CreditCardType</td>
-                        <td>Credit Card Type</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -760,16 +801,6 @@
                     <tr>
                         <td>Description</td>
                         <td>Description of the transaction</td>
-                        <td>String</td>
-                    </tr>
-                    <tr>
-                        <td>ProfileCreated</td>
-                        <td>Value to determine if payment profile was created</td>
-                        <td>Bool</td>
-                    </tr>
-                    <tr>
-                        <td>ProfileError</td>
-                        <td>Error message if payment profile failed to create</td>
                         <td>String</td>
                     </tr>
                 </tbody>
@@ -805,6 +836,12 @@
                         <td>No</td>
                     </tr>
                     <tr>
+                        <td>MerchantCustomerId</td>
+                        <td>Customer Id Defined by the Merchant</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
                         <td>CustomerName</td>
                         <td>Customer's Name</td>
                         <td>String</td>
@@ -813,7 +850,7 @@
                     <tr>
                         <td>CustomerPaymentMethodId</td>
                         <td>Payment Method used for the payment</td>
-                        <td>Integer?</td>
+                        <td>Guid?</td>
                         <td>No</td>
                     </tr>
                     <tr>
@@ -937,12 +974,6 @@
                         <td>No</td>
                     </tr>
                     <tr>
-                        <td>PrePayment</td>
-                        <td>Is PrePayment (True or False Values only saved)</td>
-                        <td>String</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
                         <td>Description</td>
                         <td>Customer's Description</td>
                         <td>String</td>
@@ -1055,13 +1086,45 @@
                 </tbody>
             </table>
             <p>&nbsp;</p>
+            <h2 id="key-vault-response">KeyVaultResponse</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>N</td>
+                        <td>RSA - Modulus</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>RSA - Exponent</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>Algorithm</td>
+                        <td>Key Type</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>KeySize</td>
+                        <td>Key Size of the webkey</td>
+                        <td>Int</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <!-- Data Transfer Objects -->
             <h1 id="support-methods">Supporting Methods</h1>
             <h3 class="remarks">Overrides & Helper Methods</h3>
             <ul>
                 <li>
-                    The methods listed in the tables below are override methods and helper 
+                    The methods listed in the tables below are override methods and helper
                     methods found on each of the data transfer objects
                 </li>
             </ul>
@@ -1155,9 +1218,9 @@
             <h4 id="example-get-all-patient-types">Example: Get Payments Request</h4>
             <pre class="center-column">
 GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/02/2020&status=1&skip=0&take=100&desc=true
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payments Response</h4>
@@ -1166,36 +1229,28 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
     { 
         cardHolderName : 'Name 1',
         authorizationCode : '323',
-        transactionStatus : transactionStatus, 
-        cardType : '3',
         description : 'description',
-        paymentProcessorSecret : 'prc_j843890',
-        creditCardType : '1',
         transactionDate : 2000-01-23T04:56:07.000+00:00,
         merchantName : 'merchantName',
-        transactionType : 'phonepayment',
-        transactionStatusId : 6,
         authorizedAmount : '132.00',
         creditCardBrand : 'visa', 
-        id : 1,
-        creditCardLast4 : '1234'
+        id : '2061993e-6d56-40b2-baa4-cb7067f62f31',
+        creditCardLast4 : '1234',
+        transactionType : 'Online Payment,
+        transactionStatus: 'Captured'
     }, 
     { 
         cardHolderName : 'Name 2',
         authorizationCode : '8787',
-        transactionStatus : transactionStatus, 
-        cardType : '3',
         description : 'description',
-        paymentProcessorSecret : 'apfa+943028943',
-        creditCardType : '2',
         transactionDate : 2000-01-23T04:56:07.000+00:00,
         merchantName : 'merchantName',
-        transactionType : 'cardpresent',
-        transactionStatusId : 6,
         authorizedAmount : '324.00',
         creditCardBrand : 'amex', 
-        id : 2,
-        creditCardLast4 : '4567'
+        id : '2061993e-6d56-40b2-baa4-cb7067f62f32',
+        creditCardLast4 : '4567',
+        transactionType : 'Online Payment,
+        transactionStatus: 'Captured'
     } 
 ]
             </pre>
@@ -1215,7 +1270,7 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>Identifier for a Payment</td>
                         <td>Guid</td>
                     </tr>
@@ -1226,9 +1281,9 @@ GET https://payfac.api.nextech.com/api/public/payments?start=01/02/2020&end=02/0
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Request</h4>
             <pre class="center-column">
 GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+  -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payment By ID Response</h4>
@@ -1236,23 +1291,20 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
 { 
     cardHolderName : 'Name 1',
     authorizationCode : '323',
-    transactionStatus : transactionStatus, 
-    cardType : '3',
     description : 'description',
     paymentProcessorSecret : 'prc_j843890',
-    creditCardType : '1',
     transactionDate : 2000-01-23T04:56:07.000+00:00,
     merchantName : 'merchantName',
-    transactionType : 'phonepayment',
-    transactionStatusId : 6,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 }
             </pre>
             <p>&nbsp;</p>
-             
+
             <!-- Create Payment -->
             <h1 id='create-payment'>Create Payment</h1>
 
@@ -1281,13 +1333,15 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/payments
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
   
  {
     amount: '100.00',
     currency: 'USD',
+    customerId: 1233,
+    merchantCustomerId: '2061993e-6d56-40b2-baa4-cb7067f62f31'
     customerFirstName: 'John',
     customerLastName: 'Smith',
     customerEmail: 'j.smith@nextech.com',
@@ -1306,7 +1360,6 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerMartialStatus: 1,
     customerNote: 'Test',
     customerDOB: '11/30/1979',
-    prePayment: false,
     orderId: 12,
     description: 'Test Description',
  }
@@ -1314,22 +1367,9 @@ POST https://payfac.api.nextech.com/api/public/payments
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Create Payment Response</h4>
             <pre class="center-column">
-{ 
-    cardHolderName : 'Name 1',
-    authorizationCode : '323',
-    transactionStatus : transactionStatus, 
-    cardType : '3',
-    description : 'description',
-    paymentProcessorSecret : 'prc_j843890',
-    creditCardType : '1',
-    transactionDate : 2000-01-23T04:56:07.000+00:00,
-    merchantName : 'merchantName',
-    transactionType : 'phonepayment',
-    transactionStatusId : 6,
-    authorizedAmount : '132.00',
-    creditCardBrand : 'visa', 
-    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+{
+    "id": "4e033888-c904-45e6-9684-3bb66e8622b0",
+    "paymentProcessorSecret": "pi_3NkBfOD6ahIylvsy1sc2F94m_secret_Mj1YK6z8Z8cQCoAP3Jylsg6yv"
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1350,7 +1390,7 @@ POST https://payfac.api.nextech.com/api/public/payments
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The Id for the payment intended to be canceled</td>
                         <td>Guid</td>
                     </tr>
@@ -1361,9 +1401,9 @@ POST https://payfac.api.nextech.com/api/public/payments
             <h4 id="example-get-all-patient-types">Example: Cancel Payment</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-004BC25DC7A7
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Cancel Payment Response</h4>
@@ -1371,19 +1411,15 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
 { 
     cardHolderName : 'Name 1',
     authorizationCode : '323',
-    transactionStatus : transactionStatus, 
-    cardType : '3',
     description : 'description',
-    paymentProcessorSecret : 'prc_j843890',
-    creditCardType : '1',
     transactionDate : 2000-01-23T04:56:07.000+00:00,
     merchantName : 'merchantName',
-    transactionType : 'phonepayment',
-    transactionStatusId : 5,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1404,7 +1440,7 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The Id for the payment intended to be captured</td>
                         <td>Guid</td>
                     </tr>
@@ -1414,30 +1450,26 @@ POST https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-
             <p><a href="#payment-full-dto">PaymentFullDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Request</h4>
             <pre class="center-column">
-POST https://payfac.api.nextech.com/api/public/payments/capture/97DD69AA-C036-4D13-AA52-004BC25DC7A7
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+POST https://payfac.api.nextech.com/api/public/payments/capture/4e033888-c904-45e6-9684-3bb66e8622b0
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Capture Payment By ID Response</h4>
             <pre class="center-column">
-{ 
-    cardHolderName : 'Name 1',
-    authorizationCode : '323',
-    transactionStatus : transactionStatus, 
-    cardType : '3',
-    description : 'description',
-    paymentProcessorSecret : 'prc_j843890',
-    creditCardType : '1',
-    transactionDate : 2000-01-23T04:56:07.000+00:00,
-    merchantName : 'merchantName',
-    transactionType : 'phonepayment',
-    transactionStatusId : 3,
-    authorizedAmount : '132.00',
-    creditCardBrand : 'visa', 
-    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+{
+    "id": "4e033888-c904-45e6-9684-3bb66e8622b0",
+    "merchantName": "Your Merchant",
+    "cardHolderName": "test",
+    "creditCardLast4": "4242",
+    "authorizationCode": "123456",
+    "authorizedAmount": "33",
+    "creditCardBrand": "Visa",
+    "transactionDate": "2023-08-28T20:04:06.6764983",
+    "description": null,
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1469,9 +1501,9 @@ POST https://payfac.api.nextech.com/api/public/payments/capture/97DD69AA-C036-4D
             <h4 id="example-get-all-patient-types">Example: Refund Payment Request</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/payments/refund
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
 
  {
     id: '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
@@ -1485,19 +1517,15 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
 { 
     cardHolderName : 'Name 1',
     authorizationCode : '323',
-    transactionStatus : transactionStatus, 
-    cardType : '3',
     description : 'description',
-    paymentProcessorSecret : 'prc_j843890',
-    creditCardType : '1',
     transactionDate : 2000-01-23T04:56:07.000+00:00,
     merchantName : 'merchantName',
-    transactionType : 'phonepayment',
-    transactionStatusId : 6,
     authorizedAmount : '132.00',
     creditCardBrand : 'visa', 
-    id : 97DD69AA-C036-4D13-AA52-004BC25DC7A7,
-    creditCardLast4 : '1234'
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    creditCardLast4 : '1234',
+    transactionType : 'Online Payment,
+    transactionStatus: 'Captured'
 },  
             </pre>
             <p>&nbsp;</p>
@@ -1505,7 +1533,7 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <!-- Payment Profiles Payments -->
             <!-- Get Payment Profiles -->
             <h1 id='saving-payments'>Payment Profiles Payments</h1>
-        
+
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
@@ -1531,9 +1559,9 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Request</h4>
             <pre class="center-column">
 GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Customer ID Response</h4>
@@ -1546,7 +1574,7 @@ GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
         customerId : '1738',
         id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
         expiry : 'expiry',
-        creditCardType : 'creditCardTyp'e'     
+        creditCardType : 'creditCardType'     
     }, 
     {
         profileName : 'profileName',
@@ -1555,7 +1583,7 @@ GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
         customerId : '1738',
         id : '97DD69AA-C036-4D13-AA52-004BC25DC123',
         expiry : 'expiry',
-        creditCardType : 'creditCardTyp'e'
+        creditCardType : 'creditCardType'
     }
 ]
             </pre>
@@ -1587,9 +1615,9 @@ GET https://payfac.api.nextech.com/api/public/paymentProfiles/1738
             <h4 id="example-get-all-patient-types">Example: Create Payment Profile Request</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/paymentProfiles
--H 'partner-id: af43ba54;'
--H 'merchant-id: avr3435r;'
--H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
 
 {
     profileName : 'profileName',
@@ -1628,7 +1656,7 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles
                 </thead>
                 <tbody>
                     <tr>
-                        <td>id</td>
+                        <td>Id</td>
                         <td>The payment profile ID</td>
                         <td>Guid</td>
                     </tr>
@@ -1639,9 +1667,9 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Request</h4>
             <pre class="center-column">
 DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4D13-AA52-004BC25DC7A7
- -H 'partner-id: af43ba54;'
- -H 'merchant-id: avr3435r;'
- -H 'nx-username: jane.doe;'
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
             </pre>
             <p>&nbsp;</p>
             <h4 id="example-get-all-patient-types">Example: Delete Payment Profile Response</h4>
@@ -1658,6 +1686,222 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             </pre>
             <p>&nbsp;</p>
 
+            <h1 id='stripe-elements'>Stripe Elements</h1>
+            <h3 id='how-to-set-it-up'>How to set it up</h3>
+            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
+                The following is a list of the highlights to use: </p>
+                <ol>
+                    <li>Reference Stripe.js in your code.</li>
+                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
+                    <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
+                    <li>Capture the payment using the Capture API endpoint.</li>
+                </ol>
+            <p>&nbsp;</p>
+
+
+            <!-- Webhooks -->
+            <h1 id='webhooks'>Webhook Events</h1>
+            <p>You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example, 
+                when you create a payment using this API, if that payment is refunded through another system, a webhook can be sent to a URL that you specify
+                when that refund happens. </p>
+            <p>Webhook events are JSON objects that are sent using a POST method.</p>
+            <h2 id="webhooks-authentication">Authentication</h2>
+            <p>When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header 
+                parameter "webhook-signature". Below are example steps to take to verify the request.
+
+            </p>
+            <ol>
+                <li>Get the <code>webhook-signature</code> value from the header of the incoming request. It is a base64 encoded string.</li>
+                <li>Get our public key by calling the <code>/api/public/Access/WebhookVerification</code> endpoint described below. You should cache this value locally.</li>
+                <li>Use the security key to verify the signature.</li>
+            </ol>
+            <p>You can <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">learn more about RSA here</a>.</p>
+            <p>Here is a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8" target="_blank">C# RSA sign/verify example</a>.</p>
+
+
+            <h4 id="get-public-key-endpoint">Get Public Key Endpoint</h4>
+            <p>
+                <code>
+                    GET http://payfac.api.nextech.com/api/public/Access/WebhookVerification
+                </code>
+            </p>
+            <h4>Response</h4>
+            <p id="get-public-key-response">
+                <a href="#key-vault-response">KeyVaultResponse</a>
+            </p>
+
+            <h4>Example Response</h4>
+            <pre class="center-column">
+{
+    "N": "oSavKivsDmHseYWFu8zH............1ygwWf9aFy/kuDLxVIzRrRnyKW3U",
+    "E": "AQAB",
+    "Algorithm": "RS256"
+    "KeySize": 2048
+}
+            </pre>
+
+            <p>&nbsp;</p>
+            <h4>Example Authentication in C#</h4>
+            
+            
+            <pre class="center-column">
+    private readonly string mediaType = "application/json";
+    private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
+    var signatureValue = context.HttpContext.Request.Headers.ContainsKey("webhook-signature") ? context.HttpContext.Request.Headers["webhook-signature"][0] : null;
+
+    if (string.IsNullOrWhiteSpace(signatureValue))
+    {
+        context.Result = new UnauthorizedResult();
+        return;
+    }
+
+    byte[] signatureBytes; 
+    try
+    {
+        // webhook signature is returned as a base64 encoded string.
+        // For this example we will need to convert it to a byte array.
+        signatureBytes = Convert.FromBase64String(signatureValue);
+
+    }
+    catch
+    {
+        context.Result = new UnauthorizedResult();
+        return;
+    }
+
+    context.HttpContext.Request.EnableBuffering();
+
+    //Get the body of the incoming request.
+    var jsonString = new System.IO.StreamReader(context.HttpContext.Request.Body).ReadToEnd();
+
+
+    // Request to get the public key from the key vault.
+    // This call should be cached as the key will not change.
+
+    var request = new HttpRequestMessage(HttpMethod.Get, url);
+    HttpClient client = new HttpClient();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+    client.BaseAddress = new Uri(url);
+    var response = client.Send(request);
+
+    // Convert content to KeyVaultResponse object.
+    var keyvaultResponse = JsonConvert.DeserializeObject<KeyVaultResponse>(new System.IO.StreamReader(response.Content.ReadAsStream()).ReadToEnd());
+
+    // Convert the modulus and exponent to byte arrays.
+    var modulus = Convert.FromBase64String(keyvaultResponse.N);
+
+    // Convert the exponent to a byte array.
+    var exponent= Convert.FromBase64String(keyvaultResponse.E);
+
+    var rsa = new RSACryptoServiceProvider(keyvaultResponse.KeySize);
+    rsa.ImportParameters(new RSAParameters
+    {
+        Exponent = exponent,
+        Modulus = modulus,
+    });
+
+    // Convert the payload to a byte array.
+    var payload = Encoding.UTF8.GetBytes(jsonString);
+
+    // Verify the digital signature of the payload.
+    // For more information on how to verify a digital signature see
+    // https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples
+    // C# Example: https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.verifydata?view=netframework-4.8
+              
+    // VerifyData requires parameter that identifies the HASH algorithm to use in the verification process
+    // with RSA. We are using RS256 (RSA with SHA256), so we are specifying the HASH algorithm to use as SHA256.
+    var algorithm = "SHA256";
+    var result = rsa.VerifyData(payload, CryptoConfig.MapNameToOID(algorithm), signatureBytes);
+
+    if (!result)
+    {
+        context.Result = new UnauthorizedResult();
+    }
+    context.HttpContext.Request.Body.Position = 0;
+    </pre>
+    <p>&nbsp;</p>
+        <h4>Example Webhook Request from Nextech</h4>
+            <pre class="center-column">POST [Endpont From Partner]
+-H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
+{
+    "Id": 36,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-25T21:28:06.5232727Z",
+    "Type": "transaction.refund",
+    "Data": {
+        "Amount_Refunded": 300,
+        "Id": "a8bfb223-845b-4def-8903-362b122a60d8",
+        "OriginalTransactionId": "1151d71a-721a-4e86-8a29-678126569cfa"
+    }
+}
+    </pre>
+            <h2 id='webhooks-refund'>Refund Webhook</h2>
+            <h4 id="example-get-all-patient-types">Event Object</h4>
+            <pre class="center-column">
+{
+    "Id": 36,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-25T21:28:06.5232727Z",
+    "Type": "transaction.refund",
+    "Data": {
+        "Amount_Refunded": 300,
+        "Id": "a8bfb223-845b-4def-8903-362b122a60d8",
+        "OriginalTransactionId": "1151d71a-721a-4e86-8a29-678126569cfa"
+    }
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h2 id='webhooks-chargebacks-withdrawn'>Chargeback Funds Withdrawn Webhook</h2>
+            <h4 id="example-get-all-patient-types">Event Object</h4>
+            <pre class="center-column">
+{
+    "Id": 28,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-24T20:59:38.8449416Z",
+    "Type": "transation.dispute.funds_withdrawn",
+    "Data": {
+        "Amount_Withdrawn": -1000,
+        "Id": "66e78414-cbc6-453b-917c-3b8b5ac47804",
+        "OriginalTransactionId": "6a6c1bb0-722c-4000-b7e9-c135981e6115"
+    }
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h2 id='webhooks-chargebacks-reinstatement'>Chargeback Funds Reinstated Webhook</h2>
+            <h4 id="example-get-all-patient-types">Event Object</h4>
+            <pre class="center-column">
+{
+    "Id": 29,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-24T21:02:21.2174641Z",
+    "Type": "transaction.dispute.funds_reinstated",
+    "Data": {
+        "Amount_Reinstated": 1000,
+        "Id": "638ed4a3-57c7-495b-aa5e-0a80f31b8a11",
+        "OriginalTransactionId": "6a6c1bb0-722c-4000-b7e9-c135981e6115"
+    }
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h2 id='webhooks-failed-refund'>Failed Refund Webhook</h2>
+            <h4 id="example-get-all-patient-types">Event Object</h4>
+            <pre class="center-column">
+{
+    "Id": 35,
+    "MerchantId": "NXSV4BTWU13DV9FM",
+    "Created": "2023-08-25T14:56:55.8607027Z",
+    "Type": "transaction.refund.updated",
+    "Data": {
+        "Amount_Refunded": 3300,
+        "Status": "failed",
+        "Id": "286271dd-7970-4a48-8c85-33ddc97cb91e",
+        "OriginalTransactionId": "2093ec57-7ca5-4ce5-a725-ab9ed4369db9"
+    }
+}
+            </pre>
+            <p>&nbsp;</p>
+
+
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>
             <p>If your credentials expire you will have to reset them by:</p>
@@ -1668,7 +1912,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
                 <li>Your password is now reset.</li>
             </ol>
             <p>&nbsp;</p>
-
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         </div>
         <div class="dark-box">
         </div>

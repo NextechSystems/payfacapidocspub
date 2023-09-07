@@ -372,6 +372,14 @@
                 </ul>
             </li>
             <li>
+                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Stripe Elements">Stripe Elements</a>
+                <ul class="toc-list-h2">
+                    <li>
+                        <a href="#how-to-set-it-up" class="toc-h2 toc-link" data-title="How to setup">How to setup</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -391,19 +399,12 @@
                     </li>
                 </ul>
             </li>
+            
             <li>
-                <a href="#stripe-elements" class="toc-h1 toc-link" data-title="Stripe Elements">Stripe Elements</a>
+                <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="FAQ">Frequently Asked Questions</a>
                 <ul class="toc-list-h2">
                     <li>
-                        <a href="#how-to-set-it-up" class="toc-h2 toc-link" data-title="Stripe Elements">How to setup</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#frequently-asked-questions" class="toc-h1 toc-link" data-title="API-Versioning">Frequently Asked Questions</a>
-                <ul class="toc-list-h2">
-                    <li>
-                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="API-Versioning">Resetting Expired Credentials</a>
+                        <a href="#resetting-expired-credentials" class="toc-h2 toc-link" data-title="FAQ">Resetting Expired Credentials</a>
                     </li>
                 </ul>
             </li>
@@ -1685,6 +1686,19 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             </pre>
             <p>&nbsp;</p>
 
+            <h1 id='stripe-elements'>Stripe Elements</h1>
+            <h3 id='how-to-set-it-up'>How to set it up</h3>
+            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
+                The following is a list of the highlights to use: </p>
+                <ol>
+                    <li>Reference Stripe.js in your code.</li>
+                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
+                    <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
+                    <li>Capture the payment using the Capture API endpoint.</li>
+                </ol>
+            <p>&nbsp;</p>
+
+
             <!-- Webhooks -->
             <h1 id='webhooks'>Webhook Events</h1>
             <p>You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example, 
@@ -1887,17 +1901,6 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
             </pre>
             <p>&nbsp;</p>
 
-            <h1 id='stripe-elements'>Stripe Elements</h1>
-            <h3 id='how-to-set-it-up'>How to set it up</h3>
-            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
-                The following is a list of the highlights to use: </p>
-                <ol>
-                    <li>Reference Stripe.js in your code.</li>
-                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
-                    <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
-                    <li>Capture the payment using the Capture API endpoint.</li>
-                </ol>
-            <p>&nbsp;</p>
 
             <h1 id='frequently-asked-questions'>Frequently Asked Questions</h1>
             <h3 id='resetting-expired-credentials'>Resetting Expired Credentials</h3>
@@ -1909,7 +1912,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
                 <li>Your password is now reset.</li>
             </ol>
             <p>&nbsp;</p>
-
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         </div>
         <div class="dark-box">
         </div>

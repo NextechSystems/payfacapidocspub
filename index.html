@@ -974,6 +974,12 @@
                         <td>No</td>
                     </tr>
                     <tr>
+                        <td>PrePayment</td>
+                        <td>Indicator payment is a PrePayment</td>
+                        <td>Boolean</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
                         <td>Description</td>
                         <td>Customer's Description</td>
                         <td>String</td>
@@ -1345,7 +1351,7 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerFirstName: 'John',
     customerLastName: 'Smith',
     customerEmail: 'j.smith@nextech.com',
-    createProfile: 'false',
+    createProfile: false,
     customerMobilePhone: '555-555-5555',
     customerHomePhone: '555-555-5555',
     customerWorkPhone: '555-555-5555',
@@ -1361,6 +1367,7 @@ POST https://payfac.api.nextech.com/api/public/payments
     customerNote: 'Test',
     customerDOB: '11/30/1979',
     orderId: 12,
+    prePayment: true,
     description: 'Test Description',
  }
             </pre>

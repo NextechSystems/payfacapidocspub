@@ -1780,7 +1780,7 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
                 <ol>
                     <li>Reference Stripe.js in your code.</li>
                     <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
-                    <li>Use the <code>stripe.confirmPayment</code> method to attach the payment method to the Stripe payment intent.</li>
+                    <li>Use the <code>stripe.confirmCardPayment</code> method to attach the payment method to the Stripe payment intent.</li>
                     <li>Capture the payment using the Capture API endpoint.</li>
                 </ol>
             <p>&nbsp;</p>

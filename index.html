@@ -1340,6 +1340,7 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
             <h4>Response Object</h4>
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
+            <h4 id="example-get-all-patient-types">Note: Description can be up to 200 characters</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/payments
  -H 'partner-id: 1000;'
@@ -1775,25 +1776,30 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <h1 id='stripe-elements'>Stripe Elements</h1>
             <h3 id='how-to-set-it-up'>How to set it up</h3>
-            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
-                The following is a list of the highlights to use: </p>
-                <ol>
-                    <li>Reference Stripe.js in your code.</li>
-                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
-                    <li>Use the <code>stripe.confirmCardPayment</code> method to attach the payment method to the Stripe payment intent.</li>
-                    <li>Capture the payment using the Capture API endpoint.</li>
-                </ol>
+            <p>
+                Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>.
+                The following is a list of the highlights to use:
+            </p>
+            <ol>
+                <li>Reference Stripe.js in your code.</li>
+                <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
+                <li>Use the <code>stripe.confirmCardPayment</code> method to attach the payment method to the Stripe payment intent.</li>
+                <li>Capture the payment using the Capture API endpoint.</li>
+            </ol>
             <p>&nbsp;</p>
 
 
             <!-- Webhooks -->
             <h1 id='webhooks'>Webhook Events</h1>
-            <p>You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example, 
+            <p>
+                You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example,
                 when you create a payment using this API, if that payment is refunded through another system, a webhook can be sent to a URL that you specify
-                when that refund happens. </p>
+                when that refund happens.
+            </p>
             <p>Webhook events are JSON objects that are sent using a POST method.</p>
             <h2 id="webhooks-authentication">Authentication</h2>
-            <p>When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header 
+            <p>
+                When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header
                 parameter "webhook-signature". Below are example steps to take to verify the request.
 
             </p>
@@ -1829,8 +1835,8 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <p>&nbsp;</p>
             <h4>Example Authentication in C#</h4>
-            
-            
+
+
             <pre class="center-column">
     private readonly string mediaType = "application/json";
     private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
@@ -1906,8 +1912,8 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
     }
     context.HttpContext.Request.Body.Position = 0;
     </pre>
-    <p>&nbsp;</p>
-        <h4>Example Webhook Request from Nextech</h4>
+            <p>&nbsp;</p>
+            <h4>Example Webhook Request from Nextech</h4>
             <pre class="center-column">POST [Endpont From Partner]
 -H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
 {

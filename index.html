@@ -370,6 +370,9 @@
                         <a href="#create-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile</a>
                     </li>
                     <li>
+                        <a href="#create-payment-profiles-by-merchant-customer-id" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile By Merchant Customer Id</a>
+                    </li>
+                    <li>
                         <a href="#delete-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Delete Payment Profile</a>
                     </li>  
                 </ul>
@@ -1094,6 +1097,39 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 id="create-payment-profile-dto-by-merchant-customer-id">CreatePaymentProfileByMerchantCustomerIdDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PatientGuid</td>
+                        <td>Patients Guid</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProcessorPaymentMethodId</td>
+                        <td>Id from processor linked to payment method</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td>Boolean?</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <p>&nbsp;</p>
             <h2 id="key-vault-response">KeyVaultResponse</h2>
             <table>
@@ -1711,6 +1747,58 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles
     profileName : 'profileName',
     isDefault : true, 
     customerId: 'c842930283acanb',
+    processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : 'cardNumberLast4',
+    customerId : '15',
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    expiry : 'expiry',
+    creditCardType : 'creditCardType'    
+}, 
+            </pre>
+            <p>&nbsp;</p>
+            <!-- Create Payment Profile By Merchant Customer Id-->
+            <h2 id='create-payment-profiles-by-merchant-customer-id'>Create Payment Profile By Merchant Customer Id</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.api.nextech.com/api/public/paymentProfiles/ByMerchantCustomerId</code></p>
+            
+                <h4 id="example-get-all-patient-types">Request Parameters</h4>          
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Create Payment Profile By Merchant Customer Id DTO</td>
+                        <td><a href="#create-payment-profile-dto-by-merchant-customer-id">CreatePaymentProfileByMerchantCustomerIdDto</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile By Merchant Customer Id Request</h4>
+            <pre class="center-column">
+POST https://payfac.api.nextech.com/api/public/paymentProfiles/ByMerchantCustomerId
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
+
+{
+    profileName : 'profileName',
+    isDefault : true, 
+    patientGuid: '8634B418-CE7A-42D2-A6CA-D8C0CE685879',
     processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
 }
             </pre>

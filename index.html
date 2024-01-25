@@ -1090,7 +1090,7 @@
                     </tr>
                     <tr>
                         <td>ProcessorPaymentMethodId</td>
-                        <td>Id from processor linked to payment method</td>
+                        <td>Id from processor (Stripe) linked to payment method</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -1111,8 +1111,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>PatientGuid</td>
-                        <td>Patients Guid</td>
+                        <td>MerchantCustomerId</td>
+                        <td>This is the Guid provided by the Nextech merchant. Sometimes referred to as 'Patient Guid'</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -1122,7 +1122,7 @@
                     </tr>
                     <tr>
                         <td>ProcessorPaymentMethodId</td>
-                        <td>Id from processor linked to payment method</td>
+                        <td>Id from processor (Stripe) linked to payment method</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -1663,7 +1663,7 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
              <!-- Get Payment Profiles By Merchant Customer Id-->
              <h2 id='get-payment-profiles-by-merchant-customer-id'>Get Payment Profiles By Merchant Customer ID</h2>
              <h4 id="example-get-all-patient-types">Endpoint</h4>
-             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/{patientGuid}</code></p>
+             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/{merchantCustomerId}</code></p>
              <h4 id="example-get-all-patient-types">Request Parameters</h4>
              <table>
                  <thead>
@@ -1675,8 +1675,8 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
                  </thead>
                  <tbody>
                      <tr>
-                         <td>patientGuid</td>
-                         <td>The Patient's GUID</td>
+                         <td>MerchantCustomerId</td>
+                         <td>This is the Guid provided by the Nextech merchant. Sometimes referred to as 'Patient Guid'</td>
                          <td>String</td>
                      </tr>
                  </tbody>
@@ -1857,7 +1857,7 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustome
 {
     profileName : 'profileName',
     isDefault : true, 
-    patientGuid: '8634B418-CE7A-42D2-A6CA-D8C0CE685879',
+    merchantCustomerId: '8634B418-CE7A-42D2-A6CA-D8C0CE685879',
     processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
 }
             </pre>

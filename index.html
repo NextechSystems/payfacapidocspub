@@ -364,6 +364,9 @@
                 <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Payment Profiles</a>
                 <ul class="toc-list-h2">
                     <li>
+                        <a href="#get-payment-profiles-by-merchant-customer-id" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Merchant Customer ID</a>
+                    </li>
+                    <li>
                         <a href="#get-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Customer ID</a>
                     </li>
                     <li>
@@ -1655,9 +1658,65 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <p>&nbsp;</p>
 
             <!-- Payment Profiles Payments -->
-            <!-- Get Payment Profiles -->
-            <h1 id='saving-payments'>Payment Profiles Payments</h1>
+             <h1 id='saving-payments'>Payment Profiles Payments</h1>
 
+             <!-- Get Payment Profiles By Merchant Customer Id-->
+             <h2 id='get-payment-profiles-by-merchant-customer-id'>Get Payment Profiles By Merchant Customer ID</h2>
+             <h4 id="example-get-all-patient-types">Endpoint</h4>
+             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/{patientGuid}</code></p>
+             <h4 id="example-get-all-patient-types">Request Parameters</h4>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Description</th>
+                         <th>Type</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>patientGuid</td>
+                         <td>The Patient's GUID</td>
+                         <td>String</td>
+                     </tr>
+                 </tbody>
+             </table>
+             <h4>Response Object</h4>
+             <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
+             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Merchant Customer ID Request</h4>
+             <pre class="center-column">
+ GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/7AA6EYE5-8355-49EA-9A66-CAE3JU837F4A
+  -H 'partner-id: 1000;'
+  -H 'merchant-id: NX7FD31F5F43414D;'
+  -H 'nx-username: youruser;'
+             </pre>
+             <p>&nbsp;</p>
+             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Merchant Customer ID Response</h4>
+             <pre class="center-column">
+ [ 
+     {
+         profileName : 'profileName',
+         isDefault : true,
+         cardNumberLast4 : 'cardNumberLast4',
+         customerId : '1738',
+         id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+         expiry : 'expiry',
+         creditCardType : 'creditCardType'     
+     }, 
+     {
+         profileName : 'profileName',
+         isDefault : true,
+         cardNumberLast4 : 'cardNumberLast4',
+         customerId : '1738',
+         id : '97DD69AA-C036-4D13-AA52-004BC25DC123',
+         expiry : 'expiry',
+         creditCardType : 'creditCardType'
+     }
+ ]
+             </pre>
+             <p>&nbsp;</p>
+
+            <!-- Get Payment Profiles -->
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>

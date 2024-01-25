@@ -1,0 +1,1 @@
+To publish to https://nextechsystems.github.io/payfacapidocspub, merge into the <a href="https://github.com/NextechSystems/payfacapidocspub/tree/gh-pages">gh-pages</a> branch. Github will auto deploy that branch after the merge.

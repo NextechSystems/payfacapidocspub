@@ -994,6 +994,12 @@
                         <td>String</td>
                         <td>No</td>
                     </tr>
+                    <tr>
+                        <td>ProcessorPaymentMethodId</td>
+                        <td>The Payment Method Id from partner used for the payment</td>
+                        <td>String</td>
+                        <td>No</td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -1412,6 +1418,7 @@ POST https://payfac.api.nextech.com/api/public/payments
     orderId: 12,
     prePayment: true,
     description: 'Test Description',
+    processorPaymentMethodId: 'pm_Test',
  }
             </pre>
             <p>&nbsp;</p>

@@ -1000,6 +1000,18 @@
                         <td>String</td>
                         <td>No</td>
                     </tr>
+		    <tr>
+                        <td>LocationId</td>
+                        <td>The Location Id from partner</td>
+                        <td>Integer</td>
+                        <td>No</td>
+                    </tr>
+		    <tr>
+                        <td>ProviderId</td>
+                        <td>The Provider Id from partner</td>
+                        <td>Integer</td>
+                        <td>No</td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -1419,6 +1431,8 @@ POST https://payfac.api.nextech.com/api/public/payments
     prePayment: true,
     description: 'Test Description',
     processorPaymentMethodId: 'pm_Test',
+    locationId: 1,
+    providerId: 1,
  }
             </pre>
             <p>&nbsp;</p>

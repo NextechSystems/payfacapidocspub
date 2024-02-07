@@ -364,10 +364,16 @@
                 <a href="#saving-payments" class="toc-h1 toc-link" data-title="Saving-Payments">Payment Profiles</a>
                 <ul class="toc-list-h2">
                     <li>
+                        <a href="#get-payment-profiles-by-merchant-customer-id" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Merchant Customer ID</a>
+                    </li>
+                    <li>
                         <a href="#get-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Get Payment Profiles By Customer ID</a>
                     </li>
                     <li>
                         <a href="#create-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile</a>
+                    </li>
+                    <li>
+                        <a href="#create-payment-profiles-by-merchant-customer-id" class="toc-h2 toc-link" data-title="Saving-Payments">Create Payment Profile By Merchant Customer Id</a>
                     </li>
                     <li>
                         <a href="#delete-payment-profiles" class="toc-h2 toc-link" data-title="Saving-Payments">Delete Payment Profile</a>
@@ -1084,7 +1090,7 @@
                     </tr>
                     <tr>
                         <td>ProcessorPaymentMethodId</td>
-                        <td>Id from processor linked to payment method</td>
+                        <td>Id from processor (Stripe) linked to payment method</td>
                         <td>String</td>
                     </tr>
                     <tr>
@@ -1094,6 +1100,39 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 id="create-payment-profile-dto-by-merchant-customer-id">CreatePaymentProfileByMerchantCustomerIdDto</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MerchantCustomerId</td>
+                        <td>This is the Guid provided by the Nextech merchant. Sometimes referred to as 'Patient Guid'</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProfileName</td>
+                        <td>Name for payment profile</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>ProcessorPaymentMethodId</td>
+                        <td>Id from processor (Stripe) linked to payment method</td>
+                        <td>String</td>
+                    </tr>
+                    <tr>
+                        <td>IsDefault</td>
+                        <td>Is default payment profile for customer</td>
+                        <td>Boolean?</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <p>&nbsp;</p>
             <h2 id="key-vault-response">KeyVaultResponse</h2>
             <table>
@@ -1340,6 +1379,7 @@ GET https://payfac.api.nextech.com/api/public/payments/97DD69AA-C036-4D13-AA52-0
             <h4>Response Object</h4>
             <p><a href="#payment-dto">PaymentDTO</a></p>
             <h4 id="example-get-all-patient-types">Example: Create Payment</h4>
+            <h4 id="example-get-all-patient-types">Note: Description can be up to 200 characters</h4>
             <pre class="center-column">
 POST https://payfac.api.nextech.com/api/public/payments
  -H 'partner-id: 1000;'
@@ -1618,9 +1658,65 @@ POST https://payfac.api.nextech.com/api/public/payments/refund
             <p>&nbsp;</p>
 
             <!-- Payment Profiles Payments -->
-            <!-- Get Payment Profiles -->
-            <h1 id='saving-payments'>Payment Profiles Payments</h1>
+             <h1 id='saving-payments'>Payment Profiles Payments</h1>
 
+             <!-- Get Payment Profiles By Merchant Customer Id-->
+             <h2 id='get-payment-profiles-by-merchant-customer-id'>Get Payment Profiles By Merchant Customer ID</h2>
+             <h4 id="example-get-all-patient-types">Endpoint</h4>
+             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/{merchantCustomerId}</code></p>
+             <h4 id="example-get-all-patient-types">Request Parameters</h4>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Description</th>
+                         <th>Type</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>MerchantCustomerId</td>
+                         <td>This is the Guid provided by the Nextech merchant. Sometimes referred to as 'Patient Guid'</td>
+                         <td>String</td>
+                     </tr>
+                 </tbody>
+             </table>
+             <h4>Response Object</h4>
+             <p><a href="#payment-profile-dto">List of PaymentProfileDto</a></p>
+             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Merchant Customer ID Request</h4>
+             <pre class="center-column">
+ GET https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId/7AA6EYE5-8355-49EA-9A66-CAE3JU837F4A
+  -H 'partner-id: 1000;'
+  -H 'merchant-id: NX7FD31F5F43414D;'
+  -H 'nx-username: youruser;'
+             </pre>
+             <p>&nbsp;</p>
+             <h4 id="example-get-all-patient-types">Example: Get Payment Profiles By Merchant Customer ID Response</h4>
+             <pre class="center-column">
+ [ 
+     {
+         profileName : 'profileName',
+         isDefault : true,
+         cardNumberLast4 : 'cardNumberLast4',
+         customerId : '1738',
+         id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+         expiry : 'expiry',
+         creditCardType : 'creditCardType'     
+     }, 
+     {
+         profileName : 'profileName',
+         isDefault : true,
+         cardNumberLast4 : 'cardNumberLast4',
+         customerId : '1738',
+         id : '97DD69AA-C036-4D13-AA52-004BC25DC123',
+         expiry : 'expiry',
+         creditCardType : 'creditCardType'
+     }
+ ]
+             </pre>
+             <p>&nbsp;</p>
+
+            <!-- Get Payment Profiles -->
             <h2 id='get-payment-profiles'>Get Payment Profiles By Customer ID</h2>
             <h4 id="example-get-all-patient-types">Endpoint</h4>
             <p><code>GET https://payfac.api.nextech.com/api/public/paymentProfiles/{customerId}</code></p>
@@ -1727,6 +1823,58 @@ POST https://payfac.api.nextech.com/api/public/paymentProfiles
 }, 
             </pre>
             <p>&nbsp;</p>
+            <!-- Create Payment Profile By Merchant Customer Id-->
+            <h2 id='create-payment-profiles-by-merchant-customer-id'>Create Payment Profile By Merchant Customer Id</h2>
+            <h4 id="example-get-all-patient-types">Endpoint</h4>
+            <p><code>POST https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId</code></p>
+            
+                <h4 id="example-get-all-patient-types">Request Parameters</h4>          
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>body</td>
+                        <td>Create Payment Profile By Merchant Customer Id DTO</td>
+                        <td><a href="#create-payment-profile-dto-by-merchant-customer-id">CreatePaymentProfileByMerchantCustomerIdDto</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>Response Object</h4>
+            <p><a href="#payment-profile-dto">PaymentProfileDto</a></p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile By Merchant Customer Id Request</h4>
+            <pre class="center-column">
+POST https://payfac.api.nextech.com/api/public/paymentProfiles/byMerchantCustomerId
+ -H 'partner-id: 1000;'
+ -H 'merchant-id: NX7FD31F5F43414D;'
+ -H 'nx-username: youruser;'
+
+{
+    profileName : 'profileName',
+    isDefault : true, 
+    merchantCustomerId: '8634B418-CE7A-42D2-A6CA-D8C0CE685879',
+    processorPaymentMethodId: 'ZZ32jafs9JJ902trn'
+}
+            </pre>
+            <p>&nbsp;</p>
+            <h4 id="example-get-all-patient-types">Example: Create Payment Profile Response</h4>
+            <pre class="center-column">
+{
+    profileName : 'profileName',
+    isDefault : true,
+    cardNumberLast4 : 'cardNumberLast4',
+    customerId : '15',
+    id : '97DD69AA-C036-4D13-AA52-004BC25DC7A7',
+    expiry : 'expiry',
+    creditCardType : 'creditCardType'    
+}, 
+            </pre>
+            <p>&nbsp;</p>
 
             <!-- Delete Payment Profile -->
             <h2 id='delete-payment-profiles'>Delete Payment Profile</h2>
@@ -1775,25 +1923,30 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <h1 id='stripe-elements'>Stripe Elements</h1>
             <h3 id='how-to-set-it-up'>How to set it up</h3>
-            <p>Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>. 
-                The following is a list of the highlights to use: </p>
-                <ol>
-                    <li>Reference Stripe.js in your code.</li>
-                    <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
-                    <li>Use the <code>stripe.confirmCardPayment</code> method to attach the payment method to the Stripe payment intent.</li>
-                    <li>Capture the payment using the Capture API endpoint.</li>
-                </ol>
+            <p>
+                Stripe Elements is a set of prebuilt UI components needed to process a payment with this API. Their full documentation is <a href="https://stripe.com/docs/payments/elements" target="_blank">here</a>.
+                The following is a list of the highlights to use:
+            </p>
+            <ol>
+                <li>Reference Stripe.js in your code.</li>
+                <li>Initialize Stripe Elements with the <code>paymentProcessorSecret</code> from the <code>PaymentDto</code> in the CreatePayment response.</li>
+                <li>Use the <code>stripe.confirmCardPayment</code> method to attach the payment method to the Stripe payment intent.</li>
+                <li>Capture the payment using the Capture API endpoint.</li>
+            </ol>
             <p>&nbsp;</p>
 
 
             <!-- Webhooks -->
             <h1 id='webhooks'>Webhook Events</h1>
-            <p>You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example, 
+            <p>
+                You can choose to receive event notifications known as "Webhooks" when certain events happen related to payments you have created. For example,
                 when you create a payment using this API, if that payment is refunded through another system, a webhook can be sent to a URL that you specify
-                when that refund happens. </p>
+                when that refund happens.
+            </p>
             <p>Webhook events are JSON objects that are sent using a POST method.</p>
             <h2 id="webhooks-authentication">Authentication</h2>
-            <p>When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header 
+            <p>
+                When you receive a webhook event, you can verify the request by using a standard RSA sign/verify process. Each request contains a header
                 parameter "webhook-signature". Below are example steps to take to verify the request.
 
             </p>
@@ -1829,8 +1982,8 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
 
             <p>&nbsp;</p>
             <h4>Example Authentication in C#</h4>
-            
-            
+
+
             <pre class="center-column">
     private readonly string mediaType = "application/json";
     private readonly string url = $"https://nextech-payfac-api-dev.azurewebsites.net/api/public/Access/WebhookVerification";
@@ -1906,8 +2059,8 @@ DELETE https://payfac.api.nextech.com/api/public/paymentProfiles/97DD69AA-C036-4
     }
     context.HttpContext.Request.Body.Position = 0;
     </pre>
-    <p>&nbsp;</p>
-        <h4>Example Webhook Request from Nextech</h4>
+            <p>&nbsp;</p>
+            <h4>Example Webhook Request from Nextech</h4>
             <pre class="center-column">POST [Endpont From Partner]
 -H 'webhook-signature: =af43ba54AFJI_Fu084jfflkaj87y47943klafjk3ha'
 {
